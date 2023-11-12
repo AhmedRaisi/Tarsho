@@ -43,44 +43,48 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/your-repo/tarsho.git
+   git clone https://github.com/your-repo/tarsho.git 
 
-Navigate to the project directory:
+2. **Navigate to the project directory:**
 sh
 Copy code
 cd tarsho
-Running the Project without Docker
-Install dependencies for the backend:
+
+#### Running the Project without Docker
+
+1. **Install dependencies for the backend:**
 sh
 Copy code
 cd server
 npm install
-Install dependencies for the frontend:
+2. **Install dependencies for the frontend:**
 sh
 Copy code
 cd ../web
 npm install
-Start the backend server:
+3. **Start the backend server:**
 sh
 Copy code
 npm start
-Run the frontend application:
+4. **Run the frontend application:**
 sh
 Copy code
 npm start
-Running the Project with Docker
-Build and start the Docker containers:
+#### Running the Project with Docker
+
+1. **Build and start the Docker containers:**
 
 sh
 Copy code
 docker-compose up --build
 This will set up both the backend and frontend environments inside Docker containers.
 
-Accessing the Application:
+2. **Accessing the Application:**
 
 The frontend should be accessible at http://localhost:3000.
 The backend APIs should be accessible at http://localhost:4000.
-Development using Docker:
+
+### Development using Docker:
 
 When using Docker, any code changes you make in your local environment will be reflected in the Docker containers, thanks to volume mappings in docker-compose.yml.
 To view logs or debug, use docker logs [container_name] or access the shell of a container using docker exec -it [container_name] sh.
