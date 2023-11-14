@@ -47,35 +47,29 @@ Before you begin, ensure you have the following installed:
 
 2. **Navigate to the project directory:**
    ```sh
-   Copy code
    cd tarsho
 
 #### Running the Project without Docker
 
 1. **Install dependencies for the backend:**
    ```sh
-   Copy code
    cd server
    npm install
 2. **Install dependencies for the frontend:**
    ```sh
-   Copy code
    cd ../web
    npm install
 3. **Start the backend server:**
    ```sh
-   Copy code
    npm start
 4. **Run the frontend application:**
    ```sh
-   Copy code
    npm start
 #### Running the Project with Docker
 
 1. **Build and start the Docker containers:**
 
    ```sh
-   Copy code
    docker-compose up --build
 This will set up both the backend and frontend environments inside Docker containers.
 
@@ -95,7 +89,6 @@ To view logs or debug, use docker logs [container_name] or access the shell of a
    Stopping Docker Containers:
 
    ```sh
-   Copy code
    docker-compose down
 
 Contributing
