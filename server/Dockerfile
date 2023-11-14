@@ -19,5 +19,5 @@ CMD ["node", "server.js"]
 # Sets a working directory inside the container.
 # Copies package.json and package-lock.json and installs dependencies.
 # Copies the rest of your backend code into the container.
-# Exposes port 3000 (adjust if your server uses a different port).
+# Exposes port 4000.
 # Specifies the command to start the server.
