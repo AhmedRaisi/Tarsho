@@ -46,37 +46,37 @@ Before you begin, ensure you have the following installed:
    git clone https://github.com/your-repo/tarsho.git 
 
 2. **Navigate to the project directory:**
-sh
-Copy code
-cd tarsho
+   ```sh
+   Copy code
+   cd tarsho
 
 #### Running the Project without Docker
 
 1. **Install dependencies for the backend:**
-sh
-Copy code
-cd server
-npm install
+   ```sh
+   Copy code
+   cd server
+   npm install
 2. **Install dependencies for the frontend:**
-sh
-Copy code
-cd ../web
-npm install
+   ```sh
+   Copy code
+   cd ../web
+   npm install
 3. **Start the backend server:**
-sh
-Copy code
-npm start
+   ```sh
+   Copy code
+   npm start
 4. **Run the frontend application:**
-sh
-Copy code
-npm start
+   ```sh
+   Copy code
+   npm start
 #### Running the Project with Docker
 
 1. **Build and start the Docker containers:**
 
-sh
-Copy code
-docker-compose up --build
+   ```sh
+   Copy code
+   docker-compose up --build
 This will set up both the backend and frontend environments inside Docker containers.
 
 2. **Accessing the Application:**
@@ -87,11 +87,16 @@ The backend APIs should be accessible at http://localhost:4000.
 ### Development using Docker:
 
 When using Docker, any code changes you make in your local environment will be reflected in the Docker containers, thanks to volume mappings in docker-compose.yml.
-To view logs or debug, use docker logs [container_name] or access the shell of a container using docker exec -it [container_name] sh.
-Stopping Docker Containers:
 
-sh
-Copy code
-docker-compose down
+To view logs or debug, use docker logs [container_name] or access the shell of a container using 
+
+   ```sh
+   docker exec -it [container_name] sh.
+   Stopping Docker Containers:
+
+   ```sh
+   Copy code
+   docker-compose down
+
 Contributing
 We welcome contributions to Tarsho! Please read our Contributing Guide for details on our code of conduct and the process for submitting pull requests.
