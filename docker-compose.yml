@@ -1,20 +1,26 @@
 version: '3'
-
 services:
   backend:
-    build: ./server
-    ports:
-      - "4000:4000"
+    build:
+      context: ./server
     volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
 
   frontend:
-    build: ./web
-    ports:
-      - "3000:3000"
+    build:
+      context: ./web
     volumes:
       - ./web:/usr/src/app
       - /usr/src/app/node_modules
-    depends_on:
-      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true

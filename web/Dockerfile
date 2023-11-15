@@ -1,4 +1,5 @@
-FROM node:14
+# Build stage
+FROM node:14 as build
 
 WORKDIR /usr/src/app
 
@@ -8,6 +9,4 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
-
-CMD ["npm", "start"]
+RUN npm run build

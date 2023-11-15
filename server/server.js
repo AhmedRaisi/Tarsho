@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan'); // Import morgan
+const path = require('path'); // Import path module
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 
@@ -44,6 +45,16 @@ app.get('/api', (req, res) => {
     ]
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, '../web/build')));
+  
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../web/build', 'index.html'));
+  });
+}
 
 // Start the server on the specified port
 app.listen(port, () => {
