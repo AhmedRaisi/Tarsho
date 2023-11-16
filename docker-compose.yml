@@ -19,7 +19,7 @@ services:
       - ./web:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - "3000:3000"
+      - "3000:80"
     environment:
       - NODE_ENV=development
     stdin_open: true
