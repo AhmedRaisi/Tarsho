@@ -4,9 +4,7 @@ import './styles.css';
 
 const ClientHomePage = () => (
   <div className="welcome-container">
-    <h1>Welcome to Our Application!</h1>
-    <p>Get started by logging in.</p>
-    <Link to="/login" className="login-button">Login</Link>
+    <h1>Welcome Client</h1>
     <Link to="/" className="login-button">Back to Home</Link>
   </div>
 );
