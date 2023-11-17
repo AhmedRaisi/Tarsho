@@ -1,0 +1,33 @@
+.welcome-container {
+    text-align: center;
+    padding: 50px;
+    margin-top: 100px;
+  }
+  
+  .login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .welcome-container {
+      margin-top: 50px;
+      padding: 20px;
+    }
+  
+    .login-button {
+      padding: 8px 15px;
+    }
+  }
+  
