@@ -1,11 +1,12 @@
 version: '3'
 services:
   backend:
-    build:
+    build: 
       context: ./server
     volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
+      - ./web/build:/usr/src/app/public
     ports:
       - "4000:4000"
     environment:
@@ -13,13 +14,13 @@ services:
     command: npm run dev
 
   frontend:
-    build:
+    build: 
       context: ./web
     volumes:
-      - ./web:/usr/src/app
+      - ./web:/usr/src/app  # Mount the source code
       - /usr/src/app/node_modules
     ports:
-      - "3000:80"
+      - "3000:3000"
     environment:
       - NODE_ENV=development
     stdin_open: true
