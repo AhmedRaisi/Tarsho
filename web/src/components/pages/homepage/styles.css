@@ -1,64 +1,110 @@
 body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-  }
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  color: #333;
   
-  .header, .footer {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-  }
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  color: white;
+}
+
+.hero-content {
+  max-width: 900px;
+  text-align: center;
+}
+
+.hero-buttons {
+  margin-top: 30px;
+}
+
+.login-button, .signup-button {
+  display: inline-block;
+  padding: 12px 25px;
+  margin: 0 10px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.3s;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-button {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.signup-button {
+  background-color: #f8f9fa;
+  color: #073b4c;
+}
+
+.login-button:hover, .signup-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.about-section, .services-section, .contact-section {
+  padding: 50px 0;
+  text-align: center;
+  color: white;
+}
+
+.services-section {
+  display: flex;
+  justify-content: space-around;
   
-  .footer {
-    position: absolute;
-    bottom: 0;
+}
+
+.service {
+  width: 45%;
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  color: #073b4c;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+.contact-button:hover {
+  background-color: #e2e6ea;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 50px 0;
+  }
+
+  .signup-button, .login-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .about-section, .services-section, .contact-section {
+    padding: 25px 0;
+  }
+
+  .service {
     width: 100%;
-    height: 60px; /* Set the fixed height of the footer here */
+    margin-bottom: 20px;
   }
-  
-  .welcome-container {
-    text-align: center;
-    padding: 50px;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; /* Ensure it spans the full width */
-  }
-  
-  .login-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-    outline: none;
-    font-size: 16px;
-  }
-  
-  .login-button:hover, .login-button:focus {
-    background-color: #0056b3;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Responsive design */
-  @media (max-width: 600px) {
-    .welcome-container {
-      padding: 20px;
-    }
-  
-    .login-button {
-      padding: 8px 15px;
-      font-size: 14px;
-    }
-  }
-  
+
+}

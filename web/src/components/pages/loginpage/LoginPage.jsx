@@ -22,7 +22,7 @@ const LoginPage = () => {
     <>
       <Header />
       <div className="welcome-container">
-        <h1>Login to Our Application</h1>
+        <h1>Login to Tarsho</h1>
         <p>Please choose your role to login.</p>
         
         <div className="login-links">
