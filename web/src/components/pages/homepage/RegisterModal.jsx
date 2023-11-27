@@ -1,30 +1,26 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Make sure Axios is installed
-import './styles.css'; // Assuming you have a common stylesheet
+import axios from 'axios';
+import './styles.css';
 
 const RegisterModal = ({ onClose }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState(''); // Optional, depends on your requirements
-  const [role, setRole] = useState(''); // Optional, if you have different user roles
+  const [email, setEmail] = useState('');
+  const [role, setRole] = useState('');
 
   const handleRegister = async (event) => {
     event.preventDefault();
-
     try {
-      // Make a POST request to the register endpoint
-      const response = await axios.post('/api/users/register', { 
-        username, 
+      const response = await axios.post('http://backend:4000/api/users/register', {
+        username,
         password,
-        email, // Include if using email
-        role // Include if using roles
+        email,
+        role
       });
-
-      console.log(response.data); // Handle the response
-      onClose(); // Close the modal after successful registration
+      console.log(response.data);
+      onClose();
     } catch (error) {
       console.error('Registration failed:', error.response?.data?.msg || error.message);
-      // Handle registration failure
     }
   };
 
@@ -54,7 +50,24 @@ const RegisterModal = ({ onClose }) => {
               required
             />
           </div>
-          {/* Include additional fields as needed */}
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="role">Role</label>
+            <input
+              type="text"
+              id="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            />
+          </div>
           <button type="submit" className="login-button">Register</button>
         </form>
       </div>
