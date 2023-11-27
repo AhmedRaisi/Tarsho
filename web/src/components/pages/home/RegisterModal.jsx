@@ -11,7 +11,7 @@ const RegisterModal = ({ onClose }) => {
   const handleRegister = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://backend:4000/api/users/register', {
+      const response = await axios.post('http://localhost:4000/api/users/register', {
         username,
         password,
         email,
