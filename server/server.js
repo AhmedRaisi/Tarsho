@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const mongoose = require('mongoose');
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -19,6 +20,13 @@ app.use(cors());
 
 // Swagger UI setup
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+// Connect to MongoDB
+const dbURI = 'mongodb://rootuser:rootpass@localhost:27017/usersdb';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error(err));
 
 // Sample API endpoint
 app.get('/api/someendpoint', (req, res) => {
