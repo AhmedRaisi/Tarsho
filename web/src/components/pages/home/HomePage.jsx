@@ -33,6 +33,7 @@ const HomePage = () => {
       <div id="home" className="hero-section">
       <div className="hero-content">
         <h1>Welcome to Tarsho!</h1>
+        <p>"Empowering Your Independence, Enriching Your Choices – Tarsho is where businesses and clients connect to turn unique visions into vibrant realities."</p>
         <p>Get started by logging in or learn more about our services.</p>
         <div className="hero-buttons">
           <HashLink smooth to="/#services" className="login-button">Login</HashLink>
@@ -40,12 +41,23 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-    <div id="about" className="about-section">
-      <h2>About Us</h2>
-      <p>Connecting independent providers with clients to foster successful partnerships and thriving businesses.</p>
-    </div>
-   
+
+    <div id="about" className="mission-section">
+        <h2>Our Mission</h2>
+        <p>"To empower service providers with the tools and visibility they need to grow their businesses while providing clients with an unparalleled selection of specialized services..."</p>
+      </div>
+
+    <div className="about-section">
+        <h2>Our Story</h2>
+        <p>Born from a vision to bridge the gap between independent service providers and clients seeking bespoke services, Tarsho emerged as the catalyst for entrepreneurial success...</p>
+      </div>
+
+    <div className="vision-section">
+        <h2>Our Vision</h2>
+        <p>"To be the leading platform where independent service providers flourish and clients discover a world of tailor-made services..."</p>
+      </div>
       <div id="services" className="services-section">
+        
         <div className="service client">
           <h2>For Clients</h2>
           <p>Discover top independent service providers tailored to your business needs.</p>
@@ -57,7 +69,7 @@ const HomePage = () => {
           <button onClick={() => openLoginModal('provider')} className="login-button">Provider Login</button>
         </div>
       </div>
-      <div className="contact-section">
+      <div id="contact" className="contact-section">
       <h2>Contact Us</h2>
       <p>Have any questions? Reach out to us through our contact form.</p>
       <Link to="/contact" className="contact-button">Get In Touch</Link>
