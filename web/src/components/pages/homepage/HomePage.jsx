@@ -4,6 +4,7 @@ import Header from '../../features/hf/homehf/header/header.jsx';
 import Footer from '../../features/hf/homehf/footer/footer.jsx';
 import './styles.css';
 import LoginModal from './LoginModal.jsx';
+import RegisterModal from './RegisterModal.jsx';
 import { HashLink } from 'react-router-hash-link'; // Importing HashLink
 
 
@@ -12,10 +13,18 @@ const HomePage = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [loginRole, setLoginRole] = useState(null);
 
+  // State for managing register modal
+  const [showRegister, setShowRegister] = useState(false);
+
   // Function to open the login modal
   const openLoginModal = (role) => {
     setShowLogin(true);
     setLoginRole(role);
+  };
+
+  // Function to open the register modal
+  const openRegisterModal = () => {
+    setShowRegister(true);
   };
 
   return (
@@ -27,7 +36,7 @@ const HomePage = () => {
         <p>Get started by logging in or learn more about our services.</p>
         <div className="hero-buttons">
           <HashLink smooth to="/#services" className="login-button">Login</HashLink>
-          <Link to="/signup" className="signup-button">Sign Up</Link>
+          <button onClick={() => openRegisterModal()} className="signup-button">Sign up</button>
         </div>
       </div>
     </div>
@@ -59,6 +68,7 @@ const HomePage = () => {
         // Modal component here with loginRole passed as a prop
         <LoginModal role={loginRole} onClose={() => setShowLogin(false)} />
       )}
+      {showRegister && <RegisterModal onClose={() => setShowRegister(false)} />}
     </>
   );
 };

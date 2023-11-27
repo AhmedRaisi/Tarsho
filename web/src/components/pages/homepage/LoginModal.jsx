@@ -1,16 +1,32 @@
 // LoginModal.jsx
 import React, { useState } from 'react';
+import axios from 'axios'; // Import Axios
 import './styles.css'; // Import specific styles for the modal
 
 const LoginModal = ({ role, onClose }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    // Add your login logic here
-    console.log(`Login as ${role}:`, username, password);
-    onClose(); // Close the modal after login
+
+    try {
+      // Make a POST request to the login endpoint
+      const response = await axios.post('/api/users/login', { 
+        username, 
+        password,
+        role // Include role if your backend logic needs it
+      });
+
+      // Log the response (e.g., token) for now
+      console.log(response.data);
+
+      // Close the modal
+      onClose();
+    } catch (error) {
+      console.error('Login failed:', error.response?.data?.msg || error.message);
+      // Handle login failure (e.g., show an error message)
+    }
   };
 
   return (
