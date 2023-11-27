@@ -8,22 +8,32 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 const port = process.env.PORT || 4000;
 
-app.use(cors());
-app.use(express.json());
+// Middleware to log HTTP requests
 app.use(morgan('dev'));
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// CORS middleware for development - allowing all origins
+app.use(cors());
+
+// Swagger UI setup
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Sample API endpoint
 app.get('/api/someendpoint', (req, res) => {
-  const responseData = {
-    message: 'This is a sample API endpoint',
-    data: { key: 'value' },
-  };
+  const responseData = { message: 'This is a sample API endpoint', data: { key: 'value' } };
   res.json(responseData);
 });
 
-// Update the proxy middleware to point to the frontend service
-app.use('/', createProxyMiddleware({ target: 'http://frontend:3000', changeOrigin: true }));
+// Proxy middleware for development
+// Forwarding frontend requests to the React development server
+app.use('/', createProxyMiddleware({
+  target: 'http://frontend:3000', // If your React server is on a different port, change it accordingly.
+  changeOrigin: true,
+  // ws: true, // Proxy websockets if you're using them
+  // logLevel: 'debug' // This will help debug any issues with the proxy
+}));
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

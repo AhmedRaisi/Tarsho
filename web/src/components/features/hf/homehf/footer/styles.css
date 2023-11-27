@@ -1,13 +1,145 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.header {
+  background: rgba(26, 42, 108, 0.85); /* Semi-transparent dark blue */
+  backdrop-filter: blur(5px); /* Giving a frosted glass effect */
+  color: white;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Make sure the header is always on top */
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h1 {
+  font-size: 1.75rem; /* Slightly larger for visibility */
+  margin: 0;
+  font-weight: 600;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+}
+
+.header nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0 1rem; /* Add padding for better touch targets */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+  color: #f8f9fa; /* Light gray for hover effect */
+  text-decoration: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+  }
+
+  .header h1 {
+    margin-bottom: 0.5rem;
+  }
+}
+
 .footer {
-    background-color: #343a40;
-    color: #f8f9fa;
-    padding: 20px 0;
-    text-align: center;
+  height: 80px;body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.header {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  color: white;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+.header-content {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h1 {
+  font-size: 1.75rem; /* Slightly larger for visibility */
+  margin: 0;
+  font-weight: 600;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+}
+
+.header nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0 1rem; /* Add padding for better touch targets */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+  color: #f8f9fa; /* Light gray for hover effect */
+  text-decoration: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
   }
-  
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+
+  .header h1 {
+    margin-bottom: 0.5rem;
   }
-  
+}
+
+.footer {
+  height: 80px;
+  width: 100%;
+  background: linear-gradient(135deg, #b21f1f, #fdbb2d);
+  color: #ffffff; /* White text to stand out on the gradient background */
+  text-align: center;
+  line-height: 80px;
+  position: relative;
+  font-family: 'Poppins', sans-serif; /* Using the Poppins font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow for better readability */
+}
+
+  width: 100%;
+  background: rgba(26, 42, 108, 0.85);
+  color: #ffffff; /* White text to stand out on the gradient background */
+  text-align: center;
+  line-height: 80px;
+  position: relative;
+  font-family: 'Poppins', sans-serif; /* Using the Poppins font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow for better readability */
+}

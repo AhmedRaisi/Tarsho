@@ -2,90 +2,101 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
-  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background: linear-gradient(to right, #dae2f8, #d6a4a4); /* Subtle gradient background */
   color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+  color: #ffffff; /* White text for readability */
+  background-color: transparent; /* Transparent background */
+  display: flex; /* Enable Flexbox */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center-align items horizontally */
+  justify-content: center; /* Center-align items vertically */
+  padding: 50px 0; /* Padding top and bottom */
+  text-align: center; /* Ensure text is centered */
+}
+
+
+/* Common Section Styling */
+.section {
+  padding: 50px 0;
+  text-align: center;
+  margin: 20px 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9); /* Light background for smooth transition */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
   
 }
 
-.hero-section {
+/* About Section */
+.about-section {
+  color: #ffffff; /* White text for readability */
+  background-color: transparent; /* Transparent background */
+  display: flex; /* Enable Flexbox */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center-align items horizontally */
+  justify-content: center; /* Center-align items vertically */
+  padding: 50px 0; /* Padding top and bottom */
+  text-align: center; /* Ensure text is centered */
+}
+
+
+/* Services Section */
+.services-section {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 0;
-  color: white;
+  justify-content: space-around;
+  background-color: transparent; 
 }
 
-.hero-content {
-  max-width: 900px;
-  text-align: center;
+.service {
+  width: 45%;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px; /* Soft rounded corners */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
 }
 
-.hero-buttons {
-  margin-top: 30px;
+/* About Section */
+.contact-section {
+  color: #ffffff; /* White text for readability */
+  background-color: transparent; /* Transparent background */
+  display: flex; /* Enable Flexbox */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center-align items horizontally */
+  justify-content: center; /* Center-align items vertically */
+  padding: 50px 0; /* Padding top and bottom */
+  text-align: center; /* Ensure text is centered */
 }
 
-.login-button, .signup-button {
-  display: inline-block;
+
+/* Buttons and Links */
+.login-button, .signup-button, .contact-button {
   padding: 12px 25px;
-  margin: 0 10px;
   border-radius: 30px;
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.3s;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  margin: 10px; /* Added margin for spacing */
 }
 
 .login-button {
   background-color: transparent;
-  color: white;
-  border: 2px solid white;
+  color: #073b4c; /* Dark blue for contrast */
+  border: 2px solid #073b4c;
 }
 
-.signup-button {
+.signup-button, .contact-button {
   background-color: #f8f9fa;
   color: #073b4c;
 }
 
-.login-button:hover, .signup-button:hover {
+.login-button:hover, .signup-button:hover, .contact-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.about-section, .services-section, .contact-section {
-  padding: 50px 0;
-  text-align: center;
-  color: white;
-}
-
-.services-section {
-  display: flex;
-  justify-content: space-around;
-  
-}
-
-.service {
-  width: 45%;
-}
-
-.contact-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #f8f9fa;
-  color: #073b4c;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 8px 15px;
-  font-size: 14px;
-}
-
-.contact-button:hover {
-  background-color: #e2e6ea;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 600px) {
@@ -93,13 +104,9 @@ body, html {
     padding: 50px 0;
   }
 
-  .signup-button, .login-button {
+  .signup-button, .login-button, .contact-button {
     padding: 8px 15px;
     font-size: 14px;
-  }
-
-  .about-section, .services-section, .contact-section {
-    padding: 25px 0;
   }
 
   .service {
@@ -107,4 +114,71 @@ body, html {
     margin-bottom: 20px;
   }
 
+  .services-section {
+    flex-direction: column;
+  }
+
+  .login-modal-content {
+    width: 90%; /* Adjust for smaller screens */
+    margin-right: 5%; /* Adjust margin for smaller screens */
+  }
+}
+
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* Ensure it's on top */
+}
+
+.modal-content {
+  background: #ffffff; /* Clean white background for a minimalistic look */
+  color: #333; /* Dark text color for readability */
+  padding: 40px; /* Generous padding for comfort */
+  border-radius: 15px; /* Smooth, rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 50%; /* Appropriate width for the modal */
+  max-width: 500px; /* Limiting maximum width for better layout */
+  margin: auto; /* Centering the modal */
+  display: flex;
+  flex-direction: column; /* Vertical stacking for contents */
+  align-items: center; /* Center-aligning items */
+  justify-content: center; /* Center content vertically */
+  text-align: center; /* Center-align text */
+}
+
+
+.close-button {
+  align-self: flex-end; /* Align the close button to the right */
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #333; /* Matching the text color */
+}
+
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #073b4c; /* Using the theme color for labels */
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

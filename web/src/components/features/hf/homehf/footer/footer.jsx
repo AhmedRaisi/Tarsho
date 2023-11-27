@@ -4,8 +4,7 @@ import './styles.css'; // Importing CSS
 const Footer = () => (
   <footer className="footer">
     <div className="footer-content">
-      <p>&copy; {new Date().getFullYear()} My Application. All Rights Reserved.</p>
-      {/* Add any additional footer content here */}
+      <p>&copy; {new Date().getFullYear()} Tarsho. All Rights Reserved.</p>
     </div>
   </footer>
 );
