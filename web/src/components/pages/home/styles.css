@@ -2,37 +2,36 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #dae2f8, #d6a4a4); /* Subtle gradient background */
-  color: #333;
+  background: #F8F9FA; /* Light Grey background */
+  color: #102A43; /* Deep Navy Blue for text */
 }
 
 /* Hero Section */
 .hero-section {
-  color: #ffffff; /* White text for readability */
-  background-color: transparent; /* Transparent background */
-  display: flex; /* Enable Flexbox */
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center-align items horizontally */
-  justify-content: center; /* Center-align items vertically */
-  padding: 50px 0; /* Padding top and bottom */
-  text-align: center; /* Ensure text is centered */
+  color: #102A43; /* Deep Navy Blue for text */
+  background-color: #F8F9FA; /* Light Grey background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 150px 100px;
+  text-align: center;
 }
-
 
 /* Common Section Styling */
 .section {
   padding: 50px 0;
   text-align: center;
-  margin: 20px 0;
+  margin-top: 50px; /* Added top margin */
+  margin-bottom: 50px; /* Added bottom margin */
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.9); /* Light background for smooth transition */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
-  
+  background-color: #FFFFFF; /* Crisp White for sections */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* About Section */
-.about-section {
-  color: #ffffff; /* White text for readability */
+.about-section, .vision-section, .mission-section {
+  color: #102A43; /* Deep Navy Blue for text */
   background-color: transparent; /* Transparent background */
   display: flex; /* Enable Flexbox */
   flex-direction: column; /* Stack children vertically */
@@ -47,26 +46,27 @@ body, html {
 .services-section {
   display: flex;
   justify-content: space-around;
-  background-color: transparent; 
+  background-color:  #FAFAFA; /* Crisp White */
+  padding: 100px 35px; /* Padding top and bottom */
 }
 
 .service {
   width: 45%;
   padding: 20px;
   margin: 10px;
-  border-radius: 8px; /* Soft rounded corners */
-  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+  border-radius: 8px;
+  background-color: #FFFFFF;/* Slightly off-white for differentiation */
 }
 
 /* About Section */
 .contact-section {
-  color: #ffffff; /* White text for readability */
+  color: #102A43; /* Deep Navy Blue for text */
   background-color: transparent; /* Transparent background */
   display: flex; /* Enable Flexbox */
   flex-direction: column; /* Stack children vertically */
   align-items: center; /* Center-align items horizontally */
   justify-content: center; /* Center-align items vertically */
-  padding: 50px 0; /* Padding top and bottom */
+  padding: 100px 0; /* Padding top and bottom */
   text-align: center; /* Ensure text is centered */
 }
 
@@ -80,18 +80,18 @@ body, html {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  margin: 10px; /* Added margin for spacing */
+  margin: 10px;
 }
 
 .login-button {
-  background-color: transparent;
-  color: #073b4c; /* Dark blue for contrast */
-  border: 2px solid #073b4c;
+  background-color: #68B2A0; /* Muted Teal */
+  color: #FFFFFF; /* White text */
+  border: none;
 }
 
 .signup-button, .contact-button {
-  background-color: #f8f9fa;
-  color: #073b4c;
+  background-color: #28A745;; /* Light Grey matching the body */
+  color: #FFFFFF; /* White text */
 }
 
 .login-button:hover, .signup-button:hover, .contact-button:hover {
