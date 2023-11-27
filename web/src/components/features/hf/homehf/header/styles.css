@@ -1,12 +1,21 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
 .header {
-  background: rgba(26, 42, 108, 0.85); /* Semi-transparent dark blue */
-  backdrop-filter: blur(5px); /* Giving a frosted glass effect */
+  background: #073b4c; 
   color: white;
-  padding: 15px 0;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 1000; /* Make sure the header is always on top */
+  z-index: 1000;
 }
+
 
 .header-content {
   max-width: 1200px;
@@ -49,4 +58,16 @@
   .header h1 {
     margin-bottom: 0.5rem;
   }
+}
+
+.footer {
+  height: 80px;
+  width: 100%;
+  background: linear-gradient(135deg, #b21f1f, #fdbb2d);
+  color: #ffffff; /* White text to stand out on the gradient background */
+  text-align: center;
+  line-height: 80px;
+  position: relative;
+  font-family: 'Poppins', sans-serif; /* Using the Poppins font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow for better readability */
 }
