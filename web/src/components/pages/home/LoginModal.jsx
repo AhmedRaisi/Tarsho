@@ -1,26 +1,33 @@
 // LoginModal.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './styles.css';
 
 const LoginModal = ({ role, onClose }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
-      // Make a POST request to the login endpoint
-      const response = await axios.post('http://backend:4000/api/users/login', {
-        username, 
+      const response = await axios.post('http://localhost:4000/api/users/login', {
+        username,
         password
-        // Role is not typically sent during login, but if your backend needs it, include it
-        // role
       });
 
       console.log(response.data); // Log the response (e.g., token)
       onClose(); // Close the modal
+
+      // Navigate based on the role
+      if (role === 'client') {
+        navigate('/client/ClientHomePage');
+      } else if (role === 'provider') {
+        navigate('/provider/ProviderHomePage');
+      }
+
     } catch (error) {
       console.error('Login failed:', error.response?.data?.msg || error.message);
     }
