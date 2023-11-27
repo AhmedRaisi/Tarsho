@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
 
-const LoginModal = ({ role, onClose }) => {
+const LoginModal = ({ onClose }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -18,14 +18,18 @@ const LoginModal = ({ role, onClose }) => {
         password
       });
 
-      console.log(response.data); // Log the response (e.g., token)
+      console.log("Login response:", response.data);
       onClose(); // Close the modal
 
-      // Navigate based on the role
-      if (role === 'client') {
+      const userRole = response.data.role; // Assuming the role is returned in the login response
+
+      // Navigate based on the user's role
+      if (userRole === 'client') {
         navigate('/client/ClientHomePage');
-      } else if (role === 'provider') {
+      } else if (userRole === 'provider') {
         navigate('/provider/ProviderHomePage');
+      } else {
+        console.error('Unknown role');
       }
 
     } catch (error) {
@@ -37,7 +41,7 @@ const LoginModal = ({ role, onClose }) => {
     <div className="login-modal">
       <div className="modal-content">
         <span className="close-button" onClick={onClose}>&times;</span>
-        <h2>Login as {role.charAt(0).toUpperCase() + role.slice(1)}</h2>
+        <h2>Login</h2>
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
             <label htmlFor="username">Username</label>

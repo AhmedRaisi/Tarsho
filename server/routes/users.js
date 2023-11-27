@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Update the path as per your directory structure
+const User = require('../models/user'); // Update the path as per your directory structure
 require('dotenv').config(); // If you're using dotenv for environment variables
 
 const router = express.Router();
@@ -68,10 +68,11 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ msg: 'Invalid Credentials' });
     }
 
-    // Create JWT payload
+    // Create JWT payload including the user's role
     const payload = {
       user: {
-        id: user.id
+        id: user.id,
+        role: user.role // Include user role in the JWT payload
       }
     };
 
@@ -82,7 +83,10 @@ router.post('/login', async (req, res) => {
       { expiresIn: 3600 }, // Token expiration
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ 
+          token,
+          role: user.role // Send role back in the response as well
+        });
       }
     );
   } catch (err) {
