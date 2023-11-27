@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../features/hf/homehf/header/header.jsx';
-import Footer from '../../features/hf/homehf/footer/footer.jsx';
+import Header from './hf/header/header.jsx';
+import Footer from './hf/footer/footer.jsx';
 import './styles.css';
 import LoginModal from './LoginModal.jsx';
 import RegisterModal from './RegisterModal.jsx';
