@@ -1,9 +1,3 @@
-.welcome-container {
-  text-align: center;
-  padding: 50px;
-  margin-top: 100px;
-}
-
 .login-button {
   display: inline-block;
   padding: 10px 20px;
@@ -18,33 +12,95 @@
 .login-button:hover {
   background-color: #0056b3;
 }
-
-/* Responsive design */
-@media (max-width: 600px) {
-  .welcome-container {
-    margin-top: 50px;
-    padding: 20px;
-  }
-
-  .login-button {
-    padding: 8px 15px;
-  }
+/* Styles for ProviderHomePage sections */
+.provider-homepage section {
+  margin-top: 80px; /* Increase top margin */
+  margin-bottom: 80px; /* Increase bottom margin */
+  padding: 20px; /* Adjust padding as needed */
+  background-color: #fff; /* Optional: Add background color */
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Subtle box shadow */
+  text-align: center;
 }
 
-.user-dashboard {
+.provider-homepage h2 {
+  color: #007bff; /* Primary color for headings */
+}
+
+.provider-homepage p {
+  color: #333; /* Standard text color */
+}
+
+/* Adjustments to existing styles for consistency */
+.welcome-container {
   text-align: center;
   padding: 50px;
-  margin-top: 50px;
-  background-color: #f8f9fa; /* Light background color */
+  margin-top: 80px; /* Increased margin */
+}
+
+.user-dashboard, .provider-settings-page {
+  margin: 50px auto; /* Increased margin */
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-dashboard h1, .provider-settings-page h2 {
+  color: #007bff;
+}
+
+.user-dashboard p, .provider-settings-page form {
+  color: #333;
+}
+
+/* Styles for Settings Page */
+.provider-settings-page {
+  text-align: center;
+  padding: 50px;
+  margin: 50px auto;
+  max-width: 600px;
+  background-color: #fff; /* White background */
   border-radius: 10px; /* Rounded corners */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
 }
 
-.user-dashboard h1 {
-  margin: 0;
-  color: #007bff; /* Primary color for emphasis */
+.provider-settings-page h2 {
+  color: #007bff; /* Primary color for headings */
 }
 
-.user-dashboard p {
-  color: #333; /* Standard text color */
+.provider-settings-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.provider-settings-page label {
+  margin-bottom: 5px;
+}
+
+.provider-settings-page input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.provider-settings-page button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.provider-settings-page button:hover {
+  background-color: #218838;
+}
+
+.provider-settings-page span {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
 }
