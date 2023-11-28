@@ -29,51 +29,40 @@
   .login-button {
     padding: 8px 15px;
   }
-  .client-settings-page {
-    padding: 20px;
-    margin: 20px;
-  }
-
-  .client-settings-page form {
-    gap: 15px;
-  }
-
-  .client-settings-page button {
-    padding: 8px 15px;
-  }
 }
 
-.user-dashboard {
+/* ClientHomePage Section Styles */
+.client-homepage section {
+  margin-top: 80px; /* Increased top margin */
+  margin-bottom: 80px; /* Increased bottom margin */
+  padding: 20px; /* Adjust padding as needed */
+  background-color: #fff; /* Optional: Add background color */
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Subtle box shadow */
   text-align: center;
-  padding: 50px;
-  margin-top: 50px;
-  background-color: #f8f9fa; /* Light background color */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
 }
 
-.user-dashboard h1 {
-  margin: 0;
-  color: #007bff; /* Primary color for emphasis */
+.client-homepage h2 {
+  color: #007bff; /* Primary color for headings */
 }
 
-.user-dashboard p {
+.client-homepage p {
   color: #333; /* Standard text color */
 }
 
-/* Styles for Settings Page */
+/* Existing Styles for Settings Page */
 .client-settings-page {
   text-align: center;
   padding: 50px;
   margin: 50px auto;
   max-width: 600px;
-  background-color: #fff; /* White background */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .client-settings-page h2 {
-  color: #007bff; /* Primary color for headings */
+  color: #007bff;
 }
 
 .client-settings-page form {
@@ -111,3 +100,5 @@
   font-size: 0.9em;
   color: #666;
 }
+
+/* You can add more specific styles as needed */

@@ -1,5 +1,4 @@
-body,
-html {
+body, html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -7,7 +6,7 @@ html {
   color: #333;
 }
 
-.header {
+.headerr {
   background: rgba(230, 126, 34, 0.85);
   color: white;
   padding: 10px 0;
@@ -25,26 +24,29 @@ html {
   justify-content: space-between;
 }
 
-.header h1 {
+.headerr h1 {
   font-size: 1.75rem;
   margin: 0;
   font-weight: 600;
 }
 
-.header nav {
+.headerr nav {
   display: flex;
   align-items: center;
 }
 
-.header nav a {
+.headerr nav a, .headerr nav button {
   color: white;
   text-decoration: none;
   padding: 0 1rem; /* Spacing around nav items */
   font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.header nav a:hover {
+.headerr nav a:hover, .headerr nav button:hover {
   color: #f8f9fa; /* Change color on hover */
 }
 
@@ -54,11 +56,11 @@ html {
     flex-direction: column;
   }
 
-  .header h1 {
+  .headerr h1 {
     margin-bottom: 0.5rem;
   }
 
-  .header nav a {
+  .headerr nav a, .headerr nav button {
     padding: 0.5rem 0; /* Adjust padding for vertical layout */
   }
 }
