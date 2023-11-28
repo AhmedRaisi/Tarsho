@@ -6,8 +6,8 @@ body, html {
   color: #333;
 }
 
-.headers {
-  background: rgba(26, 42, 108, 0.85);
+.headerr {
+  background: rgba(34, 153, 84, 0.85);
   color: white;
   padding: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -24,18 +24,18 @@ body, html {
   justify-content: space-between;
 }
 
-.headers h1 {
+.headerr h1 {
   font-size: 1.75rem;
   margin: 0;
   font-weight: 600;
 }
 
-.headers nav {
+.headerr nav {
   display: flex;
   align-items: center;
 }
 
-.headers nav a {
+.headerr nav a {
   color: white;
   text-decoration: none;
   padding: 0 1rem; /* Spacing around nav items */
@@ -44,7 +44,7 @@ body, html {
   
 }
 
-.headers nav a:hover {
+.headerr nav a:hover {
   color: #f8f9fa; /* Change color on hover */
 }
 
@@ -54,11 +54,11 @@ body, html {
     flex-direction: column;
   }
 
-  .headers h1 {
+  .headerr h1 {
     margin-bottom: 0.5rem;
   }
 
-  .headers nav a {
+  .headerr nav a {
     padding: 0.5rem 0; /* Adjust padding for vertical layout */
   }
 }

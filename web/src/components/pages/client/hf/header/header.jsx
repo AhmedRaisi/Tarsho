@@ -1,17 +1,17 @@
 import React from 'react';
-import './styles.css'; // Importing CSS
+import './heade.css'; // Importing CSS
 import { HashLink as Link } from 'react-router-hash-link'; // Importing HashLink
 
 const Header = () => (
-  <header className="header">
+  <header className="headerr">
     <div className="header-content">
-      <h1>Tarsho</h1>
+      <h1>TarshoClient</h1>
       <nav>
-        <Link smooth to="/#home">Home</Link>
-        <Link smooth to="/#about">About</Link>
-        <Link smooth to="/#services">Services</Link>
-        <Link smooth to="/#contact">Contact</Link>
-        <Link smooth to="/#services">Login</Link>
+        <Link smooth to="/#home">Dashboard</Link>
+        <Link smooth to="/#about">Services</Link>
+        <Link smooth to="/#services">Messages</Link>
+        <Link smooth to="/#contact">Settings</Link>
+        <Link smooth to="/#services">Logout</Link>
       </nav>
     </div>
   </header>

@@ -56,17 +56,25 @@ const HomePage = () => {
         <h2>Our Vision</h2>
         <p>"To be the leading platform where independent service providers flourish and clients discover a world of tailor-made services..."</p>
       </div>
-      <div id="services" className="services-section">
-        
-        <div className="service client">
-          <h2>For Clients</h2>
-          <p>Discover top independent service providers tailored to your business needs.</p>
-          <button onClick={() => openLoginModal('client')} className="login-button">Client Login</button>
-        </div>
-        <div className="service provider">
-          <h2>For Providers</h2>
-          <p>Join our network to showcase your services to a broader clientele.</p>
-          <button onClick={() => openLoginModal('provider')} className="login-button">Provider Login</button>
+      <div id="services" className="services-container">
+        <h2 className="services-title">Services</h2>
+
+        {/* Development Navigation Buttons */}
+        <Link to="/client" className="dev-nav-button">(DEV) Client Home</Link>
+        <Link to="/provider" className="dev-nav-button">(DEV) Provider Home</Link>
+
+        {/* Services Cards Section */}
+        <div className="services-section">
+          <div className="service client">
+            <h2>For Clients</h2>
+            <p>Discover top independent service providers tailored to your business needs.</p>
+            <button onClick={() => openLoginModal('client')} className="login-button">Client Login</button>
+          </div>
+          <div className="service provider">
+            <h2>For Providers</h2>
+            <p>Join our network to showcase your services to a broader clientele.</p>
+            <button onClick={() => openLoginModal('provider')} className="login-button">Provider Login</button>
+          </div>
         </div>
       </div>
       <div id="contact" className="contact-section">

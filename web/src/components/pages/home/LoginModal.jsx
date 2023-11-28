@@ -22,12 +22,12 @@ const LoginModal = ({ onClose }) => {
       onClose(); // Close the modal
 
       const userRole = response.data.role; // Assuming the role is returned in the login response
-
+      localStorage.setItem('userId', response.data.userId); // Assuming the user ID is in the response
       // Navigate based on the user's role
       if (userRole === 'client') {
-        navigate('/client/ClientHomePage');
+        navigate('/client');
       } else if (userRole === 'provider') {
-        navigate('/provider/ProviderHomePage');
+        navigate('/provider');
       } else {
         console.error('Unknown role');
       }

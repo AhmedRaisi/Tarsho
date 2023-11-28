@@ -42,21 +42,66 @@ body, html {
 }
 
 
-/* Services Section */
+/* Services Section Container */
+.services-container {
+  background-color: #FAFAFA; /* Crisp White background */
+  padding: 100px 35px; /* Padding around the entire container */
+  text-align: center; /* Center-align the content */
+}
+
+/* Services Section Title */
+.services-title {
+  font-size: 24px;
+  color: #102A43; /* Deep Navy Blue */
+  margin-bottom: 10px; /* Space below the title */
+}
+
+/* Services Cards Wrapper */
 .services-section {
   display: flex;
   justify-content: space-around;
-  background-color:  #FAFAFA; /* Crisp White */
-  padding: 100px 35px; /* Padding top and bottom */
+  flex-wrap: wrap; /* Wrap items for responsiveness */
+  margin-top: 20px; /* Space after development buttons */
 }
 
 .service {
   width: 45%;
   padding: 20px;
-  margin: 10px;
+  margin: 10px 0; /* Margin top and bottom */
   border-radius: 8px;
-  background-color: #FFFFFF;/* Slightly off-white for differentiation */
+  background-color: #FFFFFF; /* Slightly off-white */
 }
+
+/* Development Navigation Buttons */
+.dev-nav-button {
+  background-color: #D32F2F; /* Vibrant red */
+  color: white; /* White text for contrast */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 300px 30px; /* Spacing above and below the button */
+}
+
+.dev-nav-button:hover {
+  background-color: blue; /* Darker on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .services-section {
+    flex-direction: column; /* Stack services cards vertically */
+  }
+
+  .service {
+    width: 90%; /* Full width for smaller screens */
+    margin: 10px auto; /* Center service cards */
+  }
+}
+
+
+
 
 /* About Section */
 .contact-section {
@@ -182,3 +227,4 @@ body, html {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+

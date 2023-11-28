@@ -73,6 +73,7 @@ router.post('/login', async (req, res) => {
       user: {
         id: user.id,
         role: user.role // Include user role in the JWT payload
+        
       }
     };
 
@@ -85,7 +86,9 @@ router.post('/login', async (req, res) => {
         if (err) throw err;
         res.json({ 
           token,
-          role: user.role // Send role back in the response as well
+          role: user.role, // Send role back in the response as well
+          userId: user.id,
+          name: user.name
         });
       }
     );
@@ -94,5 +97,20 @@ router.post('/login', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+
+
+router.get('/profile/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).send('Server error');
+  }
+});
+
+
 
 module.exports = router;
