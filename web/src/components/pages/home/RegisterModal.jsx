@@ -8,26 +8,34 @@ const RegisterModal = ({ onClose }) => {
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
 
-  const handleRegister = async (event) => {
+  const handleRegister = async event => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/users/register', {
-        username,
-        password,
-        email,
-        role
-      });
+      const response = await axios.post(
+        'http://localhost:4000/api/users/register',
+        {
+          username,
+          password,
+          email,
+          role,
+        }
+      );
       console.log(response.data);
       onClose();
     } catch (error) {
-      console.error('Registration failed:', error.response?.data?.msg || error.message);
+      console.error(
+        'Registration failed:',
+        error.response?.data?.msg || error.message
+      );
     }
   };
 
   return (
     <div className="login-modal">
       <div className="modal-content">
-        <span className="close-button" onClick={onClose}>&times;</span>
+        <span className="close-button" onClick={onClose}>
+          &times;
+        </span>
         <h2>Register</h2>
         <form className="login-form" onSubmit={handleRegister}>
           <div className="input-group">
@@ -36,7 +44,7 @@ const RegisterModal = ({ onClose }) => {
               type="text"
               id="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
               required
             />
           </div>
@@ -46,7 +54,7 @@ const RegisterModal = ({ onClose }) => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               required
             />
           </div>
@@ -56,7 +64,7 @@ const RegisterModal = ({ onClose }) => {
               type="email"
               id="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
           <div className="input-group">
@@ -65,10 +73,12 @@ const RegisterModal = ({ onClose }) => {
               type="text"
               id="role"
               value={role}
-              onChange={(e) => setRole(e.target.value)}
+              onChange={e => setRole(e.target.value)}
             />
           </div>
-          <button type="submit" className="login-button">Register</button>
+          <button type="submit" className="login-button">
+            Register
+          </button>
         </form>
       </div>
     </div>

@@ -7,11 +7,21 @@ const Header = () => (
     <div className="header-content">
       <h1>TarshoClient</h1>
       <nav>
-        <Link smooth to="/#home">Dashboard</Link>
-        <Link smooth to="/#about">Services</Link>
-        <Link smooth to="/#services">Messages</Link>
-        <Link smooth to="/#contact">Settings</Link>
-        <Link smooth to="/#services">Logout</Link>
+        <Link smooth to="/#home">
+          Dashboard
+        </Link>
+        <Link smooth to="/#about">
+          Services
+        </Link>
+        <Link smooth to="/#services">
+          Messages
+        </Link>
+        <Link smooth to="/#contact">
+          Settings
+        </Link>
+        <Link smooth to="/#services">
+          Logout
+        </Link>
       </nav>
     </div>
   </header>

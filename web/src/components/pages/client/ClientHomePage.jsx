@@ -14,14 +14,16 @@ const ClientHomePage = () => {
         console.error('User ID not found');
         return;
       }
-  
+
       try {
-        const response = await fetch(`http://localhost:4000/api/users/profile/${userId}`);
+        const response = await fetch(
+          `http://localhost:4000/api/users/profile/${userId}`
+        );
         if (!response.ok) {
           throw new Error('Failed to fetch');
         }
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         setUser({ name: data.username, role: data.role });
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -30,8 +32,7 @@ const ClientHomePage = () => {
 
     fetchUserData();
   }, []);
-  
-  
+
   return (
     <>
       <Header />
@@ -63,13 +64,17 @@ const ClientHomePage = () => {
 
         <section className="account-settings">
           <h2>Account Settings</h2>
-          <Link to="/settings" className="settings-link">Manage your account</Link>
+          <Link to="/settings" className="settings-link">
+            Manage your account
+          </Link>
         </section>
 
         <section className="support-section">
           <h2>Need Help?</h2>
           <p>Our support team is here to assist you.</p>
-          <Link to="/support" className="support-link">Contact Support</Link>
+          <Link to="/support" className="support-link">
+            Contact Support
+          </Link>
         </section>
       </div>
 

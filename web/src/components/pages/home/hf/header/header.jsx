@@ -7,11 +7,21 @@ const Header = () => (
     <div className="header-content">
       <h1>Tarsho</h1>
       <nav>
-        <Link smooth to="/#home">Home</Link>
-        <Link smooth to="/#about">About</Link>
-        <Link smooth to="/#services">Services</Link>
-        <Link smooth to="/#contact">Contact</Link>
-        <Link smooth to="/#services">Login</Link>
+        <Link smooth to="/#home">
+          Home
+        </Link>
+        <Link smooth to="/#about">
+          About
+        </Link>
+        <Link smooth to="/#services">
+          Services
+        </Link>
+        <Link smooth to="/#contact">
+          Contact
+        </Link>
+        <Link smooth to="/#services">
+          Login
+        </Link>
       </nav>
     </div>
   </header>

@@ -9,20 +9,24 @@ const LoginModal = ({ onClose }) => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (event) => {
+  const handleLogin = async event => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:4000/api/users/login', {
-        username,
-        password
-      });
+      const response = await axios.post(
+        'http://localhost:4000/api/users/login',
+        {
+          username,
+          password,
+        }
+      );
 
-      console.log("Login response:", response.data);
+      console.log('Login response:', response.data);
       onClose(); // Close the modal
 
       const userRole = response.data.role; // Assuming the role is returned in the login response
       localStorage.setItem('userId', response.data.userId); // Assuming the user ID is in the response
+
       // Navigate based on the user's role
       if (userRole === 'client') {
         navigate('/client');
@@ -31,16 +35,20 @@ const LoginModal = ({ onClose }) => {
       } else {
         console.error('Unknown role');
       }
-
     } catch (error) {
-      console.error('Login failed:', error.response?.data?.msg || error.message);
+      console.error(
+        'Login failed:',
+        error.response?.data?.msg || error.message
+      );
     }
   };
 
   return (
     <div className="login-modal">
       <div className="modal-content">
-        <span className="close-button" onClick={onClose}>&times;</span>
+        <span className="close-button" onClick={onClose}>
+          &times;
+        </span>
         <h2>Login</h2>
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
@@ -49,7 +57,7 @@ const LoginModal = ({ onClose }) => {
               type="text"
               id="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
               required
             />
           </div>
@@ -59,11 +67,13 @@ const LoginModal = ({ onClose }) => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               required
             />
           </div>
-          <button type="submit" className="login-button">Login</button>
+          <button type="submit" className="login-button">
+            Login
+          </button>
         </form>
       </div>
     </div>
