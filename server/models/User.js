@@ -5,16 +5,40 @@ const UserSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true
+    unique: true // Ensuring username is unique
   },
   password: {
     type: String,
     required: true
   },
+  email: {
+    type: String,
+    required: true,
+    unique: true // Ensuring email is unique
+  },
+  name: {
+    type: String,
+    required: false // Name is not required
+    // unique: false is default and hence not needed explicitly
+  },
   role: {
     type: String,
     enum: ['client', 'provider'],
     required: true
+  },
+  rating: {
+    type: Number,
+    default: 3,
+    min: 0,
+    max: 5
+  },
+  contactNumber: {
+    type: String,
+    required: false
+  },
+  address: {
+    type: String,
+    required: false
   }
 });
 

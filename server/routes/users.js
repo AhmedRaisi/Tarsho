@@ -98,19 +98,36 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
+//Fetch user profile
 router.get('/profile/:id', async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    if (!user) {
-      return res.status(404).send('User not found');
-    }
+    const user = await User.findById(req.params.id).select('-password');
+    if (!user) return res.status(404).send('User not found');
     res.json(user);
   } catch (err) {
     res.status(500).send('Server error');
   }
 });
 
+// Update User Profile
+router.put('/profile/:id', async (req, res) => {
+  try {
+    const { name, email, contactNumber, address } = req.body;
 
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).send('User not found');
+
+    // Update fields if they are provided in the request
+    if (name !== undefined) user.name = name;
+    if (email !== undefined) user.email = email;
+    if (contactNumber !== undefined) user.contactNumber = contactNumber;
+    if (address !== undefined) user.address = address;
+
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    res.status(500).send('Server error');
+  }
+});
 
 module.exports = router;
