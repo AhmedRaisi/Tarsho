@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -41,7 +42,6 @@ body, html {
   padding: 0 1rem; /* Spacing around nav items */
   font-weight: 500;
   transition: color 0.3s ease;
-  
 }
 
 .headerr nav a:hover {

@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -7,7 +8,7 @@ body, html {
 }
 
 .header {
-  background: rgba(230, 126, 34, 0.85); 
+  background: rgba(230, 126, 34, 0.85);
   color: white;
   padding: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -41,7 +42,6 @@ body, html {
   padding: 0 1rem; /* Spacing around nav items */
   font-weight: 500;
   transition: color 0.3s ease;
-  
 }
 
 .header nav a:hover {

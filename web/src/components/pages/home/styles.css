@@ -1,15 +1,16 @@
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #F8F9FA; /* Light Grey background */
-  color: #102A43; /* Deep Navy Blue for text */
+  background: #f8f9fa; /* Light Grey background */
+  color: #102a43; /* Deep Navy Blue for text */
 }
 
 /* Hero Section */
 .hero-section {
-  color: #102A43; /* Deep Navy Blue for text */
-  background-color: #F8F9FA; /* Light Grey background */
+  color: #102a43; /* Deep Navy Blue for text */
+  background-color: #f8f9fa; /* Light Grey background */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,13 +26,15 @@ body, html {
   margin-top: 50px; /* Added top margin */
   margin-bottom: 50px; /* Added bottom margin */
   border-radius: 10px;
-  background-color: #FFFFFF; /* Crisp White for sections */
+  background-color: #ffffff; /* Crisp White for sections */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* About Section */
-.about-section, .vision-section, .mission-section {
-  color: #102A43; /* Deep Navy Blue for text */
+.about-section,
+.vision-section,
+.mission-section {
+  color: #102a43; /* Deep Navy Blue for text */
   background-color: transparent; /* Transparent background */
   display: flex; /* Enable Flexbox */
   flex-direction: column; /* Stack children vertically */
@@ -41,10 +44,9 @@ body, html {
   text-align: center; /* Ensure text is centered */
 }
 
-
 /* Services Section Container */
 .services-container {
-  background-color: #FAFAFA; /* Crisp White background */
+  background-color: #fafafa; /* Crisp White background */
   padding: 100px 35px; /* Padding around the entire container */
   text-align: center; /* Center-align the content */
 }
@@ -52,7 +54,7 @@ body, html {
 /* Services Section Title */
 .services-title {
   font-size: 24px;
-  color: #102A43; /* Deep Navy Blue */
+  color: #102a43; /* Deep Navy Blue */
   margin-bottom: 10px; /* Space below the title */
 }
 
@@ -69,12 +71,12 @@ body, html {
   padding: 20px;
   margin: 10px 0; /* Margin top and bottom */
   border-radius: 8px;
-  background-color: #FFFFFF; /* Slightly off-white */
+  background-color: #ffffff; /* Slightly off-white */
 }
 
 /* Development Navigation Buttons */
 .dev-nav-button {
-  background-color: #D32F2F; /* Vibrant red */
+  background-color: #d32f2f; /* Vibrant red */
   color: white; /* White text for contrast */
   padding: 10px 20px;
   border: none;
@@ -100,12 +102,9 @@ body, html {
   }
 }
 
-
-
-
 /* About Section */
 .contact-section {
-  color: #102A43; /* Deep Navy Blue for text */
+  color: #102a43; /* Deep Navy Blue for text */
   background-color: transparent; /* Transparent background */
   display: flex; /* Enable Flexbox */
   flex-direction: column; /* Stack children vertically */
@@ -115,13 +114,16 @@ body, html {
   text-align: center; /* Ensure text is centered */
 }
 
-
 /* Buttons and Links */
-.login-button, .signup-button, .contact-button {
+.login-button,
+.signup-button,
+.contact-button {
   padding: 12px 25px;
   border-radius: 30px;
   text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.3s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.3s;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
@@ -129,17 +131,20 @@ body, html {
 }
 
 .login-button {
-  background-color: #68B2A0; /* Muted Teal */
-  color: #FFFFFF; /* White text */
+  background-color: #68b2a0; /* Muted Teal */
+  color: #ffffff; /* White text */
   border: none;
 }
 
-.signup-button, .contact-button {
-  background-color: #28A745;; /* Light Grey matching the body */
-  color: #FFFFFF; /* White text */
+.signup-button,
+.contact-button {
+  background-color: #28a745; /* Light Grey matching the body */
+  color: #ffffff; /* White text */
 }
 
-.login-button:hover, .signup-button:hover, .contact-button:hover {
+.login-button:hover,
+.signup-button:hover,
+.contact-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -149,7 +154,9 @@ body, html {
     padding: 50px 0;
   }
 
-  .signup-button, .login-button, .contact-button {
+  .signup-button,
+  .login-button,
+  .contact-button {
     padding: 8px 15px;
     font-size: 14px;
   }
@@ -198,14 +205,12 @@ body, html {
   text-align: center; /* Center-align text */
 }
 
-
 .close-button {
   align-self: flex-end; /* Align the close button to the right */
   cursor: pointer;
   font-size: 1.5rem;
   color: #333; /* Matching the text color */
 }
-
 
 .modal-content h2 {
   margin-top: 0;
@@ -227,4 +232,3 @@ body, html {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-

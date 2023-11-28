@@ -4,7 +4,7 @@ import Header from './hf/header/header';
 import Footer from './hf/footer/footer';
 import './styles.css';
 
-const ProviderHomePage = () => {;
+const ProviderHomePage = () => {
   const [user, setUser] = useState({ name: '', role: '' });
   // Assume a function to fetch user data (if needed)
   useEffect(() => {
@@ -14,14 +14,16 @@ const ProviderHomePage = () => {;
         console.error('User ID not found');
         return;
       }
-  
+
       try {
-        const response = await fetch(`http://localhost:4000/api/users/profile/${userId}`);
+        const response = await fetch(
+          `http://localhost:4000/api/users/profile/${userId}`
+        );
         if (!response.ok) {
           throw new Error('Failed to fetch');
         }
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         setUser({ name: data.username, role: data.role });
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -62,7 +64,9 @@ const ProviderHomePage = () => {;
 
         <section className="account-settings">
           <h2>Account Settings</h2>
-          <Link to="/settings" className="settings-link">Manage your profile</Link>
+          <Link to="/settings" className="settings-link">
+            Manage your profile
+          </Link>
         </section>
 
         <section className="provider-resources">
@@ -74,7 +78,9 @@ const ProviderHomePage = () => {;
         <section className="support-section">
           <h2>Need Help?</h2>
           <p>Our support team is here to assist you with any queries.</p>
-          <Link to="/support" className="support-link">Contact Support</Link>
+          <Link to="/support" className="support-link">
+            Contact Support
+          </Link>
         </section>
       </div>
 
