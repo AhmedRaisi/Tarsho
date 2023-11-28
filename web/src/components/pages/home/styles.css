@@ -3,14 +3,18 @@ html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f8f9fa; /* Light Grey background */
-  color: #102a43; /* Deep Navy Blue for text */
+  background: #f8f9fa;
+  /* Light Grey background */
+  color: #102a43;
+  /* Deep Navy Blue for text */
 }
 
 /* Hero Section */
 .hero-section {
-  color: #102a43; /* Deep Navy Blue for text */
-  background-color: #f8f9fa; /* Light Grey background */
+  color: #102a43;
+  /* Deep Navy Blue for text */
+  background-color: #f8f9fa;
+  /* Light Grey background */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,10 +27,13 @@ html {
 .section {
   padding: 50px 0;
   text-align: center;
-  margin-top: 50px; /* Added top margin */
-  margin-bottom: 50px; /* Added bottom margin */
+  margin-top: 50px;
+  /* Added top margin */
+  margin-bottom: 50px;
+  /* Added bottom margin */
   border-radius: 10px;
-  background-color: #ffffff; /* Crisp White for sections */
+  background-color: #ffffff;
+  /* Crisp White for sections */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -34,84 +41,116 @@ html {
 .about-section,
 .vision-section,
 .mission-section {
-  color: #102a43; /* Deep Navy Blue for text */
-  background-color: transparent; /* Transparent background */
-  display: flex; /* Enable Flexbox */
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center-align items horizontally */
-  justify-content: center; /* Center-align items vertically */
-  padding: 50px 0; /* Padding top and bottom */
-  text-align: center; /* Ensure text is centered */
+  color: #102a43;
+  /* Deep Navy Blue for text */
+  background-color: transparent;
+  /* Transparent background */
+  display: flex;
+  /* Enable Flexbox */
+  flex-direction: column;
+  /* Stack children vertically */
+  align-items: center;
+  /* Center-align items horizontally */
+  justify-content: center;
+  /* Center-align items vertically */
+  padding: 50px 0;
+  /* Padding top and bottom */
+  text-align: center;
+  /* Ensure text is centered */
 }
 
 /* Services Section Container */
 .services-container {
-  background-color: #fafafa; /* Crisp White background */
-  padding: 100px 35px; /* Padding around the entire container */
-  text-align: center; /* Center-align the content */
+  background-color: #fafafa;
+  /* Crisp White background */
+  padding: 100px 35px;
+  /* Padding around the entire container */
+  text-align: center;
+  /* Center-align the content */
 }
 
 /* Services Section Title */
 .services-title {
   font-size: 24px;
-  color: #102a43; /* Deep Navy Blue */
-  margin-bottom: 10px; /* Space below the title */
+  color: #102a43;
+  /* Deep Navy Blue */
+  margin-bottom: 10px;
+  /* Space below the title */
 }
 
 /* Services Cards Wrapper */
 .services-section {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap; /* Wrap items for responsiveness */
-  margin-top: 20px; /* Space after development buttons */
+  flex-wrap: wrap;
+  /* Wrap items for responsiveness */
+  margin-top: 20px;
+  /* Space after development buttons */
 }
 
 .service {
   width: 45%;
   padding: 20px;
-  margin: 10px 0; /* Margin top and bottom */
+  margin: 10px 0;
+  /* Margin top and bottom */
   border-radius: 8px;
-  background-color: #ffffff; /* Slightly off-white */
+  background-color: #ffffff;
+  /* Slightly off-white */
 }
 
 /* Development Navigation Buttons */
 .dev-nav-button {
-  background-color: #d32f2f; /* Vibrant red */
-  color: white; /* White text for contrast */
+  background-color: #d32f2f;
+  /* Vibrant red */
+  color: white;
+  /* White text for contrast */
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin: 300px 30px; /* Spacing above and below the button */
+  margin: 300px 30px;
+  /* Spacing above and below the button */
 }
 
 .dev-nav-button:hover {
-  background-color: blue; /* Darker on hover */
+  background-color: blue;
+  /* Darker on hover */
 }
 
 /* Responsive Design */
 @media (max-width: 800px) {
   .services-section {
-    flex-direction: column; /* Stack services cards vertically */
+    flex-direction: column;
+    /* Stack services cards vertically */
   }
 
   .service {
-    width: 90%; /* Full width for smaller screens */
-    margin: 10px auto; /* Center service cards */
+    width: 90%;
+    /* Full width for smaller screens */
+    margin: 10px auto;
+    /* Center service cards */
   }
 }
 
 /* About Section */
 .contact-section {
-  color: #102a43; /* Deep Navy Blue for text */
-  background-color: transparent; /* Transparent background */
-  display: flex; /* Enable Flexbox */
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center-align items horizontally */
-  justify-content: center; /* Center-align items vertically */
-  padding: 100px 0; /* Padding top and bottom */
-  text-align: center; /* Ensure text is centered */
+  color: #102a43;
+  /* Deep Navy Blue for text */
+  background-color: transparent;
+  /* Transparent background */
+  display: flex;
+  /* Enable Flexbox */
+  flex-direction: column;
+  /* Stack children vertically */
+  align-items: center;
+  /* Center-align items horizontally */
+  justify-content: center;
+  /* Center-align items vertically */
+  padding: 100px 0;
+  /* Padding top and bottom */
+  text-align: center;
+  /* Ensure text is centered */
 }
 
 /* Buttons and Links */
@@ -131,15 +170,19 @@ html {
 }
 
 .login-button {
-  background-color: #68b2a0; /* Muted Teal */
-  color: #ffffff; /* White text */
+  background-color: #68b2a0;
+  /* Muted Teal */
+  color: #ffffff;
+  /* White text */
   border: none;
 }
 
 .signup-button,
 .contact-button {
-  background-color: #28a745; /* Light Grey matching the body */
-  color: #ffffff; /* White text */
+  background-color: #28a745;
+  /* Light Grey matching the body */
+  color: #ffffff;
+  /* White text */
 }
 
 .login-button:hover,
@@ -171,8 +214,10 @@ html {
   }
 
   .login-modal-content {
-    width: 90%; /* Adjust for smaller screens */
-    margin-right: 5%; /* Adjust margin for smaller screens */
+    width: 90%;
+    /* Adjust for smaller screens */
+    margin-right: 5%;
+    /* Adjust margin for smaller screens */
   }
 }
 
@@ -182,34 +227,50 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Semi-transparent background */
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000; /* Ensure it's on top */
+  z-index: 2000;
+  /* Ensure it's on top */
 }
 
 .modal-content {
-  background: #ffffff; /* Clean white background for a minimalistic look */
-  color: #333; /* Dark text color for readability */
-  padding: 40px; /* Generous padding for comfort */
-  border-radius: 15px; /* Smooth, rounded corners */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  width: 50%; /* Appropriate width for the modal */
-  max-width: 500px; /* Limiting maximum width for better layout */
-  margin: auto; /* Centering the modal */
+  background: #ffffff;
+  /* Clean white background for a minimalistic look */
+  color: #333;
+  /* Dark text color for readability */
+  padding: 40px;
+  /* Generous padding for comfort */
+  border-radius: 15px;
+  /* Smooth, rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+  width: 50%;
+  /* Appropriate width for the modal */
+  max-width: 500px;
+  /* Limiting maximum width for better layout */
+  margin: auto;
+  /* Centering the modal */
   display: flex;
-  flex-direction: column; /* Vertical stacking for contents */
-  align-items: center; /* Center-aligning items */
-  justify-content: center; /* Center content vertically */
-  text-align: center; /* Center-align text */
+  flex-direction: column;
+  /* Vertical stacking for contents */
+  align-items: center;
+  /* Center-aligning items */
+  justify-content: center;
+  /* Center content vertically */
+  text-align: center;
+  /* Center-align text */
 }
 
 .close-button {
-  align-self: flex-end; /* Align the close button to the right */
+  align-self: flex-end;
+  /* Align the close button to the right */
   cursor: pointer;
   font-size: 1.5rem;
-  color: #333; /* Matching the text color */
+  color: #333;
+  /* Matching the text color */
 }
 
 .modal-content h2 {
@@ -223,7 +284,8 @@ html {
 .input-group label {
   display: block;
   margin-bottom: 5px;
-  color: #073b4c; /* Using the theme color for labels */
+  color: #073b4c;
+  /* Using the theme color for labels */
 }
 
 .input-group input {
@@ -231,4 +293,10 @@ html {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.button-res {
+  display: flex;
+  flex-direction: column;
+  color: #f44a4a;
 }

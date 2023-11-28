@@ -7,6 +7,7 @@ import './styles.css';
 const LoginModal = ({ onClose }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [Log, setLog]=useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async event => {
@@ -37,6 +38,7 @@ const LoginModal = ({ onClose }) => {
       }
     } catch (error) {
       console.error(
+        setLog(true),
         'Login failed:',
         error.response?.data?.msg || error.message
       );
@@ -71,9 +73,12 @@ const LoginModal = ({ onClose }) => {
               required
             />
           </div>
-          <button type="submit" className="login-button">
-            Login
-          </button>
+          <div className='button-res'>
+            <button type="submit" className="login-button">
+              Login
+            </button>
+            {Log ? <span>Invalid Credentials</span> : ""}
+          </div>
         </form>
       </div>
     </div>
