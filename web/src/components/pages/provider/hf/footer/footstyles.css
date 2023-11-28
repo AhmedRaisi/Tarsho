@@ -1,6 +1,6 @@
 /* Footer Styles */
-.footers {
-  background: rgba(26, 42, 108, 0.85);
+.footer {
+  background: rgba(230, 126, 34, 0.85); 
   color: white; /* White text for readability */
   text-align: center; /* Center align text */
   padding: 20px 0; /* Padding for top and bottom */
@@ -13,7 +13,7 @@
   margin: auto; /* Center content */
 }
 
-.footers p {
+.footer p {
   margin: 0; /* Remove default margin */
   line-height: 1.5; /* Line height for better readability */
   font-size: 1rem; /* Font size for legibility */
@@ -22,7 +22,7 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .footers {
+  .footer {
     padding: 15px 0; /* Adjust padding for smaller screens */
   }
 

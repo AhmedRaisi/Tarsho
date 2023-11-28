@@ -3,7 +3,7 @@ import './styles.css'; // Importing CSS
 import { HashLink as Link } from 'react-router-hash-link'; // Importing HashLink
 
 const Header = () => (
-  <header className="header">
+  <header className="headers">
     <div className="header-content">
       <h1>Tarsho</h1>
       <nav>
