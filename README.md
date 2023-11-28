@@ -38,90 +38,55 @@ Tarsho employs a range of modern technologies:
 
 ### Installation
 
-#### Running the Project with Docker
+#### Running the Project with Docker (RECCOMENDED FOR BACKEND):
 
 This method sets up the backend, frontend, and database together.
 
 - Clone the repository:
-- sh
-- Copy code
+```git clone https://github.com/your-repo/tarsho.git```
 
-git clone https://github.com/your-repo/tarsho.git
 
--
 - Start Docker containers:
-- sh
-- Copy code
+```docker-compose up --build```
 
-docker-compose up --build
-
--
 
 Access the frontend at[http://localhost:3000](http://localhost:3000/) and backend APIs at[http://localhost:4000](http://localhost:4000/).
 
-#### Development without Docker
+#### Development without Docker (RECCOMENDED FOR FRONTEND)
 
 For frontend React development:
 
 - Navigate to the web directory and install dependencies:
-- sh
-- Copy code
+```cd web```
+```npm install```
 
-cd web
-
-npm install
-
--
 - Run the React application:
-- sh
-- Copy code
+```npm start```
 
-npm start
-
--
 
 #### Backend and Database Setup
 
 - Navigate to the server directory and install dependencies:
-- sh
-- Copy code
+```cd server```
+```npm install```
 
-cd server
-
-npm install
-
--
 - Start the backend server:
-- sh
-- Copy code
+- ```npm start```
 
-npm start
-
--
 
 #### Docker Commands
 
 - View logs:
-- sh
-- Copy code
+```docker logs [container\_name]```
 
-docker logs [container\_name]
 
--
 - Access container shell:
-- sh
-- Copy code
+```docker exec -it [container\_name] sh```
 
-docker exec -it [container\_name] sh
 
--
 - Stop containers:
-- sh
-- Copy code
+ ```docker-compose down```
 
-docker-compose down
-
--
 
 ## Contributing
 
