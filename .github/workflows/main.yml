@@ -25,7 +25,7 @@ jobs:
       # The '-d' flag runs containers in the background.
 
     - name: Run Frontend Tests
-      run: docker exec -it tarsho-frontend-1 sh -c "npm test"
+      run: npm test
       # Executes the frontend test command inside the 'tarsho-frontend-1' container.
 
     - name: Run Backend Tests with Test Database
