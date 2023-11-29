@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './hf/header/header'; // Adjust the path as necessary
 import Footer from './hf/footer/footer'; // Adjust the path as necessary
-import './styles.css'; // Assuming styles.css is in the same directory
+import './stylesprovider.css';
 
 const ProviderSettings = () => {
   const [originalUser, setOriginalUser] = useState({

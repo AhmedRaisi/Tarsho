@@ -20,8 +20,8 @@ const Header = () => {
         <h1>TarshoProvider</h1>
         <nav>
           <RouterLink to="/provider">Dashboard</RouterLink>
-          <Link smooth to="/#ToDo">Services</Link>
-          <Link smooth to="/#ToDo">Messages</Link>
+          <RouterLink to="/providerservices">Services</RouterLink>
+          <Link smooth to="/#ToDo">N/A</Link>
           <RouterLink to="/providersettings">Settings</RouterLink>
           <button onClick={handleLogout} className="logout-button">Logout</button>
         </nav>

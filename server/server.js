@@ -6,7 +6,8 @@ const swaggerSpec = require('./swagger');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/users'); // Adjust path as necessary
-
+const serviceRoutes = require('./routes/services'); // Adjust path as necessary
+const reviewRoutes = require('./routes/reviews'); // Adjust path as necessary
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -23,6 +24,8 @@ app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/api/users', userRoutes);
+app.use('/api/services', serviceRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // Connect to MongoDB
 const dbURI = 'mongodb://User:Pass@mongodb:27017/usersdb'
