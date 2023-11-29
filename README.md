@@ -11,7 +11,7 @@
 
 Tarsho is an innovative mobile application designed to connect independent contractors with customers seeking professional services. It simplifies the process of finding and engaging with reliable service providers for a range of services, including HVAC, plumbing, and electrical work. Tarsho's intuitive design and user-friendly interface are set to transform customer and service professional interactions.
 
-![](RackMultipart20231128-1-cn3ddm_html_7472a28e29da5d7f.png)
+![Tarsho App Interface](RackMultipart20231128-1-cn3ddm_html_7472a28e29da5d7f.png)
 
 ## Key Features
 
