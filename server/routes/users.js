@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user'); // Update the path as per your directory structure
+const Review = require('../models/review');
 require('dotenv').config(); // If you're using dotenv for environment variables
 
 const router = express.Router();

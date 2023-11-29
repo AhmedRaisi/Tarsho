@@ -33,21 +33,56 @@
 
 /* ClientHomePage Section Styles */
 .client-homepage section {
-  margin-top: 80px; /* Increased top margin */
-  margin-bottom: 80px; /* Increased bottom margin */
-  padding: 20px; /* Adjust padding as needed */
-  background-color: #fff; /* Optional: Add background color */
-  border-radius: 10px; /* Optional: Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Subtle box shadow */
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .client-homepage h2 {
-  color: #007bff; /* Primary color for headings */
+  color: #007bff;
 }
 
 .client-homepage p {
-  color: #333; /* Standard text color */
+  color: #333;
+}
+
+/* Dashboard styles */
+.user-dashboard {
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.user-dashboard h1 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.user-dashboard .rating {
+  color: #ffdd00; /* Gold color for rating */
+  margin-bottom: 20px;
+}
+
+.user-dashboard .dashboard-action {
+  margin-top: 20px;
+}
+
+.dashboard-action button {
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.dashboard-action button:hover {
+  background-color: #218838;
 }
 
 /* Existing Styles for Settings Page */
@@ -108,48 +143,47 @@
 }
 
 .client-services-page h2 {
-  color: #007bff; /* Primary color for headings */
-  margin-bottom: 30px; /* Space below the heading */
+  color: #007bff;
+  margin-bottom: 30px;
 }
-
 
 /* Service list styles */
 .services-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Space between service items */
-  justify-content: center; /* Center align service items */
+  gap: 20px;
+  justify-content: center;
 }
 
 /* Individual service item styles */
 .service-item {
-  background-color: #fff; /* White background */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: left;
-  width: 300px; /* Fixed width */
-  margin-bottom: 20px; /* Space below each item */
+  width: 300px;
+  margin-bottom: 20px;
 }
 
 .service-item h3 {
-  color: #333; /* Service name color */
+  color: #333;
   margin-bottom: 10px;
 }
 
 .service-item p {
-  color: #666; /* Service description color */
+  color: #666;
   margin-bottom: 10px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .services-list {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .service-item {
-      width: auto; /* Adjust width for smaller screens */
+    width: auto;
   }
 }

@@ -1,54 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './hf/header/header';
+import axios from 'axios';
 import Footer from './hf/footer/footer';
 import './styles.css';
 
 const ClientHomePage = () => {
-  const [user, setUser] = useState({ name: '', role: '' });
+  const [user, setUser] = useState({ name: '', role: '', rating: null });
+  const [services, setServices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchUserData = async () => {
       const userId = localStorage.getItem('userId');
-      if (!userId) {
-        console.error('User ID not found');
-        return;
-      }
+      const fetchUserData = async () => {
+          setIsLoading(true);
+          if (!userId) {
+              console.error('User ID not found');
+              setError('User ID not found');
+              setIsLoading(false);
+              return;
+          }
 
-      try {
-        const response = await fetch(
-          `http://localhost:4000/api/users/profile/${userId}`
-        );
-        if (!response.ok) {
-          throw new Error('Failed to fetch');
-        }
-        const data = await response.json();
-        console.log(data);
-        setUser({ name: data.username, role: data.role });
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
+          try {
+              const userProfile = await axios.get(`http://localhost:4000/api/users/profile/${userId}`);
+              setUser({ 
+                  name: userProfile.data.username, 
+                  role: userProfile.data.role, 
+                  rating: userProfile.data.rating 
+              });
 
-    fetchUserData();
+              // Fetch random services
+              const servicesResponse = await axios.get('http://localhost:4000/api/services/random');
+              setServices(servicesResponse.data);
+              setIsLoading(false);
+          } catch (err) {
+              console.error('Error:', err);
+              setError(err.message);
+              setIsLoading(false);
+          }
+      };
+
+      fetchUserData();
   }, []);
 
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
   return (
     <>
       <Header />
 
       <div className="client-homepage">
-        <section className="user-dashboard">
+      <section className="user-dashboard">
           <h1>Welcome, {user.name}</h1>
-          <p>Role: {user.role}</p>
+          <p>You are a {user.role} at Tarsho</p>
+          <p>Your Rating is {user.rating}⭐</p>
           <p>Find and manage all your services in one place.</p>
         </section>
 
         <section className="services-overview">
-          <h2>Explore Services</h2>
-          <p>Discover a variety of services tailored to your needs.</p>
-          {/* This section can include cards or lists of services */}
-        </section>
+                    <h2>Explore Services</h2>
+                    <div className="services-list">
+                        {services.map(service => (
+                            <div key={service._id} className="service-item">
+                                <h3>{service.name}</h3>
+                                <p>Provided by: {service.providerId.name}</p>
+                                <p>{service.description}</p>
+                                <p>Price: ${service.price}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
         <section className="projects-section">
           <h2>My Projects</h2>

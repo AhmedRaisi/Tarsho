@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 4000
 
 # Command to run when the container starts
-CMD ["npm", "run", "dev"]
+CMD ["node", "--max-http-header-size=16384", "server.js"]
