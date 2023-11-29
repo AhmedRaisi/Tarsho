@@ -2,7 +2,7 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ main ]       # Triggers on a push to the main branch
+    branches: [ main ]       # Triggers on a push to the main branchs
   pull_request:
     branches: [ main ]       # Also triggers on pull requests to the main branch
 
