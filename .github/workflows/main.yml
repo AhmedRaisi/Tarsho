@@ -25,7 +25,7 @@ jobs:
       # The '-d' flag runs containers in the background.
 
     - name: Install Frontend Dependencies
-      run: npm install
+      run: npm ci
       working-directory: ./web
       # Installs dependencies for the frontend project
 
