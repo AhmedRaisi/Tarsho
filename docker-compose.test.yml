@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mongodb-test:
+    image: mongo:latest
+    ports:
+      - '27018:27017'  # Use a different port to avoid conflicts with the development DB
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: testuser
+      MONGO_INITDB_ROOT_PASSWORD: testpass
+    volumes:
+      - mongo-test-data:/data/db
+
+volumes:
+  mongo-test-data:

@@ -64,7 +64,7 @@ const ClientHomePage = () => {
                         {services.map(service => (
                             <div key={service._id} className="service-item">
                                 <h3>{service.name}</h3>
-                                <p>Provided by: {service.providerId.name}</p>
+                                <p>Provided by: {service.providerId ? service.providerId.name : 'Unknown Provider'}</p>
                                 <p>{service.description}</p>
                                 <p>Price: ${service.price}</p>
                             </div>

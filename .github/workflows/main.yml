@@ -1,0 +1,42 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main ]       # This workflow triggers on a push to the main branch
+  pull_request:
+    branches: [ main ]       # Also triggers on pull requests to the main branch
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest   # Specifies the runner environment (Ubuntu latest version)
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      # Checks out your repository to the GitHub Actions runner
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v1
+      # Sets up Docker Buildx (an extension of Docker with additional features)
+
+    - name: Build and Run Containers
+      run: docker-compose up -d
+      # Builds and starts the containers as defined in your docker-compose.yml file.
+      # The '-d' flag runs containers in the background.
+
+    - name: Run Frontend Tests
+      run: docker exec -it tarsho-frontend-1 sh -c "npm test"
+      # Executes the frontend test command inside the 'tarsho-frontend-1' container.
+
+    - name: Run Backend Tests with Test Database
+      run: |
+        docker-compose -f docker-compose.test.yml up -d
+        docker exec -it tarsho-backend-test-1 sh -c "npm test"
+        docker-compose -f docker-compose.test.yml down
+      # First, it starts the test database using the docker-compose.test.yml configuration.
+      # Then, it runs the backend tests inside the 'tarsho-backend-test-1' container.
+      # Finally, it shuts down the test services.
+
+    - name: Shutdown
+      run: docker-compose down
+      # Shuts down the running services defined in docker-compose.yml.
