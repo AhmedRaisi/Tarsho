@@ -24,6 +24,9 @@ jobs:
       # Builds and starts the containers as defined in your docker-compose.yml file.
       # The '-d' flag runs containers in the background.
 
+    - name: Install Dependencies
+      run: npm install
+    
     - name: Run Frontend Tests
       run: npm test
       working-directory: ./web
