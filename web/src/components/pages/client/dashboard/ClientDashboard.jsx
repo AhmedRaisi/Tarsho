@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from './hf/header/header';
+import Header from '../hf/header/header';
 import axios from 'axios';
-import Footer from './hf/footer/footer';
-import './styles.css';
+import Footer from '../hf/footer/footer';
+import '../styles.css';
 
 const ClientHomePage = () => {
   const [user, setUser] = useState({ name: '', role: '', rating: null });

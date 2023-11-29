@@ -40,6 +40,11 @@ const UserSchema = new Schema({
     type: String,
     required: false
   },
+  profilePicture: {
+    type: String,
+    required: false, // Making it optional
+    default: '' // Default value if no picture is provided
+  },
 
 
   services: [{
