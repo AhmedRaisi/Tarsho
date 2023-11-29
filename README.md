@@ -1,11 +1,11 @@
 # Tarsho
 
-![GitHub stars](https://img.shields.io/github/stars/your-repo/tarsho?style=social)
-![GitHub forks](https://img.shields.io/github/forks/your-repo/tarsho?style=social)
-![GitHub issues](https://img.shields.io/github/issues/your-repo/tarsho)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/your-repo/tarsho)
-![GitHub last commit](https://img.shields.io/github/last-commit/your-repo/tarsho)
-![GitHub contributors](https://img.shields.io/github/contributors/your-repo/tarsho)
+![GitHub stars](https://img.shields.io/github/stars/AhmedRaisi/tarsho?style=social)
+![GitHub forks](https://img.shields.io/github/forks/AhmedRaisi/tarsho?style=social)
+![GitHub issues](https://img.shields.io/github/issues/AhmedRaisi/tarsho)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AhmedRaisi/tarsho)
+![GitHub last commit](https://img.shields.io/github/last-commit/AhmedRaisi/tarsho)
+![GitHub contributors](https://img.shields.io/github/contributors/AhmedRaisi/tarsho)
 
 ## Overview
 
