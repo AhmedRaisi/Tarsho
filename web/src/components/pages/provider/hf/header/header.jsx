@@ -22,7 +22,7 @@ const Header = () => {
           <RouterLink to="/provider">Dashboard</RouterLink>
           <RouterLink to="/providerservices">Services</RouterLink>
           <Link smooth to="/#ToDo">N/A</Link>
-          <RouterLink to="/providersettings">Profile</RouterLink>
+          <RouterLink to="/providerprofile">Profile</RouterLink>
           <button onClick={handleLogout} className="logout-button">Logout</button>
         </nav>
       </div>

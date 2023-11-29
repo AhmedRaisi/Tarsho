@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Header from './hf/header/header';
-import Footer from './hf/footer/footer';
-import './styles.css';
+import Header from '../hf/header/header';
+import Footer from '../hf/footer/footer';
+import '../styles.css';
 
 const ClientServicesPage = () => {
     const [services, setServices] = useState([]);

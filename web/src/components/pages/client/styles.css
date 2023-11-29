@@ -187,3 +187,16 @@
     width: auto;
   }
 }
+
+
+.profile-picture-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  border-radius: 50%; /* Circular image */
+  object-fit: cover;
+}
