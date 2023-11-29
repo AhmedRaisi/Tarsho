@@ -39,7 +39,19 @@ const UserSchema = new Schema({
   address: {
     type: String,
     required: false
-  }
+  },
+
+
+  services: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Service'
+  }],
+  reviews: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Review'
+  }],
+
+
 });
 
 module.exports = mongoose.model('User', UserSchema);

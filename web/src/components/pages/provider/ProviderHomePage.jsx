@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './hf/header/header';
 import Footer from './hf/footer/footer';
-import './styles.css';
+import './stylesprovider.css';
 
 const ProviderHomePage = () => {
   const [user, setUser] = useState({ name: '', role: '' });
-  // Assume a function to fetch user data (if needed)
+  const [services, setServices] = useState([]);
+
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem('userId');
@@ -16,15 +17,13 @@ const ProviderHomePage = () => {
       }
 
       try {
-        const response = await fetch(
-          `http://localhost:4000/api/users/profile/${userId}`
-        );
+        const response = await fetch(`http://localhost:4000/api/users/profile/${userId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch');
         }
         const data = await response.json();
-        console.log(data);
         setUser({ name: data.username, role: data.role });
+        setServices(data.services || []); // Assuming the user data includes services
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -33,10 +32,10 @@ const ProviderHomePage = () => {
     fetchUserData();
   }, []);
 
+
   return (
     <>
-      <Header />
-
+    <Header />
       <div className="provider-homepage">
         <section className="user-dashboard">
           <h1>Welcome, {user.name}</h1>
@@ -45,9 +44,17 @@ const ProviderHomePage = () => {
         </section>
 
         <section className="services-management">
-          <h2>Manage Services</h2>
-          <p>Overview and control of the services you offer.</p>
-          {/* This section can include a list or cards of services offered */}
+          <h2>My Services</h2>
+          <p>Overview of the services you offer.</p>
+          <div className="services-list">
+            {services.map(service => (
+              <div key={service._id} className="service-item">
+                <h3>{service.name}</h3>
+                <p>{service.description}</p>
+                {/* Display other service details */}
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="client-projects">

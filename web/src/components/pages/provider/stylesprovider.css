@@ -1,0 +1,200 @@
+.login-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+/* Styles for ProviderHomePage sections */
+.provider-homepage section {
+  margin-top: 80px; /* Increase top margin */
+  margin-bottom: 80px; /* Increase bottom margin */
+  padding: 20px; /* Adjust padding as needed */
+  background-color: #fff; /* Optional: Add background color */
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Subtle box shadow */
+  text-align: center;
+}
+
+.provider-homepage h2 {
+  color: #007bff; /* Primary color for headings */
+}
+
+.provider-homepage p {
+  color: #333; /* Standard text color */
+}
+
+/* Adjustments to existing styles for consistency */
+.welcome-container {
+  text-align: center;
+  padding: 50px;
+  margin-top: 80px; /* Increased margin */
+}
+
+.user-dashboard, .provider-settings-page {
+  margin: 50px auto; /* Increased margin */
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-dashboard h1, .provider-settings-page h2 {
+  color: #007bff;
+}
+
+.user-dashboard p, .provider-settings-page form {
+  color: #333;
+}
+
+/* Styles for Settings Page */
+.provider-settings-page {
+  text-align: center;
+  padding: 50px;
+  margin: 50px auto;
+  max-width: 600px;
+  background-color: #fff; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+.provider-settings-page h2 {
+  color: #007bff; /* Primary color for headings */
+}
+
+.provider-settings-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.provider-settings-page label {
+  margin-bottom: 5px;
+}
+
+.provider-settings-page input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.provider-settings-page button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.provider-settings-page button:hover {
+  background-color: #218838;
+}
+
+.provider-settings-page span {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Provider Services Page */
+.provider-services-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.provider-services-page h2 {
+  color: #007bff; /* Primary color for headings */
+}
+
+/* Service list styles */
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between service items */
+  justify-content: center; /* Center align service items */
+}
+
+/* Individual service item styles */
+.service-item {
+  background-color: #fff; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  padding: 20px;
+  text-align: left;
+  width: 300px; /* Fixed width */
+  margin: 10px; /* Space around service items */
+}
+
+.service-item h3 {
+  color: #333; /* Service name color */
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  color: #666; /* Service description color */
+  margin-bottom: 10px;
+}
+
+/* Style for service buttons */
+.service-item button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Space between buttons */
+}
+
+.service-item button:hover {
+  background-color: #0056b3;
+}
+
+/* Add Service Form */
+.provider-services-page form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.provider-services-page form input,
+.provider-services-page form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.provider-services-page form button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.provider-services-page form button:hover {
+  background-color: #218838;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .services-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-item {
+    width: auto; /* Adjust width for smaller screens */
+  }
+}

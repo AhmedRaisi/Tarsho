@@ -101,4 +101,55 @@
   color: #666;
 }
 
-/* You can add more specific styles as needed */
+/* Client Services Page */
+.client-services-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.client-services-page h2 {
+  color: #007bff; /* Primary color for headings */
+  margin-bottom: 30px; /* Space below the heading */
+}
+
+
+/* Service list styles */
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between service items */
+  justify-content: center; /* Center align service items */
+}
+
+/* Individual service item styles */
+.service-item {
+  background-color: #fff; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  padding: 20px;
+  text-align: left;
+  width: 300px; /* Fixed width */
+  margin-bottom: 20px; /* Space below each item */
+}
+
+.service-item h3 {
+  color: #333; /* Service name color */
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  color: #666; /* Service description color */
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .services-list {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .service-item {
+      width: auto; /* Adjust width for smaller screens */
+  }
+}
