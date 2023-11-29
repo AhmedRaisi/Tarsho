@@ -24,13 +24,15 @@ jobs:
       # Builds and starts the containers as defined in your docker-compose.yml file.
       # The '-d' flag runs containers in the background.
 
-    - name: Install Dependencies
+    - name: Install Frontend Dependencies
       run: npm install
-    
+      working-directory: ./web
+      # Installs dependencies for the frontend project
+
     - name: Run Frontend Tests
       run: npm test
       working-directory: ./web
-      # Executes the frontend test command inside the 'tarsho-frontend-1' container.
+      # Executes the frontend test command inside the ./web directory
 
     - name: Run Backend Tests with Test Database
       run: |
