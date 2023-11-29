@@ -3,55 +3,68 @@ import { Link } from 'react-router-dom';
 import Header from './hf/header/header';
 import Footer from './hf/footer/footer';
 import './stylesprovider.css';
+import axios from 'axios';
+
 
 const ProviderHomePage = () => {
-  const [user, setUser] = useState({ name: '', role: '' });
+  const [user, setUser] = useState({ name: '', role: '', rating: null });
   const [services, setServices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    const userId = localStorage.getItem('userId');
     const fetchUserData = async () => {
-      const userId = localStorage.getItem('userId');
+      setIsLoading(true);
       if (!userId) {
         console.error('User ID not found');
+        setIsLoading(false);
         return;
       }
 
       try {
-        const response = await fetch(`http://localhost:4000/api/users/profile/${userId}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch');
-        }
-        const data = await response.json();
-        setUser({ name: data.username, role: data.role });
-        setServices(data.services || []); // Assuming the user data includes services
-      } catch (error) {
-        console.error('Error fetching user data:', error);
+        const userProfile = await axios.get(`http://localhost:4000/api/users/profile/${userId}`);
+        setUser({ 
+          name: userProfile.data.username, 
+          role: userProfile.data.role, 
+          rating: userProfile.data.rating 
+        });
+
+        // Fetch provider services
+        const servicesResponse = await axios.get(`http://localhost:4000/api/services/provider/${userId}`);
+        setServices(servicesResponse.data);
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Error:', err);
+        setError(err.message);
+        setIsLoading(false);
       }
     };
 
     fetchUserData();
   }, []);
 
-
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
   return (
     <>
     <Header />
       <div className="provider-homepage">
         <section className="user-dashboard">
-          <h1>Welcome, {user.name}</h1>
-          <p>Role: {user.role}</p>
+        <h1>Welcome, {user.name}</h1>
+          <p>You are a {user.role} at Tarsho</p>
+          <p>Your Rating is {user.rating}⭐</p>
           <p>Manage your services and connect with clients.</p>
         </section>
 
         <section className="services-management">
           <h2>My Services</h2>
-          <p>Overview of the services you offer.</p>
           <div className="services-list">
             {services.map(service => (
               <div key={service._id} className="service-item">
                 <h3>{service.name}</h3>
                 <p>{service.description}</p>
-                {/* Display other service details */}
+                {/* Other service details */}
               </div>
             ))}
           </div>
