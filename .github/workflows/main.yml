@@ -34,6 +34,9 @@ jobs:
     - name: Build and Run Containers with Test DB
       run: docker-compose -f docker-compose.test.yml up -d
 
+    - name: List running containers
+      run: docker ps
+
     - name: Run Backend Tests
       run: docker exec backend sh -c "npm test"
 
