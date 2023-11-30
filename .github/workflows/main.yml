@@ -2,13 +2,16 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [main] # Triggers on a push to the main branchs
+    branches: [main]
   pull_request:
-    branches: [main] # Also triggers on pull requests to the main branch
+    branches: [main]
 
 jobs:
   frontend-tests:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -23,7 +26,7 @@ jobs:
 
   backend-tests:
     needs: frontend-tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Docker tests are typically run on Linux
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -37,10 +40,9 @@ jobs:
       - name: List Docker Containers
         run: docker ps --format "{{.Names}}"
 
+      # Uncomment and modify the following if needed
       # - name: Run Backend Tests
-      #   run: |
-      #     docker exec tarsho_backend_1 sh -c "cd /usr/src/app/server && npm test"
-      #   # Replace 'tarsho_backend_1' with the correct container name.
+      #   run: docker exec tarsho_backend_1 sh -c "cd /usr/src/app/server && npm test"
 
       - name: Shutdown Test Services
         run: docker-compose -f docker-compose.test.yml down
@@ -59,7 +61,7 @@ jobs:
 
   docker-compose-build:
     runs-on: ubuntu-latest
-    needs: docker-build # Ensures Docker builds are successful before this step
+    needs: docker-build
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
