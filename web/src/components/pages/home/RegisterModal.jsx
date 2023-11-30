@@ -7,6 +7,7 @@ const RegisterModal = ({ onClose }) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
+  const [error, setError] = useState('');
 
   const handleRegister = async event => {
     event.preventDefault();
@@ -20,74 +21,50 @@ const RegisterModal = ({ onClose }) => {
           role,
         }
       );
-      console.log(response.data);
-      onClose();
+      console.log('Registration successful:', response.data);
+      onClose(); // Close the modal
     } catch (error) {
-      console.error(
-        'Registration failed:',
-        error.response?.data?.msg || error.message
-      );
+      console.error('Registration failed:', error.response?.data?.msg || error.message);
+      setError(error.response?.data?.msg || 'Registration failed');
     }
   };
 
   return (
-    <div className="login-modal">
-      <div className="modal-content">
-        <span className="close-button" onClick={onClose}>
-          &times;
-        </span>
+    <div className="register-modal">
+      <div className="register-modal-content">
+        <span className="close-button" onClick={onClose}>&times;</span>
         <h2>Register</h2>
-        <form className="login-form" onSubmit={handleRegister}>
+        <form className="register-form" onSubmit={handleRegister}>
           <div className="input-group">
             <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-              required
-            />
+            <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} required />
           </div>
+
           <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-            />
+            <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} required />
           </div>
+
           <div className="input-group">
             <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
+            <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
           </div>
-          <div className="input-group">
-            <label htmlFor="role">Role</label>
-            {/* <input
-              type="text"
-              id="role"
-              value={role}
-              onChange={e => setRole(e.target.value)}
-            /> */}
-            <form>
-              
-                <input type="radio" id="role" value="client" checked={role === "client"} onChange={e => setRole(e.target.value)} />
-                <label htmlFor="client">Client</label>
-              
-                <input type="radio" id="role" value="provider" checked={role === "provider"} onChange={e => setRole(e.target.value)}/>
-                <label htmlFor="provider">Provider</label>
-              
-            </form>
+
+          <div className="input-group role-selection">
+            <div>
+              <input type="radio" id="roleClient" value="client" checked={role === "client"} onChange={e => setRole(e.target.value)} />
+              <label htmlFor="roleClient">Client</label>
+            </div>
+            
+            <div>
+              <input type="radio" id="roleProvider" value="provider" checked={role === "provider"} onChange={e => setRole(e.target.value)} />
+              <label htmlFor="roleProvider">Provider</label>
+            </div>
           </div>
-          <button type="submit" className="login-button">
-            Register
-          </button>
+
+          {error && <div className="error-message">{error}</div>}
+
+          <button type="submit" className="register-button">Register</button>
         </form>
       </div>
     </div>
