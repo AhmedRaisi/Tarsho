@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../hf/header/header';
 import Footer from '../hf/footer/footer';
-import '../stylesprovider.css';
+import '../services/ProviderServicsPageStyles.css';
 
 const ProviderServices = () => {
   const [services, setServices] = useState([]);

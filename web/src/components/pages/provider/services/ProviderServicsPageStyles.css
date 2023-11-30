@@ -1,0 +1,94 @@
+/* Provider Services Page Styles */
+.provider-services-page {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .provider-services-page h2 {
+    color: #007bff; /* Primary color for headings */
+  }
+  
+  /* Service list styles */
+  .services-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between service items */
+    justify-content: center; /* Center align service items */
+  }
+  
+  /* Individual service item styles */
+  .service-item {
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    padding: 20px;
+    text-align: left;
+    width: 300px; /* Fixed width */
+    margin: 10px; /* Space around service items */
+  }
+  
+  .service-item h3 {
+    color: #333; /* Service name color */
+    margin-bottom: 10px;
+  }
+  
+  .service-item p {
+    color: #666; /* Service description color */
+    margin-bottom: 10px;
+  }
+  
+  /* Style for service buttons */
+  .service-actions button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Space between buttons */
+  }
+  
+  .service-actions button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Add Service Form */
+  .add-service-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .add-service-form input,
+  .add-service-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .add-service-form button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-service-form button:hover {
+    background-color: #218838;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .services-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .service-item {
+      width: auto; /* Adjust width for smaller screens */
+    }
+  }
+  
