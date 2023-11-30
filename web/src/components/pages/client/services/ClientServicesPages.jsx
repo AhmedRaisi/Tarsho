@@ -18,7 +18,6 @@ const ClientServicesPage = () => {
                 setIsLoading(false);
             } catch (err) {
                 console.error('Error fetching random services:', err);
-                setError(err.message);
                 setIsLoading(false);
             }
         };

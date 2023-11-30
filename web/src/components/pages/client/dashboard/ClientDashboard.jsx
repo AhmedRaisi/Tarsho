@@ -6,42 +6,39 @@ import Footer from '../hf/footer/footer';
 import '../styles.css';
 
 const ClientHomePage = () => {
-  const [user, setUser] = useState({ name: '', role: '', rating: null });
+  const [user, setUser] = useState({ name: 'Guest', role: 'client', rating: '3' });
   const [services, setServices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-      const userId = localStorage.getItem('userId');
-      const fetchUserData = async () => {
-          setIsLoading(true);
-          if (!userId) {
-              console.error('User ID not found');
-              setError('User ID not found');
-              setIsLoading(false);
-              return;
-          }
+    const userId = localStorage.getItem('userId');
+    const fetchUserData = async () => {
+      setIsLoading(true);
 
-          try {
-              const userProfile = await axios.get(`http://localhost:4000/api/users/profile/${userId}`);
-              setUser({ 
-                  name: userProfile.data.username, 
-                  role: userProfile.data.role, 
-                  rating: userProfile.data.rating 
-              });
+      if (userId) {
+        try {
+          const userProfile = await axios.get(`http://localhost:4000/api/users/profile/${userId}`);
+          setUser({ 
+            name: userProfile.data.username, 
+            role: userProfile.data.role, 
+            rating: userProfile.data.rating 
+          });
 
-              // Fetch random services
-              const servicesResponse = await axios.get('http://localhost:4000/api/services/random');
-              setServices(servicesResponse.data);
-              setIsLoading(false);
-          } catch (err) {
-              console.error('Error:', err);
-              setError(err.message);
-              setIsLoading(false);
-          }
-      };
+          const servicesResponse = await axios.get('http://localhost:4000/api/services/random');
+          setServices(servicesResponse.data);
+        } catch (err) {
+          console.error('Error:', err);
+          setError(err.message);
+        }
+      } else {
+        console.error('User ID not found');
+      }
 
-      fetchUserData();
+      setIsLoading(false);
+    };
+
+    fetchUserData();
   }, []);
 
   if (isLoading) return <div>Loading...</div>;

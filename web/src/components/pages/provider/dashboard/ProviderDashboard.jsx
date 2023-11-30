@@ -19,7 +19,6 @@ const ProviderHomePage = () => {
       if (!userId) {
         console.error('User ID not found');
         setIsLoading(false);
-        return;
       }
 
       try {

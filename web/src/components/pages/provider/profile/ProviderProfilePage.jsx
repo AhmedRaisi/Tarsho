@@ -26,7 +26,6 @@ const ProviderSettings = () => {
       const userId = localStorage.getItem('userId');
       if (!userId) {
         console.error('User ID not found');
-        setError('User ID not found');
         setIsLoading(false);
         return;
       }
