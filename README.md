@@ -8,19 +8,27 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/AhmedRaisi/tarsho)
 [![codecov](https://codecov.io/gh/AhmedRaisi/Tarsho/graph/badge.svg?token=YQHS2IWY43)](https://codecov.io/gh/AhmedRaisi/Tarsho)
 
+"Empowering Your Independence, Enriching Your Choices – Tarsho is where businesses and clients connect to turn unique visions into vibrant realities."
+
+<br>
 ## Overview
 
-Tarsho is an innovative web and mobile application designed to connect independent contractors with customers seeking professional services. It simplifies the process of finding and engaging with reliable service providers for a range of services, including HVAC, electrical work, painting ect.. Tarsho's intuitive design and user-friendly interface are set to transform customer and service professional interactions.
+Tarsho is a dynamic web and mobile application that fosters a thriving marketplace for entrepreneurs and small businesses to offer their diverse services. It's a platform where anyone, from independent contractors to budding entrepreneurs, can list their services, opening doors to new opportunities and clientele. For clients, Tarsho offers a chance to support local businesses and find unique services tailored to their needs. With its intuitive design and user-friendly interface, Tarsho is revolutionizing the way businesses and clients connect, turning unique visions into vibrant realities.
 
-![](RackMultipart20231128-1-cn3ddm_html_7472a28e29da5d7f.png)
 
-## Key Features
 
-- Dual Account Creation: Sign up as either a consumer or a service provider, customizing the experience to fit specific needs.
-- Service Listings: Providers can list their services, including detailed information on pricing, location, and specializations.
-- Projects/Packages Listing: Providers can provide packages/projects which are a group of services listed.
-- Proximity Search: Advanced location-based search functionality enables consumers to easily find local providers.
-- User-Friendly Interface: Designed for ease of navigation to effortlessly connect users and service providers.
+##Key Features
+- Entrepreneurial Launchpad: Tarsho provides an ideal starting point for entrepreneurs and small businesses to showcase their services and grow their client base.
+
+- Diverse Service Listings: From professional services like HVAC and electrical work to unique local offerings, Tarsho accommodates a wide range of entrepreneurial ventures.
+
+- Projects and Packages: Service providers can create and offer custom packages or projects, grouping various services for enhanced client convenience.
+
+- Local Business Support: A powerful tool for clients to discover and support small, local businesses, contributing to community growth.
+
+- Proximity-Based Discovery: Advanced search functionality allows clients to easily find and connect with nearby service providers.
+
+- Seamless User Experience: The platform is designed for effortless navigation, ensuring smooth interactions between businesses and clients.
 
 ## Tech Stack
 
