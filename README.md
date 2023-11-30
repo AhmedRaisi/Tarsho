@@ -1,5 +1,12 @@
 # Tarsho
 
+![GitHub stars](https://img.shields.io/github/stars/AhmedRaisi/tarsho?style=social)
+![GitHub forks](https://img.shields.io/github/forks/AhmedRaisi/tarsho?style=social)
+![GitHub issues](https://img.shields.io/github/issues/AhmedRaisi/tarsho)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AhmedRaisi/tarsho)
+![GitHub last commit](https://img.shields.io/github/last-commit/AhmedRaisi/tarsho)
+![GitHub contributors](https://img.shields.io/github/contributors/AhmedRaisi/tarsho)
+
 ## Overview
 
 Tarsho is an innovative mobile application designed to connect independent contractors with customers seeking professional services. It simplifies the process of finding and engaging with reliable service providers for a range of services, including HVAC, plumbing, and electrical work. Tarsho's intuitive design and user-friendly interface are set to transform customer and service professional interactions.
