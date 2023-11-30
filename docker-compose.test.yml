@@ -1,10 +1,21 @@
 version: '3.8'
 
 services:
+  backend:
+    build: 
+      context: ./server
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=test
+      - MONGODB_URI=mongodb://testuser:testpass@mongodb-test:27017/testdb
+    depends_on:
+      - mongodb-test
+    command: npm run test
+
   mongodb-test:
     image: mongo:latest
-    ports:
-      - '27018:27017'  # Use a different port to avoid conflicts with the development DB
     environment:
       MONGO_INITDB_ROOT_USERNAME: testuser
       MONGO_INITDB_ROOT_PASSWORD: testpass
