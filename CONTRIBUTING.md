@@ -1,51 +1,90 @@
 # Contributing to Tarsho
 
-We welcome contributions to the Tarsho project and are grateful for every pull request or issue submitted. Below are some guidelines that we ask contributors to follow.
+Welcome to the Tarsho project! We're excited to have you on board and look forward to your contributions. This guide will help you set up your development environment and understand our contribution process.
 
-## Code of Conduct
+## Quick Navigation
 
-Please review our Code of Conduct to understand the expectations for all participants in our community.
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [Development Tips](#development-tips)
+- [Contributing Changes](#contributing-changes)
+- [Need Help?](#need-help)
 
-## Reporting Issues
+## Prerequisites
 
-If you find a bug or have a suggestion for an enhancement, we would appreciate it if you could report it to us. Before creating an issue, please check if it has already been reported. If it has, add any additional comments to the existing issue.
+Before you start, please ensure you have the following installed:
 
-When reporting an issue, include as much detail as possible, such as:
-- A clear and descriptive title
-- A thorough description of the issue
-- Steps to reproduce the behavior
-- Expected behavior
-- Screenshots if applicable
-- Any relevant logs or error messages
+- Git: Essential for version control.
+- js and npm: Required for managing project dependencies.
+- Docker Desktop: Needed for managing containerized services.
 
-## Pull Requests
+### For Windows
 
-We actively welcome your pull requests. If you're working on an existing issue, please comment that you are doing so to avoid duplicate work by others.
+- Download[Git for Windows](https://git-scm.com/download/win).
+- Get Node.js (includes npm) from the[Node.js website](https://nodejs.org/en/).
+- Install Docker Desktop from[Docker Hub](https://www.docker.com/products/docker-desktop). Ensure WSL 2 is configured for Docker.
 
-When submitting a pull request, please:
-- Fork the repository and create your branch from `main`.
-- Make commits of logical and manageable units.
-- Write a clear log message for your commits, explaining the changes you've made.
-- Ensure your code lints and checks pass.
-- Include appropriate test cases for your code.
-- Update the README or other documentation accordingly.
+### For macOS
 
-## Development Process
+- Git is generally pre-installed on macOS. If not, install via[Homebrew](https://brew.sh/)
+```brew install git```
 
-1. Fork the repo and create your branch from `main`.
-2. If you've added code that should be tested, add tests.
-3. If you've changed APIs, update the documentation.
-4. Ensure the test suite passes.
-5. Make sure your code lints.
+- Install Node.js and npm through Homebrew:
+```brew install node```
 
-## Review Process
+- Download Docker Desktop from[Docker Hub](https://www.docker.com/products/docker-desktop).
 
-All submissions, including submissions by project members, require review. We use GitHub pull requests for this purpose. Consult [GitHub Help](https://help.github.com/articles/about-pull-requests/) for more information on using pull requests.
+## Setup
 
-## License
+- Clone the Repository:
 
-By contributing to Tarsho, you agree that your contributions will be licensed under its MIT License.
+```git clone https://github.com/AhmedRaisi/Tarsho```
 
-## Questions?
+```cd Tarsho```
 
-If you have any questions, please reach out by creating an issue, and we will respond as soon as we can.
+Frontend Setup:
+
+- Navigate to the web directory and install dependencies:
+
+```cd web```
+
+```npm install```
+
+
+Backend Setup:
+
+- Set up the backend in the server directory:
+
+```cd ../server```
+
+```npm install```
+
+-
+
+Running Docker Compose:
+
+- Start Docker Desktop and then run:
+
+```cd ..```
+
+```docker-compose up -d```
+
+Accessing the Application:
+
+- The app should be accessible at http://localhost:3000 for the frontend and http://localhost:4000 for the backend.
+
+## Development Tips
+
+- Use Visual Studio Code for a consistent development experience.
+- Follow coding standards using ESLint and Prettier, which can be integrated into VS Code.
+- Regularly update your local repository to stay in sync with the main project.
+
+## Contributing Changes
+
+- Adhere to the project's coding conventions and guidelines.
+- Thoroughly test your changes locally before submitting.
+- Submit pull requests with clear descriptions of the changes and their purpose.
+
+## Need Help?
+
+If you encounter any issues or have questions, feel free to open an issue on the[GitHub repository](https://github.com/AhmedRaisi/Tarsho).
