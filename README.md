@@ -6,6 +6,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/AhmedRaisi/tarsho)
 ![GitHub last commit](https://img.shields.io/github/last-commit/AhmedRaisi/tarsho)
 ![GitHub contributors](https://img.shields.io/github/contributors/AhmedRaisi/tarsho)
+[![codecov](https://codecov.io/gh/AhmedRaisi/Tarsho/graph/badge.svg?token=YQHS2IWY43)](https://codecov.io/gh/AhmedRaisi/Tarsho)
 
 ## Overview
 
@@ -98,8 +99,6 @@ For frontend React development:
 ## Contributing
 
 Contributions are welcome! Please read our[Contributing Guide](https://chat.openai.com/c/LINK_TO_CONTRIBUTING_GUIDE) for details on the code of conduct and the process for submitting pull requests.
-
-[![codecov](https://codecov.io/gh/AhmedRaisi/Tarsho/graph/badge.svg?token=YQHS2IWY43)](https://codecov.io/gh/AhmedRaisi/Tarsho)
 
 
 ## License
