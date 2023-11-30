@@ -99,6 +99,9 @@ For frontend React development:
 
 Contributions are welcome! Please read our[Contributing Guide](https://chat.openai.com/c/LINK_TO_CONTRIBUTING_GUIDE) for details on the code of conduct and the process for submitting pull requests.
 
+[![codecov](https://codecov.io/gh/AhmedRaisi/Tarsho/graph/badge.svg?token=YQHS2IWY43)](https://codecov.io/gh/AhmedRaisi/Tarsho)
+
+
 ## License
 
 This project is licensed under the MIT License - see the[LICENSE](https://chat.openai.com/c/LINK_TO_LICENSE) file for details.
