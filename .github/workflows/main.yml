@@ -38,7 +38,7 @@ jobs:
       run: docker ps
     
     - name: Run Backend Tests
-      run: docker exec tasho_backend_1 sh -c "npm test"
+      run: docker exec tarsho_backend_1 sh -c "npm test"
     
     - name: Shutdown Test Services
       run: docker-compose -f docker-compose.test.yml down
