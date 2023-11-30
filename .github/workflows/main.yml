@@ -35,7 +35,7 @@ jobs:
       run: docker-compose -f docker-compose.test.yml up -d
 
     - name: Run Backend Tests
-      run: docker exec tarsho-backend-1 sh -c "npm test"
+      run: docker exec backend sh -c "npm test"
 
     - name: Shutdown Test Services
       run: docker-compose -f docker-compose.test.yml down
