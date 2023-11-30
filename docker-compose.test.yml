@@ -1,4 +1,4 @@
-version: '3' #yu
+version: '3.8' #yu
 services:
   backend:
     build: 
