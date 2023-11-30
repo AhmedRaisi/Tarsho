@@ -8,5 +8,8 @@ module.exports = {
     transform: {
         '^.+\\.jsx?$': 'babel-jest',
       },
+    collectCoverage: true,
+    coverageDirectory: 'coverage',
+    coverageReporters: ['text', 'lcov'],
   };
   

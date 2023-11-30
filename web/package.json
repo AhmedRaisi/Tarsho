@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "nyc jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -54,6 +54,7 @@
     "eslint-plugin-react": "^7.33.2",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "nyc": "^15.1.0",
     "prettier": "^3.1.0"
   }
 }
