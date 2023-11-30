@@ -39,7 +39,7 @@ jobs:
 
     - name: Run Backend Tests
       run: |
-        docker exec tarsho_backend_1 sh -c "cd /usr/src/app && npm test"
+        docker exec tarsho_backend_1 sh -c "cd /usr/src/app/server && npm test"
       # Replace 'tarsho_backend_1' with the correct container name.
 
     - name: Shutdown Test Services
