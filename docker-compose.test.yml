@@ -21,6 +21,11 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: testpass
     volumes:
       - mongo-test-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.stats()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   mongo-test-data:

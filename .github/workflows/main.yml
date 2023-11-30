@@ -37,23 +37,6 @@ jobs:
     - name: List Docker Containers
       run: docker ps --format "{{.Names}}"
 
-
-    - name: Wait for MongoDB to be ready
-      run: |
-        until docker exec tarsho_mongodb-test_1 mongo --eval "print('waited for mongo')" > /dev/null 2>&1; do
-          echo "Waiting for MongoDB..."
-          sleep 5
-        done
-      # Adjust 'tarsho_mongodb-test_1' based on your actual MongoDB container name.
-
-    - name: Wait for Backend Service to be ready
-      run: |
-        until docker exec tarsho_backend_1 sh -c "nc -z localhost 4000" > /dev/null 2>&1; do
-          echo "Waiting for Backend Service..."
-          sleep 5
-        done
-      # Replace 'tarsho_backend_1' with the correct container name. Adjust the port if different.
-
     - name: Run Backend Tests
       run: |
         docker exec -it tarsho_backend_1 sh -c "cd /usr/src/app && npm test"
