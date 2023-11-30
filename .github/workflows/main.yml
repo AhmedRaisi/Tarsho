@@ -50,6 +50,7 @@ jobs:
         run: docker-compose -f docker-compose.test.yml down
 
   docker-build:
+    needs: backend-tests
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
