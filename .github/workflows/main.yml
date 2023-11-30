@@ -2,7 +2,7 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ main ]       # Triggers on a push to the main branchs
+    branches: [ main ]       # Triggers on a push to the main branch
   pull_request:
     branches: [ main ]       # Also triggers on pull requests to the main branch
 
@@ -36,6 +36,9 @@ jobs:
       
     - name: List Running Containers
       run: docker ps
+
+    - name: Run Updates
+      run: docker exec tarsho_backend_1 sh -c "npm update"
     
     - name: Run Backend Tests
       run: docker exec tarsho_backend_1 sh -c "npm test"
