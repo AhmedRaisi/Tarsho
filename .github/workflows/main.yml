@@ -21,26 +21,26 @@ jobs:
       run: npm test
       working-directory: ./web
 
-  # backend-tests:
-  #   needs: frontend-tests
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Checkout Repository
-  #     uses: actions/checkout@v2
+  backend-tests:
+    needs: frontend-tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-  #   - name: Set up Docker
-  #     uses: docker/setup-buildx-action@v1
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v1
 
-  #   - name: Start Services
-  #     run: docker-compose -f docker-compose.test.yml up -d
+    - name: Start Services
+      run: docker-compose -f docker-compose.test.yml up -d
     
-  #   - name: List Docker Containers
-  #     run: docker ps --format "{{.Names}}"
+    - name: List Docker Containers
+      run: docker ps --format "{{.Names}}"
 
-  #   - name: Run Backend Tests
-  #     run: |
-  #       docker exec tarsho_backend_1 sh -c "cd /usr/src/app/server && npm test"
-  #     # Replace 'tarsho_backend_1' with the correct container name.
+    # - name: Run Backend Tests
+    #   run: |
+    #     docker exec tarsho_backend_1 sh -c "cd /usr/src/app/server && npm test"
+    #   # Replace 'tarsho_backend_1' with the correct container name.
 
-  #   - name: Shutdown Test Services
-  #     run: docker-compose -f docker-compose.test.yml down
+    - name: Shutdown Test Services
+      run: docker-compose -f docker-compose.test.yml down
