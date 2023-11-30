@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../hf/header/header';
 import axios from 'axios';
 import Footer from '../hf/footer/footer';
-import '../styles.css';
+import '../dashboard/ClientDashboard.css';
 
 const ClientHomePage = () => {
   const [user, setUser] = useState({ name: 'Guest', role: 'client', rating: '3' });

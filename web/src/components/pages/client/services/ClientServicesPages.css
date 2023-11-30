@@ -1,0 +1,52 @@
+/* Client Services Page Styles */
+.client-services-page {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .client-services-page h2 {
+    color: #007bff;
+    margin-bottom: 30px;
+  }
+  
+  /* Service list styles */
+  .services-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Individual service item styles */
+  .service-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .service-item h3 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .service-item p {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .services-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .service-item {
+      width: auto;
+    }
+  }
+  

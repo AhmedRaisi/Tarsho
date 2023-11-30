@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../hf/header/header';
 import Footer from '../hf/footer/footer';
-import '../styles.css';
+// import '../styles.css';
+import '../profile/ClientProfilePage.css';
 import profilePicturePlaceholder from './../../../../assets/profilepictureplaceholder.png';
 
 

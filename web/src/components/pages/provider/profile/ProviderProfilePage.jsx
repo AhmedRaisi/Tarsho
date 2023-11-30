@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../hf/header/header'; // Adjust the path as necessary
 import Footer from '../hf/footer/footer'; // Adjust the path as necessary
-import '../stylesprovider.css';
+import '../profile/ProviderProfilePageStyles.css';
 import profilePicturePlaceholder from './../../../../assets/profilepictureplaceholder.png';
 
 

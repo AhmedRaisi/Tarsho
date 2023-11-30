@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../hf/header/header';
 import Footer from '../hf/footer/footer';
-import '../stylesprovider.css';
+import '../dashboard/ProviderDashboardStyles.css';
 import axios from 'axios';
 
 
