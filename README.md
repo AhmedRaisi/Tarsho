@@ -1,4 +1,5 @@
 <div align="center">
+ 
 # Tarsho
 
 ![GitHub stars](https://img.shields.io/github/stars/AhmedRaisi/tarsho?style=social)
@@ -10,6 +11,7 @@
 [![codecov](https://codecov.io/gh/AhmedRaisi/Tarsho/graph/badge.svg?token=YQHS2IWY43)](https://codecov.io/gh/AhmedRaisi/Tarsho)
 
 ###"Empowering Your Independence, Enriching Your Choices – Tarsho is where businesses and clients connect to turn unique visions into vibrant realities."
+
 </div>
 <br>
 
