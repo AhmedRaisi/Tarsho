@@ -68,13 +68,29 @@ const RegisterModal = ({ onClose }) => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="role">Role</label>
-            <input
-              type="text"
-              id="role"
-              value={role}
-              onChange={e => setRole(e.target.value)}
-            />
+            <label>Role</label>
+            <div className='role-radio'>
+              <div>
+                <input
+                  type="radio"
+                  id="Provider"
+                  value="Provider"
+                  checked={role === "Provider"}
+                  onChange={() => setRole("Provider")}
+                />
+                <label htmlFor="Provider">Provider</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="Client"
+                  value="Client"
+                  checked={role === "Client"}
+                  onChange={() => setRole("Client")}
+                />
+                <label htmlFor="Client">Client</label>
+              </div>
+            </div>
           </div>
           <button type="submit" className="login-button">
             Register

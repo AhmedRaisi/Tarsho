@@ -288,11 +288,17 @@ html {
   /* Using the theme color for labels */
 }
 
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.input-group .role-radio {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 }
 
 .button-res {
