@@ -1,28 +1,31 @@
-version: '3.8'  # Using a newer version for better feature support
-
+version: '3.8'
 services:
   backend:
-    build:
+    build: 
       context: ./server
     volumes:
-      - ./server:/usr/src/app  # Path should be fine across OSes, but check Windows path compatibility
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "4000:4000"
     environment:
       - NODE_ENV=development
     command: npm run dev
     depends_on:
-      - mongodb
+      - mongodb  # Backend depends on MongoDB
 
   frontend:
     build: 
       context: ./web
     volumes:
-      - ./web:/usr/src/app  # Same as for backend service
+      - ./web:/usr/src/app  # Mount the entire React application directory
+      - /usr/src/app/node_modules
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+    stdin_open: true
+    tty: true
 
   mongodb:
     image: mongo
@@ -32,7 +35,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: rootuser
       MONGO_INITDB_ROOT_PASSWORD: rootpass
     volumes:
-      - mongodb-data:/data/db  # Named volume for data persistence
+      - mongo-data:/data/db
 
   mongo-express:
     image: mongo-express
@@ -46,4 +49,4 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongodb
 
 volumes:
-  mongodb-data:  # Declaring the named volume
+  mongo-data:

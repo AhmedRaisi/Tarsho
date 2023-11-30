@@ -25,10 +25,7 @@ jobs:
         working-directory: ./web
 
   backend-tests:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -51,10 +48,7 @@ jobs:
 
   docker-build:
     needs: backend-tests
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -66,10 +60,7 @@ jobs:
         run: ./ci/build-frontend.sh
 
   docker-compose-build:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     needs: docker-build
     steps:
       - name: Checkout Repository
