@@ -10,6 +10,12 @@ COPY package*.json ./
 # Install project dependencies
 RUN npm install
 
+# Install nodemon globally
+RUN npm install react
+
+# Install nodemon globally
+RUN npm install axios
+
 # Expose the port the app runs on
 EXPOSE 3000
 

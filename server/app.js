@@ -27,7 +27,7 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/reviews', reviewRoutes);
 
 // Connect to MongoDB
-const dbURI = 'mongodb://rootuser:rootpass@mongodb:27017/usersdb'
+const dbURI = 'mongodb://mongodb:27017/usersdb'
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(err => console.error(err));
 
