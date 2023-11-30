@@ -18,7 +18,7 @@ Tarsho is an innovative web and mobile application designed to connect independe
 
 - Dual Account Creation: Sign up as either a consumer or a service provider, customizing the experience to fit specific needs.
 - Service Listings: Providers can list their services, including detailed information on pricing, location, and specializations.
-- Project Listing: Providers can provide projects which are a group of services listed.
+- Projects/Packages Listing: Providers can provide packages/projects which are a group of services listed.
 - Proximity Search: Advanced location-based search functionality enables consumers to easily find local providers.
 - User-Friendly Interface: Designed for ease of navigation to effortlessly connect users and service providers.
 
