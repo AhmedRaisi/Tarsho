@@ -23,10 +23,11 @@ jobs:
       - name: Run Frontend Tests with Coverage
         run: npm test -- --coverage
         working-directory: ./web
-        
+
       - name: Upload Frontend Coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
+          token: ${{ secrets.CODECOV_TOKEN }} 
           file: ./web/coverage/lcov.info
           fail_ci_if_error: true
           flags: frontend
