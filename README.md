@@ -10,7 +10,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/AhmedRaisi/tarsho)
 [![codecov](https://codecov.io/gh/AhmedRaisi/Tarsho/graph/badge.svg?token=YQHS2IWY43)](https://codecov.io/gh/AhmedRaisi/Tarsho)
 
-**"Empowering Your Independence, Enriching Your Choices – Tarsho is where small businesses and clients connect to turn unique visions into vibrant realities."**
+**"Empowering Your Independence, Enriching Your Choices – Tarsho is where entrepreneurs and clients connect to turn unique visions into vibrant realities."**
 
 </div>
 <br>
