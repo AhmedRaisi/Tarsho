@@ -11,13 +11,15 @@
 "Empowering Your Independence, Enriching Your Choices – Tarsho is where businesses and clients connect to turn unique visions into vibrant realities."
 
 <br>
+
 ## Overview
 
 Tarsho is a dynamic web and mobile application that fosters a thriving marketplace for entrepreneurs and small businesses to offer their diverse services. It's a platform where anyone, from independent contractors to budding entrepreneurs, can list their services, opening doors to new opportunities and clientele. For clients, Tarsho offers a chance to support local businesses and find unique services tailored to their needs. With its intuitive design and user-friendly interface, Tarsho is revolutionizing the way businesses and clients connect, turning unique visions into vibrant realities.
 
 
 
-##Key Features
+## Key Features
+
 - Entrepreneurial Launchpad: Tarsho provides an ideal starting point for entrepreneurs and small businesses to showcase their services and grow their client base.
 
 - Diverse Service Listings: From professional services like HVAC and electrical work to unique local offerings, Tarsho accommodates a wide range of entrepreneurial ventures.
