@@ -7,7 +7,7 @@ import '../services/ClientServicesPages.css';
 const ClientServicesPage = () => {
     const [services, setServices] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    // const [error, setError] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchRandomServices = async () => {
@@ -26,6 +26,8 @@ const ClientServicesPage = () => {
     }, []);
 
     if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
 
     return (
         <>
