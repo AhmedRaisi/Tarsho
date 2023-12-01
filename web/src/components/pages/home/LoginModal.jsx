@@ -83,7 +83,7 @@ const LoginModal = ({ onClose }) => {
           <div className='linktopage'>
            New user  ? &nbsp; 
           <Link to ="/register" className='linktopage'>
-            Rigester account
+            Register account
           </Link>
           </div>  
             {Log ? <span>Invalid Credentials</span> : ""}
