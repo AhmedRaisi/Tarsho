@@ -80,14 +80,6 @@ const HomePage = () => {
       <div id="services" className="services-container">
         <h2 className="services-title">Services</h2>
 
-        {/* Development Navigation Buttons */}
-        <Link to="/client" className="dev-nav-button">
-          (DEV) Client Home
-        </Link>
-        <Link to="/provider" className="dev-nav-button">
-          (DEV) Provider Home
-        </Link>
-
         {/* Services Cards Section */}
         <div className="services-section">
           <div className="service client">

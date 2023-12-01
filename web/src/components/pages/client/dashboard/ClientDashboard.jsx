@@ -55,19 +55,25 @@ const ClientHomePage = () => {
           <p>Find and manage all your services in one place.</p>
         </section>
 
-        <section className="services-overview">
-                    <h2>Explore Services</h2>
-                    <div className="services-list">
-                        {services.map(service => (
-                            <div key={service._id} className="service-item">
-                                <h3>{service.name}</h3>
-                                <p>Provided by: {service.providerId ? service.providerId.name : 'Unknown Provider'}</p>
-                                <p>{service.description}</p>
-                                <p>Price: ${service.price}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+              <section className="services-overview">
+        <h2>Explore Services</h2>
+        <div className="services-list">
+          {services.map(service => (
+            <div key={service._id} className="service-item">
+              <h3>{service.name}</h3>
+              <p>
+                Provided by: {
+                  service.providerId 
+                  ? <Link to={`/client/provider/${service.providerId._id}`}>{service.providerId.name}</Link>
+                  : 'Unknown Provider'
+                }
+              </p>
+              <p>{service.description}</p>
+              <p>Price: ${service.price}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
         <section className="projects-section">
           <h2>My Projects</h2>
