@@ -39,7 +39,7 @@
     margin-top: 20px;
   }
   
-  .dashboard-action button {
+  .dashboard-action button, .show_more__btn {
     background-color: #28a745;
     border: none;
     border-radius: 5px;
@@ -47,17 +47,47 @@
     padding: 10px 20px;
     cursor: pointer;
   }
+
   
   .dashboard-action button:hover {
     background-color: #218838;
   }
   
+  .show_more__btn {
+    background: rgba(34, 153, 84, 0.85);
+    width: 15%;
+    border-radius: 5rem;
+    margin: auto auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .show_more__btn:hover {
+    background: #007bff;
+    
+  }
+
+  .show_more__btn span:nth-child(2) {
+    font-size: 1.2em;
+  }
+
+
+  .show_more__btn span:nth-child(1):hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+
   /* Service list styles */
   .services-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    margin-bottom: 1rem;
   }
   
   /* Individual service item styles */

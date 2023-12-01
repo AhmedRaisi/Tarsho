@@ -67,6 +67,10 @@ const ProviderHomePage = () => {
               </div>
             ))}
           </div>
+          <Link to="/providerservices" className="show_more__btn">
+            <span>Show More</span>
+            <span className="material-symbols-outlined">arrow_forward</span>
+          </Link>
         </section>
 
         <section className="client-projects">
