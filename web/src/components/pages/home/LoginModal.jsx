@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 const LoginModal = ({ onClose }) => {
   const [username, setUsername] = useState('');
@@ -51,12 +52,13 @@ const LoginModal = ({ onClose }) => {
         <span className="close-button" onClick={onClose}>
           &times;
         </span>
-        <h2>Login</h2>
+        <div className='name-login'>Login</div>
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
             <label htmlFor="username">Username</label>
             <input
               type="text"
+              placeholder='Enter your Username'
               id="username"
               value={username}
               onChange={e => setUsername(e.target.value)}
@@ -68,6 +70,7 @@ const LoginModal = ({ onClose }) => {
             <input
               type="password"
               id="password"
+              placeholder='Enter your Password'
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
@@ -77,6 +80,12 @@ const LoginModal = ({ onClose }) => {
             <button type="submit" className="login-button">
               Login
             </button>
+          <div className='linktopage'>
+           New user  ? &nbsp; 
+          <Link to ="/register" className='linktopage'>
+            Register account
+          </Link>
+          </div>  
             {Log ? <span>Invalid Credentials</span> : ""}
           </div>
         </form>
