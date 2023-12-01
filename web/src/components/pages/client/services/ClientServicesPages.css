@@ -37,6 +37,12 @@
     color: #666;
     margin-bottom: 10px;
   }
+
+  
+  .no__data {
+    font-size: 2rem;
+    opacity: .45;
+  }
   
   /* Responsive adjustments */
   @media (max-width: 768px) {

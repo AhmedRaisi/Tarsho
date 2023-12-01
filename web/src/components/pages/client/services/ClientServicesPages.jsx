@@ -17,11 +17,11 @@ const ClientServicesPage = () => {
                 setServices(response.data); // Adjust according to your actual response structure
                 setIsLoading(false);
             } catch (err) {
-                console.error('Error fetching random services:', err);
+                setError('Error fetching random services:', err);
                 setIsLoading(false);
             }
         };
-      
+
         fetchRandomServices();
     }, []);
 
@@ -34,14 +34,19 @@ const ClientServicesPage = () => {
             <div className="client-services-page">
                 <h2>Available Services</h2>
                 <div className="services-list">
-                    {services.map(service => (
+                    {
+                        services.length ?
+                            (
+                                services.map(service => (
                         <div key={service._id} className="service-item">
                             <h3>{service.name}</h3>
                             <p>Provided by: {service.providerId ? service.providerId.name : 'Unknown Provider'}</p> 
                             <p>{service.description}</p>
                             <p>Price: ${service.price}</p>
                         </div>
-                    ))}
+                        
+                    ))): (<div className="no__data">No service is available at the moment</div>)
+                    }
                 </div>
             </div>
             <Footer />
