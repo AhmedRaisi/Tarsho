@@ -7,7 +7,7 @@ import '../dashboard/ClientDashboard.css';
 
 const ClientHomePage = () => {
   const [user, setUser] = useState({ name: 'Guest', role: 'client', rating: '3' });
-  const [services, setServices] = useState([]);
+  const [, setServices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -43,6 +43,30 @@ const ClientHomePage = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+
+  const serv = [
+        {
+            id: 1,
+            name: 'Web Development',
+            description: 'Web Development',
+            price: 1000,
+            providerId: {
+                id: '02',
+                name: 'Josue Batey',
+            }
+    },
+    {
+            id: 2,
+            name: 'Mobile Development',
+            description: 'iOS Development',
+            price: 1000,
+            providerId: {
+                id: '02',
+                name: 'Josue Batey',
+            }
+    }
+]
+
   return (
     <>
       <Header />
@@ -56,18 +80,22 @@ const ClientHomePage = () => {
         </section>
 
         <section className="services-overview">
-                    <h2>Explore Services</h2>
-                    <div className="services-list">
-                        {services.map(service => (
-                            <div key={service._id} className="service-item">
-                                <h3>{service.name}</h3>
-                                <p>Provided by: {service.providerId ? service.providerId.name : 'Unknown Provider'}</p>
-                                <p>{service.description}</p>
-                                <p>Price: ${service.price}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+          <h2>Explore Services</h2>
+          <div className="services-list">
+            {serv.map(service => (
+              <div key={service._id} className="service-item">
+                <h3>{service.name}</h3>
+                <p>Provided by: {service.providerId ? service.providerId.name : 'Unknown Provider'}</p>
+                <p>{service.description}</p>
+                <p>Price: ${service.price}</p>
+              </div>
+            ))}
+          </div>
+          <Link to="/clientservices" className="show_more__btn">
+            <span>Show More</span>
+            <span className="material-symbols-outlined">arrow_forward</span>
+          </Link>
+        </section>
 
         <section className="projects-section">
           <h2>My Projects</h2>
