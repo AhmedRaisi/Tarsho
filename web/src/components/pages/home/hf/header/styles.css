@@ -1,5 +1,4 @@
-body,
-html {
+body, html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,10 +10,10 @@ html {
   background: rgba(26, 42, 108, 0.85);
   color: white;
   padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  position: sticky; /* Sticky position to stay at top */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
   top: 0;
-  z-index: 1000; /* Ensure header is above other content */
+  z-index: 1000;
 }
 
 .header-content {
@@ -36,16 +35,24 @@ html {
   align-items: center;
 }
 
-.headers nav a {
+.headers nav a, .headers nav button {
   color: white;
   text-decoration: none;
-  padding: 0 1rem; /* Spacing around nav items */
+  padding: 0.75rem 1rem;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 4px;
 }
 
-.headers nav a:hover {
-  color: #f8f9fa; /* Change color on hover */
+.headers nav a:hover, .headers nav button:hover {
+  background-color: #f8f9fa;
+  color: #102a43;
+}
+
+.login-button {
+  background-color: #4CAF50; /* Slightly different green color */
+  border: none;
+  cursor: pointer;
 }
 
 /* Responsive design for smaller screens */
@@ -58,7 +65,9 @@ html {
     margin-bottom: 0.5rem;
   }
 
-  .headers nav a {
+  .headers nav a, .headers nav button {
     padding: 0.5rem 0; /* Adjust padding for vertical layout */
+    width: 100%; /* Full width for a cleaner look */
+    text-align: center;
   }
 }

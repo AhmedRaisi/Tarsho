@@ -11,16 +11,41 @@ html {
 
 /* Hero Section */
 .hero-section {
-  color: #102a43;
-  /* Deep Navy Blue for text */
-  background-color: #f8f9fa;
-  /* Light Grey background */
+  color: #f8f9fa;
+  background-color: #102a43;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 150px 100px;
   text-align: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  /* Animated Background */
+  background: linear-gradient(270deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 600% 600%;
+  animation: AnimationName 16s ease infinite;
+}
+
+/* Animation Keyframes */
+@keyframes AnimationName { 
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+
+/* Hero Content Styling */
+.hero-content {
+  padding-bottom: 20px; /* Added padding between text and button */
+}
+
+/* Additional adjustments for responsiveness and centering */
+@media (max-width: 600px) {
+  .hero-section {
+    justify-content: center;
+    padding: 20px;
+  }
 }
 
 /* Common Section Styling */

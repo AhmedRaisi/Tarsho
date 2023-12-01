@@ -36,7 +36,7 @@ const RegisterModal = ({ onClose }) => {
       <span className="close-button" onClick={onClose}>
           &times;
         </span>
-        <div className='name-login'>Register</div>
+        <div className='name-login'>Create an account</div>
 
         <form className="register-form" onSubmit={handleRegister}>
           <div className="input-group">

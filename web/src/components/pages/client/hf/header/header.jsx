@@ -1,8 +1,7 @@
 import React from 'react';
 import './heade.css'; // Ensure the CSS file name is correct
 import { useNavigate } from 'react-router-dom'; 
-import { HashLink as Link } from 'react-router-hash-link'; // Importing HashLink for smooth scrolling
-import { Link as RouterLink } from 'react-router-dom'; // Importing Link for standard navigation
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,16 +12,15 @@ const Header = () => {
     navigate('/');
   };
   
-  // Make sure to return the JSX
   return (
     <header className="headerrr">
       <div className="header-content">
         <h1>TarshoClient</h1>
         <nav>
-          <RouterLink to="/client">Dashboard</RouterLink>
+          <Link to="/client">Dashboard</Link>
           <Link smooth to="/clientservices">Services</Link>
-          <Link smooth to="/ToDo">N/A</Link>
-          <RouterLink to="/clientprofile">Profile</RouterLink>
+          {/* <Link smooth to="/ToDo">N/A</Link> */}
+          <Link to="/clientprofile">Profile</Link>
           <button onClick={handleLogout} className="logout-button">Logout</button>
         </nav>
       </div>
