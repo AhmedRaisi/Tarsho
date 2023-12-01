@@ -179,9 +179,11 @@ html {
 
 .signup-button,
 .contact-button {
-  background-color: #28a745;
+  background-color: #68b2a0;
+  width: 200px;
   /* Light Grey matching the body */
   color: #ffffff;
+  border: none;
   /* White text */
 }
 
@@ -201,8 +203,14 @@ html {
   .login-button,
   .contact-button {
     padding: 8px 15px;
-    font-size: 14px;
+    font-size: 20px;
   }
+   input[type=radio]#Red { 
+    accent-color: #FF0000; 
+  } 
+   .radiobutt{
+   color: #68b2a0;
+   }
 
   .service {
     width: 100%;
@@ -227,7 +235,7 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   /* Semi-transparent background */
   display: flex;
   align-items: center;
@@ -243,7 +251,7 @@ html {
   /* Dark text color for readability */
   padding: 40px;
   /* Generous padding for comfort */
-  border-radius: 15px;
+  border-radius: 20px;
   /* Smooth, rounded corners */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   /* Subtle shadow for depth */
@@ -252,6 +260,7 @@ html {
   max-width: 500px;
   /* Limiting maximum width for better layout */
   margin: auto;
+ 
   /* Centering the modal */
   display: flex;
   flex-direction: column;
@@ -260,7 +269,7 @@ html {
   /* Center-aligning items */
   justify-content: center;
   /* Center content vertically */
-  text-align: center;
+  /* text-align: center; */
   /* Center-align text */
 }
 
@@ -276,21 +285,25 @@ html {
 .modal-content h2 {
   margin-top: 0;
 }
-
+.name-login {
+  font-size: 28px;
+  font-weight: 600;
+}
 .input-group {
-  margin-bottom: 15px;
+  margin-left: -8px;
+  margin-bottom: 10px;
 }
 
 .input-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: #073b4c;
   /* Using the theme color for labels */
 }
 
 .input-group input {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -301,8 +314,21 @@ html {
   color: #f44a4a;
 }
 
+/* link below the button to navigate between login and signup */
 
+.linktopage{
+  
+  
+  color:#102a43;
+}
 /* Additional styles for RegisterModal */
+.login-form{
+  width: 60%;
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .register-modal {
   /* Styles for the register modal */
   position: fixed;
@@ -318,13 +344,32 @@ html {
 }
 
 .register-modal-content {
-  background: #ffffff; /* Clean white background */
+  background: #ffffff;
+  /* Clean white background for a minimalistic look */
+  color: #333;
+  /* Dark text color for readability */
   padding: 40px;
-  border-radius: 8px; /* Smooth corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  width: 80%;
-  max-width: 500px; /* Responsive max width */
-  text-align: center;
+  /* Generous padding for comfort */
+  border-radius: 15px;
+  /* Smooth, rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+  width: 50%;
+  /* Appropriate width for the modal */
+  max-width: 500px;
+  /* Limiting maximum width for better layout */
+  margin: auto;
+ 
+  /* Centering the modal */
+  display: flex;
+  flex-direction: column;
+  /* Vertical stacking for contents */
+  align-items: center;
+  /* Center-aligning items */
+  justify-content: center;
+  /* Center content vertically */
+  /* text-align: center; */
+  /* Center-align text */
 }
 
 .register-modal-content h2 {
@@ -332,6 +377,8 @@ html {
 }
 
 .register-form {
+  width: 60%;
+  padding-top: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -371,7 +418,7 @@ html {
 .register-button {
   padding: 10px 20px;
   border-radius: 5px;
-  background-color: #007bff; /* Bootstrap primary color */
+  background-color: rgb(65, 223, 157); /* Bootstrap primary color */
   color: white;
   border: none;
   cursor: pointer;
@@ -401,3 +448,5 @@ html {
     width: 90%;
   }
 }
+
+/* headding adjustment of login page */
