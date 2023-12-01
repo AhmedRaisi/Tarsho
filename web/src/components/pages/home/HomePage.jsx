@@ -39,14 +39,14 @@ const HomePage = () => {
           </p>
           <p>Get started by logging in or learn more about our services.</p>
           <div className="hero-buttons">
-            <HashLink smooth to="/#services" className="login-button">
-              Login
+            <HashLink smooth to="/#about" className="login-button">
+              Learn More
             </HashLink>
             <button
               onClick={() => openRegisterModal()}
               className="signup-button"
             >
-              Sign up
+              Get Started
             </button>
           </div>
         </div>
