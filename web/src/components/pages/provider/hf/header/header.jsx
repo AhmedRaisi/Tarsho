@@ -18,7 +18,10 @@ const Header = () => {
   return (
     <header className="headerr">
       <div className="header-content">
-        <h1>TarshoProvider</h1>
+      <h1>
+         <span style={{ color: 'white' }}>Tarsho</span>
+         <span style={{ color: '#cc7832' }}>Provider</span>
+        </h1>
         <nav>
           <RouterLink to="/provider">Dashboard</RouterLink>
           <RouterLink to="/providerservices">Services</RouterLink>

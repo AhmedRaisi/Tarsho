@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import './styles.css';
+import './hstyles.css';
 import LoginModal from './../../LoginModal.jsx';
 
 const Header = () => {

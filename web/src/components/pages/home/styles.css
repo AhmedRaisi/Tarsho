@@ -3,10 +3,13 @@ html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f8f9fa;
   /* Light Grey background */
-  color: #102a43;
+  color: #ffffff; /* White color for strong contrast */
   /* Deep Navy Blue for text */
+    /* Animated Background */
+    background: linear-gradient(270deg, #1a2a6c, #b21f1f, #fcb41a);
+    background-size: 600% 600%;
+    animation: AnimationName 16s ease infinite;
 }
 
 /* Hero Section */
@@ -23,7 +26,7 @@ html {
   padding: 0;
 
   /* Animated Background */
-  background: linear-gradient(270deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background: linear-gradient(270deg, #1a2a6c, #b21f1f, #fcb41a);
   background-size: 600% 600%;
   animation: AnimationName 16s ease infinite;
 }
@@ -35,9 +38,28 @@ html {
     100%{background-position:0% 51%}
 }
 
+.hero-content .hero-main-text {
+  color: #ffffff; /* White color for strong contrast */
+  /* font-family: 'ElegantFont', serif; Replace 'ElegantFont' with the actual font name */
+  font-size: 1.5rem; /* Larger font size for main text */
+  /* padding-bottom: 10px; Space between this text and the subtext */
+  font-weight: 500; /* Bold font weight */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
+}
+
 /* Hero Content Styling */
-.hero-content {
-  padding-bottom: 20px; /* Added padding between text and button */
+.hero-content .hero-subtext {
+  color: #ffffff; /* White color for strong contrast */
+  /* font-family: 'SecondaryFont', sans-serif; Replace 'SecondaryFont' with the actual font name */
+  font-size: 1.25rem; /* Font size for subtext */
+  /* padding-bottom: 20px; Space between this text and the next paragraph */
+  font-weight: 400; /* Bold font weight */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Text shadow for depth */
+}
+
+.hero-content p {
+  color: #ffffff; /* Keep it white for strong contrast */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add shadow for depth */
 }
 
 /* Additional adjustments for responsiveness and centering */
@@ -57,7 +79,6 @@ html {
   margin-bottom: 50px;
   /* Added bottom margin */
   border-radius: 10px;
-  background-color: #ffffff;
   /* Crisp White for sections */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
@@ -66,7 +87,7 @@ html {
 .about-section,
 .vision-section,
 .mission-section {
-  color: #102a43;
+  color: #ffffff; /* White color for strong contrast */
   /* Deep Navy Blue for text */
   background-color: transparent;
   /* Transparent background */
@@ -86,7 +107,6 @@ html {
 
 /* Services Section Container */
 .services-container {
-  background-color: #fafafa;
   /* Crisp White background */
   padding: 100px 35px;
   /* Padding around the entire container */
@@ -97,7 +117,7 @@ html {
 /* Services Section Title */
 .services-title {
   font-size: 24px;
-  color: #102a43;
+  color: #ffffff;
   /* Deep Navy Blue */
   margin-bottom: 10px;
   /* Space below the title */
@@ -123,25 +143,6 @@ html {
   /* Slightly off-white */
 }
 
-/* Development Navigation Buttons */
-.dev-nav-button {
-  background-color: #d32f2f;
-  /* Vibrant red */
-  color: white;
-  /* White text for contrast */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 300px 30px;
-  /* Spacing above and below the button */
-}
-
-.dev-nav-button:hover {
-  background-color: blue;
-  /* Darker on hover */
-}
 
 /* Responsive Design */
 @media (max-width: 800px) {
@@ -160,7 +161,7 @@ html {
 
 /* About Section */
 .contact-section {
-  color: #102a43;
+  color: #ffffff; /* White color for strong contrast */
   /* Deep Navy Blue for text */
   background-color: transparent;
   /* Transparent background */
@@ -475,3 +476,54 @@ html {
 }
 
 /* headding adjustment of login page */
+
+/* Add this CSS for the logo */
+.logo {
+  width: 700px; /* Adjust the size as needed */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Existing hero-section and global styles remain unchanged */
+
+/* New Overlay Style */
+.content-overlay {
+  position: relative;
+  z-index: 10;
+    /* Animated Background */
+    background: linear-gradient(270deg, #1a2a6c, #b21f1f, #fcb41a, 0.8);
+    background-size: 600% 600%;
+    animation: AnimationName 16s ease infinite;
+}
+
+/* Apply a blur to the background after scrolling past the hero section */
+.main-content {
+  backdrop-filter: blur(5px);
+  transition: backdrop-filter 0.3s ease-in-out;
+}
+
+/* Reset the blur when at the top to maintain the vibrant hero background */
+.hero-section:hover ~ .main-content,
+.main-content:hover {
+  backdrop-filter: none;
+}
+
+/* Adjustments for sections to integrate with the new overlay */
+.section, .about-section, .vision-section, .mission-section, .services-container, .contact-section {
+  position: relative;
+  background-color: transparent; /* Maintain transparency to allow the overlay to blend */
+  padding-top: 50px; /* Add top padding to compensate for the overlay's fade-out */
+  margin-top: -50px; /* Pull the section up to blend with the hero section */
+  z-index: 20; /* Ensure the text appears above the overlay */
+}
+
+/* Ensure the footer also appears above the overlay */
+footer {
+  position: relative;
+  z-index: 20;
+}
+
+/* Apply smooth transitions for all hover effects */
+a:hover, button:hover {
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}

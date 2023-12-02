@@ -7,19 +7,20 @@ import '../services/ClientServicesPages.css';
 const ClientServicesPage = () => {
     const [mixedData, setMixedData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    //const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchRandomServices = async () => {
             try {
                 //const usersRequest = axios.get('http://localhost:4000/api/services/random-users');
                 const servicesRequest = axios.get('http://localhost:4000/api/services/random-services');
-
+                console.log(servicesRequest);
+                // console.log(usersRequest);
                 // const [servicesResponse, usersResponse] = await Promise.all([servicesRequest, usersRequest]);
                 const [servicesResponse] = await Promise.all([servicesRequest]);
-                console.log("requests logged");
+                console.log(servicesResponse);
 
-                // const combinedData = [...servicesResponse.data, ...usersResponse.data].sort(() => 0.5 - Math.random());
+                // const combinedData = [...servicesResponse.data, ...usersResponse.data];
                 const combinedData = [...servicesResponse.data].sort(() => 0.5 - Math.random());
 
                 setMixedData(combinedData);
@@ -47,7 +48,7 @@ const ClientServicesPage = () => {
 
 
     if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  //if (error) return <div>Error: {error}</div>;
 
 
     return (

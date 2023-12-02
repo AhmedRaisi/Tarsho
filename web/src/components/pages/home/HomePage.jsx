@@ -6,6 +6,8 @@ import './styles.css';
 import LoginModal from './LoginModal.jsx';
 import RegisterModal from './RegisterModal.jsx';
 import { HashLink } from 'react-router-hash-link'; // Importing HashLink
+import TarshoLogo from './../../../assets/TarshoLogoConcept.png';
+
 
 const HomePage = () => {
   // State to manage which role is trying to log in
@@ -30,28 +32,29 @@ const HomePage = () => {
     <>
       <Header />
       <div id="home" className="hero-section">
-        <div className="hero-content">
-          <h1>Welcome to Tarsho!</h1>
-          <p>
-            "Empowering Your Independence, Enriching Your Choices – Tarsho is
-            where businesses and clients connect to turn unique visions into
-            vibrant realities."
-          </p>
-          <p>Get started by logging in or learn more about our services.</p>
-          <div className="hero-buttons">
-            <HashLink smooth to="/#about" className="login-button">
-              Learn More
-            </HashLink>
-            <button
-              onClick={() => openRegisterModal()}
-              className="signup-button"
-            >
-              Get Started
-            </button>
-          </div>
-        </div>
-      </div>
-
+  <div className="hero-content">
+    <img src={TarshoLogo} alt="Tarsho Logo" className="logo" />
+    <p className="hero-main-text">
+      Empowering Your Independence, Enriching Your Choices
+    </p>
+    <p className="hero-subtext">
+      Tarsho is where businesses and clients connect to turn unique visions into vibrant realities.
+    </p>
+    <p>Get started by logging in or learn more about our services.</p>
+    <div className="hero-buttons">
+      <HashLink smooth to="/#about" className="login-button">
+        Learn More
+      </HashLink>
+      <button
+        onClick={() => openRegisterModal()}
+        className="signup-button"
+      >
+        Get Started
+      </button>
+    </div>
+  </div>
+</div>
+<div className="content-overlay">
       <div id="about" className="mission-section">
         <h2>Our Mission</h2>
         <p>
@@ -115,6 +118,7 @@ const HomePage = () => {
         <Link to="/contact" className="contact-button">
           Get In Touch
         </Link>
+      </div>
       </div>
       <Footer />
 

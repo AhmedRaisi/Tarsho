@@ -71,7 +71,7 @@ router.delete('/:id', async (req, res) => {
   // Fetch 2 random services
 router.get('/random-services', async (req, res) => {
   try {
-    const randomServices = await Service.find().populate('providerId', 'name').limit(20);
+    const randomServices = await Service.find().populate('providerId', 'name').limit(2);
     res.json(randomServices);
   } catch (err) {
     console.error(err.message);
