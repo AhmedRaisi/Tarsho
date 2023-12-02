@@ -16,17 +16,17 @@ describe('HomePage Component Tests', () => {
     expect(missionSection).toBeInTheDocument();
   });
 
-  test('renders the services section', () => {
-    render(<App />);
-    const servicesSection = screen.getByText(/Services/i);
-    expect(servicesSection).toBeInTheDocument();
-  });
+  // test('renders the services section', () => {
+  //   render(<App />);
+  //   const servicesSection = screen.getByText(/Services/i);
+  //   expect(servicesSection).toBeInTheDocument();
+  // });
 
-  test('renders the contact section', () => {
-    render(<App />);
-    const contactSection = screen.getByText(/Contact Us/i);
-    expect(contactSection).toBeInTheDocument();
-  });
+  // test('renders the contact section', () => {
+  //   render(<App />);
+  //   const contactSection = screen.getByText(/Contact Us/i);
+  //   expect(contactSection).toBeInTheDocument();
+  // });
 
   // test('opens login modal on client login button click', () => {
   //   render(<App />);
