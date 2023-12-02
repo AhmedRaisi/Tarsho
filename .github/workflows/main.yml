@@ -54,20 +54,35 @@ jobs:
       - name: Shutdown Test Services
         run: docker-compose -f docker-compose.test.yml down
 
-  docker-build:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Build Docker Image for Backend
-        run: ./ci/build-backend.sh
-
-      - name: Build Docker Image for Frontend
-        run: ./ci/build-frontend.sh
+        docker-build:
+          strategy:
+            matrix:
+              os: [ubuntu-latest, windows-latest, macos-latest]
+          runs-on: ${{ matrix.os }}
+          steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v2
+      
+            - name: Install Docker on macOS
+              if: runner.os == 'macOS'
+              run: |
+                brew install --cask docker
+                open /Applications/Docker.app
+                # Wait for Docker to start
+                while ! docker system info > /dev/null 2>&1; do sleep 1; done
+      
+            - name: Install Docker on Windows
+              if: runner.os == 'Windows'
+              run: |
+                choco install docker-desktop
+                # Wait for Docker to start
+                while ! docker info >nul 2>&1; do Start-Sleep -s 1; done
+      
+            - name: Build Docker Image for Backend
+              run: ./ci/build-backend.sh
+      
+            - name: Build Docker Image for Frontend
+              run: ./ci/build-frontend.sh
 
   docker-compose-build:
     runs-on: ubuntu-latest
