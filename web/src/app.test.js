@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import App from './App';
 
 
@@ -39,8 +39,10 @@ describe('HomePage Component Tests', () => {
 
   test('opens register modal on "Get Started" button click', () => {
     render(<App />);
-    const registerButton = screen.getByText(/Get Started/i);
+    const heroSection = screen.getByTestId('hero-section'); // Add data-testid="hero-section" to the hero section in your component
+    const registerButton = within(heroSection).getByText(/Get Started/i);
     fireEvent.click(registerButton);
+  
     // Check if the register modal is rendered
     const registerModal = screen.getByText(/Register/i);
     expect(registerModal).toBeInTheDocument();
