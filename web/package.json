@@ -23,7 +23,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint --fix src/**/*.jsx",
     "format": "prettier src/**/*.jsx --write. --config ./.prettierrc",
-    "prepare": "if [ -d .git ]; then husky install; fi",
+    "prepare": "node prepare.js",
     "lint:no-cache": "eslint --cache=false --fix src/**/*.jsx"
   },
   "eslintConfig": {
