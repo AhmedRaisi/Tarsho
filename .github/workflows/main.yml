@@ -76,7 +76,15 @@ jobs:
         run: |
           choco install docker-desktop
           # Wait for Docker to start
-          while ! docker info >nul 2>&1; do Start-Sleep -s 1; done
+          $dockerReady = $false
+          while (-not $dockerReady) {
+            try {
+              docker info > $null
+              $dockerReady = $true
+            } catch {
+              Start-Sleep -Seconds 1
+            }
+          }
 
       - name: Build Docker Image for Backend
         run: ./ci/build-backend.sh
