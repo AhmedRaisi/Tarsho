@@ -25,7 +25,7 @@ const ClientHomePage = () => {
             rating: userProfile.data.rating 
           });
 
-          const servicesResponse = await axios.get('http://localhost:4000/api/services/random');
+          const servicesResponse = await axios.get('http://localhost:4000/api/services/random5');
           setServices(servicesResponse.data);
         } catch (err) {
           console.error('Error:', err);
@@ -62,7 +62,13 @@ const ClientHomePage = () => {
             {services.map(service => (
               <div key={service._id} className="service-item">
                 <h3>{service.name}</h3>
-                <p>Provided by: {service.providerId ? service.providerId.name : 'Unknown Provider'}</p>
+                <p>
+                Provided by: {
+                  service.providerId 
+                  ? <Link to={`/client/provider/${service.providerId._id}`}>{service.providerId.name}</Link>
+                  : 'Unknown Provider'
+                }
+              </p>
                 <p>{service.description}</p>
                 <p>Price: ${service.price}</p>
               </div>

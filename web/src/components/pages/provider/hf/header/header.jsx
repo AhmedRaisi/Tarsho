@@ -1,11 +1,12 @@
 import React from 'react';
 import './headstyles.css'; // Ensure the CSS file name is correct
 import { useNavigate } from 'react-router-dom'; 
-import { HashLink as Link } from 'react-router-hash-link'; // Importing HashLink for smooth scrolling
 import { Link as RouterLink } from 'react-router-dom'; // Importing Link for standard navigation
 
 const Header = () => {
   const navigate = useNavigate();
+  const userId = localStorage.getItem('userId'); // Retrieve userId from localStorage
+
 
   const handleLogout = () => {
     localStorage.removeItem('userId');
@@ -21,8 +22,8 @@ const Header = () => {
         <nav>
           <RouterLink to="/provider">Dashboard</RouterLink>
           <RouterLink to="/providerservices">Services</RouterLink>
-          <Link smooth to="/#ToDo">N/A</Link>
-          <RouterLink to="/providerprofile">Profile</RouterLink>
+          {/* <Link smooth to="/#ToDo">N/A</Link> */}
+          {userId && <RouterLink to={`/provider/provider/${userId}`}>Profile</RouterLink>} {/* Use userId in the link */}
           <button onClick={handleLogout} className="logout-button">Logout</button>
         </nav>
       </div>
