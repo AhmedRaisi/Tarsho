@@ -74,27 +74,27 @@ const Profile = () => {
       <div className='client-settings-page'>
         <h2>Profile Settings</h2>
         <div className='profile-picture-container'>
-          <img src={editableUser.profilePicture || profilePicturePlaceholder} alt="settings avatar" className='profile-picture' />
+          <img src={editableUser.profilePicture || profilePicturePlaceholder} alt='settings avatar' className='profile-picture' />
         </div>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
-            <input type='text' name='name' value={editableUser.name} onChange={handleChange} />
+            <input type='text' aria-label='name' name='name' value={editableUser.name} onChange={handleChange} />
             <span>Current: {originalUser.name}</span>
           </div>
           <div>
             <label>Email:</label>
-            <input type='email' name='email' value={editableUser.email} onChange={handleChange} />
+            <input type='email' aria-label='email' name='email' value={editableUser.email} onChange={handleChange} />
             <span>Current: {originalUser.email}</span>
           </div>
           <div>
             <label>Contact Number:</label>
-            <input type='text' name='contactNumber' value={editableUser.contactNumber} onChange={handleChange} />
+            <input type='text' aria-label='number' name='contactNumber' value={editableUser.contactNumber} onChange={handleChange} />
             <span>Current: {originalUser.contactNumber}</span>
           </div>
           <div>
             <label>Address:</label>
-            <input type='text' name='address' value={editableUser.address} onChange={handleChange} />
+            <input type='text' aria-label='address' name='address' value={editableUser.address} onChange={handleChange} />
             <span>Current: {originalUser.address}</span>
           </div>
           <button type='submit'>Save Changes</button>
