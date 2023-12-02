@@ -65,7 +65,7 @@ Tarsho employs a range of modern technologies:
 This method sets up the backend, frontend, and database together.
 
 - Clone the repository:
-```git clone https://github.com/your-repo/tarsho.git```
+```git clone https://github.com/AhmedRaisi/tarsho.git```
 
 
 - Start Docker containers:
