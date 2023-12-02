@@ -24,19 +24,19 @@ describe('HomePage Component Tests', () => {
   });
 
   test('renders the services section', () => {
-    renderWithRouter(<HomePage />);
+    renderWithRouter(<App />);
     const servicesSection = screen.getByText(/Services/i);
     expect(servicesSection).toBeInTheDocument();
   });
 
   test('renders the contact section', () => {
-    renderWithRouter(<HomePage />);
+    renderWithRouter(<App />);
     const contactSection = screen.getByText(/Contact Us/i);
     expect(contactSection).toBeInTheDocument();
   });
 
   test('opens login modal on client login button click', () => {
-    renderWithRouter(<HomePage />);
+    renderWithRouter(<App />);
     const clientLoginButton = screen.getByText(/Client Login/i);
     fireEvent.click(clientLoginButton);
     // Check if the login modal is rendered with "client" role
@@ -45,7 +45,7 @@ describe('HomePage Component Tests', () => {
   });
 
   test('opens register modal on "Get Started" button click', () => {
-    renderWithRouter(<HomePage />);
+    renderWithRouter(<App />);
     const registerButton = screen.getByText(/Get Started/i);
     fireEvent.click(registerButton);
     // Check if the register modal is rendered
