@@ -31,7 +31,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <div id="home" className="hero-section">
+      <div id="home" className="hero-section" data-testid="hero-section">
   <div className="hero-content">
     <img src={TarshoLogo} alt="Tarsho Logo" className="logo" />
     <p className="hero-main-text">

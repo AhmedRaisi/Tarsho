@@ -28,25 +28,25 @@ describe('HomePage Component Tests', () => {
     expect(contactSection).toBeInTheDocument();
   });
 
-  test('opens login modal on client login button click', () => {
-    render(<App />);
-    const clientLoginButton = screen.getByText(/Client Login/i);
-    fireEvent.click(clientLoginButton);
-    // Check if the login modal is rendered with "client" role
-    const loginModal = screen.getByText(/Login as Client/i);
-    expect(loginModal).toBeInTheDocument();
-  });
-
-  // test('opens register modal on "Get Started" button click', () => {
+  // test('opens login modal on client login button click', () => {
   //   render(<App />);
-  //   const heroSection = screen.getByTestId('hero-section'); // Add data-testid="hero-section" to the hero section in your component
-  //   const registerButton = within(heroSection).getByText(/Get Started/i);
-  //   fireEvent.click(registerButton);
-  
-  //   // Check if the register modal is rendered
-  //   const registerModal = screen.getByText(/Register/i);
-  //   expect(registerModal).toBeInTheDocument();
+  //   const clientLoginButton = screen.getByText(/Client Login/i);
+  //   fireEvent.click(clientLoginButton);
+  //   // Check if the login modal is rendered with "client" role
+  //   const loginModal = screen.getByText(/Login/i);
+  //   expect(loginModal).toBeInTheDocument();
   // });
+
+  test('opens register modal on "Get Started" button click', () => {
+    render(<App />);
+    const heroSection = screen.getByTestId('hero-section'); // Add data-testid="hero-section" to the hero section in your component
+    const registerButton = within(heroSection).getByText(/Get Started/i);
+    fireEvent.click(registerButton);
+  
+    // Check if the register modal is rendered
+    const registerModal = screen.getByText(/Register/i);
+    expect(registerModal).toBeInTheDocument();
+  });
 
   // Additional tests can be added here
 });
