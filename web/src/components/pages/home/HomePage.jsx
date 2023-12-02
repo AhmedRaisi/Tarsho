@@ -31,7 +31,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <div id="home" className="hero-section" data-testid="hero-section">
+      <div id="home" className="hero-section">
   <div className="hero-content">
     <img src={TarshoLogo} alt="Tarsho Logo" className="logo" />
     <p className="hero-main-text">
@@ -41,7 +41,7 @@ const HomePage = () => {
       Tarsho is where businesses and clients connect to turn unique visions into vibrant realities.
     </p>
     <p>Get started by logging in or learn more about our services.</p>
-    <div className="hero-buttons">
+    <div className="hero-buttons" data-testid="hero-section" >
       <HashLink smooth to="/#about" className="login-button">
         Learn More
       </HashLink>
