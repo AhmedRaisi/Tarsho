@@ -58,7 +58,7 @@ Tarsho employs a range of modern technologies:
 
 ### Installation
 
-#### Running the Project with Docker (RECCOMENDED FOR BACKEND):
+#### Running the Project with Docker:
 
 This method sets up the backend, frontend, and database together.
 
@@ -72,7 +72,7 @@ This method sets up the backend, frontend, and database together.
 
 Access the frontend at[http://localhost:3000](http://localhost:3000/) and backend APIs at[http://localhost:4000](http://localhost:4000/).
 
-#### Development without Docker (RECCOMENDED FOR FRONTEND)
+#### Development without Docker 
 
 For frontend React development:
 
