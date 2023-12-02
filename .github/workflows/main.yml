@@ -63,15 +63,33 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install Minikube and Docker on macOS
+      - name: Install Docker and Minikube on macOS
         if: runner.os == 'macOS'
         run: |
+          brew install --cask docker
+          # Start Docker.app
+          open /Applications/Docker.app
+          # Wait for Docker to start
+          for i in {1..30}; do
+            if docker system info > /dev/null 2>&1; then
+              echo "Docker is ready."
+              break
+            fi
+            echo "Waiting for Docker to initialize..."
+            sleep 10
+          done
+          if [ $i -eq 30 ]; then
+            echo "Docker failed to initialize."
+            exit 1
+          fi
+          # Now install Minikube
           brew install minikube
           minikube start --driver=docker
           # Set Docker environment variables
           eval $(minikube docker-env)
           # Verify Docker is running
           docker system info
+      
 
       - name: Install Docker on Windows
         if: runner.os == 'Windows'
