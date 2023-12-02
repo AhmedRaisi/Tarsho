@@ -103,6 +103,6 @@ const ProviderServices = () => {
 AddServiceModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onAdd: PropTypes.object.isRequired
+  onAdd: PropTypes.func.isRequired
 }
 export default ProviderServices
