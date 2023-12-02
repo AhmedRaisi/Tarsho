@@ -54,8 +54,6 @@ Tarsho employs a range of modern technologies:
 ### Prerequisites
 
 - js -[Download & Install](https://nodejs.org/en/download/)
-- React & React Native CLI -[Installation Guide](https://reactnative.dev/docs/environment-setup)
-- MongoDB -[Download & Install](https://www.mongodb.com/try/download/community)
 - Docker -[Download & Install](https://www.docker.com/products/docker-desktop)
 
 ### Installation
