@@ -69,8 +69,7 @@ This method sets up the backend, frontend, and database together.
 - Start Docker containers:
 ```docker-compose up --build```
 
-
-Access the frontend at[http://localhost:3000](http://localhost:3000/) and backend APIs at[http://localhost:4000](http://localhost:4000/).
+Access the project at [http://localhost:4000](http://localhost:4000/).
 
 #### Development without Docker 
 
