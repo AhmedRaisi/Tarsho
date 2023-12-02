@@ -22,7 +22,8 @@
     "test": "nyc jest",
     "eject": "react-scripts eject",
     "lint": "eslint  --fix src/**/*.jsx",
-    "format": "prettier src/**/*.jsx --write. --config ./.prettierrc"
+    "format": "prettier src/**/*.jsx --write. --config ./.prettierrc",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -67,7 +68,13 @@
     }
   },
   "lint-staged": {
-    "*.+(js|jsx)": ["eslint --fix", "git add"],
-    "*.+(json|css|md)": ["prettier --write", "git add"]
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
