@@ -3,6 +3,7 @@ import axios from 'axios'
 import Header from '../hf/header/header'
 import Footer from '../hf/footer/footer'
 import '../services/ProviderServicsPageStyles.css'
+import PropTypes from 'prop-types'
 
 const AddServiceModal = ({ isOpen, onClose, onAdd }) => {
   const [newService, setNewService] = useState({ name: '', description: '', price: '' })
@@ -99,4 +100,9 @@ const ProviderServices = () => {
   )
 }
 
+AddServiceModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onAdd: PropTypes.object.isRequired
+}
 export default ProviderServices

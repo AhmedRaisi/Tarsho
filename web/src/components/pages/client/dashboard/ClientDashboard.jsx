@@ -25,13 +25,8 @@ const ClientHomePage = () => {
             rating: userProfile.data.rating
           })
 
-<<<<<<< HEAD
-          const servicesResponse = await axios.get('http://localhost:4000/api/services/random')
+          const servicesResponse = await axios.get('http://localhost:4000/api/services/random5')
           setServices(servicesResponse.data)
-=======
-          const servicesResponse = await axios.get('http://localhost:4000/api/services/random5');
-          setServices(servicesResponse.data);
->>>>>>> 04e559fade30c18b4cb0a6ecd8c9b1b24cfaf934
         } catch (err) {
           console.error('Error:', err)
           setError(err.message)
@@ -68,12 +63,13 @@ const ClientHomePage = () => {
               <div key={service._id} className='service-item'>
                 <h3>{service.name}</h3>
                 <p>
-                Provided by: {
-                  service.providerId 
-                  ? <Link to={`/client/provider/${service.providerId._id}`}>{service.providerId.name}</Link>
-                  : 'Unknown Provider'
-                }
-              </p>
+                  Provided by:{' '}
+                  {service.providerId ? (
+                    <Link to={`/client/provider/${service.providerId._id}`}>{service.providerId.name}</Link>
+                  ) : (
+                    'Unknown Provider'
+                  )}
+                </p>
                 <p>{service.description}</p>
                 <p>Price: ${service.price}</p>
               </div>
