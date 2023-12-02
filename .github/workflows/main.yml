@@ -63,7 +63,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-        - name: Install Docker on macOS
+      - name: Install Docker on macOS
         if: runner.os == 'macOS'
         run: |
           brew install --cask docker
