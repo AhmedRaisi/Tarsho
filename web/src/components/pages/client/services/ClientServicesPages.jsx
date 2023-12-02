@@ -14,11 +14,11 @@ const ClientServicesPage = () => {
             try {
                 //const usersRequest = axios.get('http://localhost:4000/api/services/random-users');
                 const servicesRequest = axios.get('http://localhost:4000/api/services/random-services');
-                console.log(servicesRequest);
+                // console.log(servicesRequest);
                 // console.log(usersRequest);
                 // const [servicesResponse, usersResponse] = await Promise.all([servicesRequest, usersRequest]);
                 const [servicesResponse] = await Promise.all([servicesRequest]);
-                console.log(servicesResponse);
+                //console.log(servicesResponse);
 
                 // const combinedData = [...servicesResponse.data, ...usersResponse.data];
                 const combinedData = [...servicesResponse.data].sort(() => 0.5 - Math.random());
