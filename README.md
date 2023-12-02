@@ -106,7 +106,14 @@ For frontend React development:
 - Stop containers:
  ```docker-compose down```
 
+- Start containers then return to cmd:
+ ```docker-compose up -d```
 
+- Restart containers:   
+ ```docker-compose restart```
+
+- Build without cacher containers:
+ ```docker-compose build --no-cache```
 ## Contributing
 
 Contributions are welcome! Please read our[Contributing Guide](https://chat.openai.com/c/LINK_TO_CONTRIBUTING_GUIDE) for details on the code of conduct and the process for submitting pull requests.
