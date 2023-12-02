@@ -25,7 +25,7 @@ const ClientHomePage = () => {
             rating: userProfile.data.rating 
           });
 
-          const servicesResponse = await axios.get('http://localhost:4000/api/services/random');
+          const servicesResponse = await axios.get('http://localhost:4000/api/services/random5');
           setServices(servicesResponse.data);
         } catch (err) {
           console.error('Error:', err);

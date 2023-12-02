@@ -1,7 +1,6 @@
 import React from 'react';
 import './headstyles.css'; // Ensure the CSS file name is correct
 import { useNavigate } from 'react-router-dom'; 
-import { HashLink as Link } from 'react-router-hash-link'; // Importing HashLink for smooth scrolling
 import { Link as RouterLink } from 'react-router-dom'; // Importing Link for standard navigation
 
 const Header = () => {
