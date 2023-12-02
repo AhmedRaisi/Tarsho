@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -7,6 +8,18 @@ import './styles.css'
 import LoginModal from './LoginModal.jsx'
 import RegisterModal from './RegisterModal.jsx'
 import { HashLink } from 'react-router-hash-link' // Importing HashLink
+=======
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Header from './hf/header/header.jsx';
+import Footer from './hf/footer/footer.jsx';
+import './styles.css';
+import LoginModal from './LoginModal.jsx';
+import RegisterModal from './RegisterModal.jsx';
+import { HashLink } from 'react-router-hash-link'; // Importing HashLink
+import TarshoLogo from './../../../assets/TarshoLogoConcept.png';
+
+>>>>>>> 04e559fade30c18b4cb0a6ecd8c9b1b24cfaf934
 
 const HomePage = () => {
   // State to manage which role is trying to log in
@@ -30,6 +43,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
+<<<<<<< HEAD
       <div id='home' className='hero-section'>
         <div className='hero-content'>
           <h1>Welcome to Tarsho!</h1>
@@ -50,6 +64,33 @@ const HomePage = () => {
       </div>
 
       <div id='about' className='mission-section'>
+=======
+      <div id="home" className="hero-section">
+  <div className="hero-content">
+    <img src={TarshoLogo} alt="Tarsho Logo" className="logo" />
+    <p className="hero-main-text">
+      Empowering Your Independence, Enriching Your Choices
+    </p>
+    <p className="hero-subtext">
+      Tarsho is where businesses and clients connect to turn unique visions into vibrant realities.
+    </p>
+    <p>Get started by logging in or learn more about our services.</p>
+    <div className="hero-buttons" data-testid="hero-section" >
+      <HashLink smooth to="/#about" className="login-button">
+        Learn More
+      </HashLink>
+      <button
+        onClick={() => openRegisterModal()}
+        className="signup-button"
+      >
+        Get Started
+      </button>
+    </div>
+  </div>
+</div>
+<div className="content-overlay">
+      <div id="about" className="mission-section">
+>>>>>>> 04e559fade30c18b4cb0a6ecd8c9b1b24cfaf934
         <h2>Our Mission</h2>
         <p>
           "To empower service providers with the tools and visibility they need to grow their businesses while providing clients with an
@@ -74,6 +115,7 @@ const HomePage = () => {
       <div id='services' className='services-container'>
         <h2 className='services-title'>Services</h2>
 
+<<<<<<< HEAD
         {/* Development Navigation Buttons */}
         <Link to='/client' className='dev-nav-button'>
           (DEV) Client Home
@@ -82,6 +124,8 @@ const HomePage = () => {
           (DEV) Provider Home
         </Link>
 
+=======
+>>>>>>> 04e559fade30c18b4cb0a6ecd8c9b1b24cfaf934
         {/* Services Cards Section */}
         <div className='services-section'>
           <div className='service client'>
@@ -106,6 +150,7 @@ const HomePage = () => {
         <Link to='/contact' className='contact-button'>
           Get In Touch
         </Link>
+      </div>
       </div>
       <Footer />
 

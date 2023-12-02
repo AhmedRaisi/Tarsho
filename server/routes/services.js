@@ -68,44 +68,29 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-router.get('/random', async (req, res) => {
+  // Fetch 2 random services
+router.get('/random-services', async (req, res) => {
+  try {
+    const randomServices = await Service.find().populate('providerId', 'name').limit(2);
+    res.json(randomServices);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+  router.get('/random5', async (req, res) => {
     try {
       // Fetch 20 random services and populate provider details
-      const services = await Service.find().populate('providerId', 'name').limit(20);
+      const services = await Service.find().populate('providerId', 'name').limit(5);
       res.json(services);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
     }
   });
-
+  
 module.exports = router;
 
-router.get('/homepage-services/:userId', async (req, res) => {
-  try {
-    const userId = req.params.userId;
 
-    // Fetch the user's role
-    const user = await User.findById(userId);
-    if (!user) return res.status(404).json({ msg: 'User not found' });
 
-    let services;
-    if (user.role === 'provider') {
-      // Fetch 5 random services offered by this provider
-      services = await Service.aggregate([
-        { $match: { providerId: user._id } },
-        { $sample: { size: 5 } }
-      ]);
-    } else {
-      // Fetch 5 random services from any provider
-      services = await Service.aggregate([
-        { $sample: { size: 5 } }
-      ]);
-    }
-
-    res.json(services);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
-  }
-});

@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import { HashLink as Link } from 'react-router-hash-link'
 import './styles.css'
 import LoginModal from './../../LoginModal.jsx'
+=======
+import React, { useState } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+import './hstyles.css';
+import LoginModal from './../../LoginModal.jsx';
+>>>>>>> 04e559fade30c18b4cb0a6ecd8c9b1b24cfaf934
 
 const Header = () => {
   const [showLogin, setShowLogin] = useState(false)

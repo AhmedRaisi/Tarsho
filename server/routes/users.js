@@ -131,4 +131,16 @@ router.put('/profile/:id', async (req, res) => {
   }
 });
 
+
+// Fetch 2 random users
+router.get('/random-users', async (req, res) => {
+  try {
+    const randomUsers = await User.find().limit(2);
+    res.json(randomUsers);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;

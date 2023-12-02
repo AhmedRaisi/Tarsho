@@ -71,3 +71,12 @@ body, html {
     text-align: center;
   }
 }
+/* Reduce top and bottom margins for the image */
+.llogo {
+  width: 150px; /* Adjust the size as needed */
+  height: auto;
+  margin-top: 5px; /* Reduce top margin */
+  margin-bottom: 5px; /* Reduce bottom margin */
+  margin-right: 20px; /* Add margin to separate logo from navigation */
+
+}
