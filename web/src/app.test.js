@@ -1,16 +1,18 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import HomePage from './HomePage';
+import HomePage from './components/pages/home/HomePage';
+import App from './App';
+
 
 describe('HomePage Component Tests', () => {
   test('renders the hero section with main text', () => {
-    render(<HomePage />);
+    render(<App />);
     const mainText = screen.getByText(/Empowering Your Independence, Enriching Your Choices/i);
     expect(mainText).toBeInTheDocument();
   });
 
   test('renders the mission section', () => {
-    render(<HomePage />);
+    render(<App />);
     const missionSection = screen.getByText(/Our Mission/i);
     expect(missionSection).toBeInTheDocument();
   });
