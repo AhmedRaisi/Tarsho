@@ -20,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "nyc jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint  --fix src/**/*.jsx",
+    "format": "prettier src/**/*.jsx --write. --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
