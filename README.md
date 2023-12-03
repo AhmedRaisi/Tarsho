@@ -67,16 +67,16 @@ Start Docker containers without building:
 ```npm run up```
 
 Start Docker containers and build them if necessary:
-```npm run upbuild ```
+```docker-compose up --build ```
 
 Build Docker containers without cache:
-```npm run buildnocache```
+```docker-compose build --no-cache```
 
 Build Docker containers:
 ```npm run build```
 
 Start Docker containers in detached mode (running in the background):
-```npm run upd```
+```docker-compose up -d```
 
 Restart Docker containers:
 ```npm run restart```
