@@ -8,6 +8,12 @@
   "scripts": {
     "lint": "cd web && npm run lint",
     "lint:no-cache": "cd web && npm run lint:no-cache",
-    "prepare": "node prepare.js"
+    "prepare": "node prepare.js",
+    "build nocache": "docker-compose build --no-cache",
+    "build": "docker-compose build",
+    "up": "docker-compose up",
+    "up -d": "docker-compose up -d",
+    "restart": "docker-compose restart",
+    "down": "docker-compose down"
   }
 }
