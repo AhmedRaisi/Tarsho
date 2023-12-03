@@ -7,7 +7,7 @@ const ServiceSchema = new Schema({
     ref: 'User', 
     required: true 
   },
-  name: { 
+  providername: { 
     type: String, 
     required: true 
   },
@@ -23,7 +23,10 @@ const ServiceSchema = new Schema({
     type: Boolean, 
     default: true 
   },
-  requirements: String, // Optional field for any special requirements
+  requirements: { 
+    type: String,
+    required: false 
+  }, // Optional field for any special requirements
 });
 
 module.exports = mongoose.model('Service', ServiceSchema);

@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 // LoginModal.jsx
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import './styles.css'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const LoginModal = ({ onClose }) => {
   const [username, setUsername] = useState('')
@@ -15,28 +15,42 @@ const LoginModal = ({ onClose }) => {
   const handleLogin = async (event) => {
     event.preventDefault()
 
+    const LOGIN_MUTATION = `
+      mutation Login($username: String!, $password: String!) {
+        login(username: $username, password: $password) {
+          userId
+          role
+          token
+        }
+      }
+    `
+
     try {
-      const response = await axios.post('http://localhost:4000/api/users/login', {
-        username,
-        password
+      const response = await axios.post('http://localhost:4000/graphql', {
+        query: LOGIN_MUTATION,
+        variables: {
+          username,
+          password
+        }
       })
 
-      console.log('Login response:', response.data)
+      const data = response.data.data.login
+      console.log('Login response:', data)
       onClose() // Close the modal
 
-      const userRole = response.data.role // Assuming the role is returned in the login response
-      localStorage.setItem('userId', response.data.userId) // Assuming the user ID is in the response
+      localStorage.setItem('userId', data.userId)
+      localStorage.setItem('token', data.token) // Save token if you're using it for authentication
 
       // Navigate based on the user's role
-      if (userRole === 'client') {
+      if (data.role === 'client') {
         navigate('/client')
-      } else if (userRole === 'provider') {
+      } else if (data.role === 'provider') {
         navigate('/provider')
       } else {
         console.error('Unknown role')
       }
     } catch (error) {
-      console.error(setLog(true), 'Login failed:', error.response?.data?.msg || error.message)
+      console.error(setLog(true), 'Login failed:', error.response?.data?.errors[0]?.message || error.message)
     }
   }
 
@@ -75,7 +89,7 @@ const LoginModal = ({ onClose }) => {
               Login
             </button>
             <div className='linktopage'>
-              New user ? &nbsp;
+              New user? &nbsp;
               <Link to='/register' className='linktopage'>
                 Register account
               </Link>
@@ -86,6 +100,10 @@ const LoginModal = ({ onClose }) => {
       </div>
     </div>
   )
+}
+
+LoginModal.propTypes = {
+  onClose: PropTypes.func.isRequired
 }
 
 export default LoginModal

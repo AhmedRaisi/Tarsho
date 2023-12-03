@@ -16,7 +16,7 @@ const UserSchema = new Schema({
     required: true,
     unique: true // Ensuring email is unique
   },
-  name: {
+  realname: {
     type: String,
     required: false // Name is not required
     // unique: false is default and hence not needed explicitly
@@ -45,8 +45,6 @@ const UserSchema = new Schema({
     required: false, // Making it optional
     default: '' // Default value if no picture is provided
   },
-
-
   services: [{
     type: Schema.Types.ObjectId,
     ref: 'Service'
@@ -55,8 +53,6 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Review'
   }],
-
-
 });
 
 module.exports = mongoose.model('User', UserSchema);
