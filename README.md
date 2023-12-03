@@ -10,8 +10,6 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/AhmedRaisi/tarsho)
 [![codecov](https://codecov.io/gh/AhmedRaisi/Tarsho/graph/badge.svg?token=YQHS2IWY43)](https://codecov.io/gh/AhmedRaisi/Tarsho)
 
-**"Empowering Your Independence, Enriching Your Choices – Tarsho is where entrepreneurs and clients connect to turn unique visions into vibrant realities."**
-
 </div>
 <br>
 
@@ -54,29 +52,48 @@ Tarsho employs a range of modern technologies:
 ### Prerequisites
 
 - js -[Download & Install](https://nodejs.org/en/download/)
-- React & React Native CLI -[Installation Guide](https://reactnative.dev/docs/environment-setup)
-- MongoDB -[Download & Install](https://www.mongodb.com/try/download/community)
 - Docker -[Download & Install](https://www.docker.com/products/docker-desktop)
 
 ### Installation
 
-#### Running the Project with Docker (RECCOMENDED FOR BACKEND):
+#### Running the Project with Docker:
 
 This method sets up the backend, frontend, and database together.
 
 - Clone the repository:
-```git clone https://github.com/your-repo/tarsho.git```
+```git clone https://github.com/AhmedRaisi/tarsho.git```
+
+Build Docker containers:
+```npm run build```
+
+Start Docker containers without building:
+```npm run up```
+
+Access the project at [http://localhost:4000](http://localhost:4000/).
+
+Some Useful commands:
+
+Restart Docker containers:
+```npm run restart```
+
+Stop Docker containers:
+```npm run down```
+
+Start Docker containers in detached mode (running in the background):
+```docker-compose up -d```
+
+Start Docker containers and build them if necessary:
+```docker-compose up --build ```
+
+Build Docker containers without cache:
+```docker-compose build --no-cache```
 
 
-- Start Docker containers:
-```docker-compose up --build```
+Access the project at [http://localhost:4000](http://localhost:4000/).
 
+#### Development without Docker 
 
-Access the frontend at[http://localhost:3000](http://localhost:3000/) and backend APIs at[http://localhost:4000](http://localhost:4000/).
-
-#### Development without Docker (RECCOMENDED FOR FRONTEND)
-
-For frontend React development:
+For frontend React development (Recommended for WSL2 users):
 
 - Navigate to the web directory and install dependencies:
 ```cd web```
@@ -84,31 +101,6 @@ For frontend React development:
 
 - Run the React application:
 ```npm start```
-
-
-#### Backend and Database Setup
-
-- Navigate to the server directory and install dependencies:
-```cd server```
-```npm install```
-
-- Start the backend server:
-```npm start```
-
-
-#### Docker Commands
-
-- View logs:
-```docker logs [container\_name]```
-
-
-- Access container shell:
-```docker exec -it [container\_name] sh```
-
-
-- Stop containers:
- ```docker-compose down```
-
 
 ## Contributing
 
