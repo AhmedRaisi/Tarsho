@@ -13,6 +13,14 @@ const app = express();
 // Middleware to log HTTP requests
 app.use(morgan('dev'));
 
+// Custom Morgan token to skip logging for specific routes
+morgan.token('ignore-hot-update', function (req, res) {
+  return req.url.includes('.hot-update.') ? null : res.statusCode;
+});
+
+// Use the custom token in your logging format
+app.use(morgan(':method :url :ignore-hot-update :response-time ms'));
+
 // Middleware to parse JSON bodies
 app.use(express.json());
 
@@ -28,7 +36,8 @@ app.use('/api/reviews', reviewRoutes);
 
 // Connect to MongoDB
 const dbURI = 'mongodb://mongodb:27017/usersdb'
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI)
   .catch(err => console.error(err));
+
 
 module.exports = app;

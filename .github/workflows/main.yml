@@ -55,11 +55,56 @@ jobs:
         run: docker-compose -f docker-compose.test.yml down
 
   docker-build:
-    needs: backend-tests
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      # - name: Install Docker and Minikube on macOS
+      #   if: runner.os == 'macOS'
+      #   run: |
+      #     brew install --cask docker
+      #     # Start Docker.app
+      #     open /Applications/Docker.app
+      #     # Wait for Docker to start
+      #     for i in {1..30}; do
+      #       if docker system info > /dev/null 2>&1; then
+      #         echo "Docker is ready."
+      #         break
+      #       fi
+      #       echo "Waiting for Docker to initialize..."
+      #       sleep 10
+      #     done
+      #     if [ $i -eq 30 ]; then
+      #       echo "Docker failed to initialize."
+      #       exit 1
+      #     fi
+      #     # Now install Minikube
+      #     brew install minikube
+      #     minikube start --driver=docker
+      #     # Set Docker environment variables
+      #     eval $(minikube docker-env)
+      #     # Verify Docker is running
+      #     docker system info
+      
+
+      - name: Install Docker on Windows
+        if: runner.os == 'Windows'
+        run: |
+          choco install docker-desktop
+          # Wait for Docker to start
+          $dockerReady = $false
+          while (-not $dockerReady) {
+            try {
+              docker info > $null
+              $dockerReady = $true
+            } catch {
+              Start-Sleep -Seconds 1
+            }
+          }
 
       - name: Build Docker Image for Backend
         run: ./ci/build-backend.sh
@@ -68,11 +113,29 @@ jobs:
         run: ./ci/build-frontend.sh
 
   docker-compose-build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     needs: docker-build
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Install Docker on Windows
+        if: runner.os == 'Windows'
+        run: |
+          choco install docker-desktop
+          # Wait for Docker to start
+          $dockerReady = $false
+          while (-not $dockerReady) {
+            try {
+              docker info > $null
+              $dockerReady = $true
+            } catch {
+              Start-Sleep -Seconds 1
+            }
+          }
 
       - name: Build and Test Docker Compose Setup
         run: ./ci/build-compose.sh

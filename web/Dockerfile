@@ -7,6 +7,9 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Copy prepare.js
+COPY prepare.js ./
+
 # Install project dependencies
 RUN npm install
 

@@ -33,3 +33,6 @@ Thumbs.db
 
 # Optional eslint cache
 .eslintcache
+
+#nyc local code coverage tests 
+.nyc_output/

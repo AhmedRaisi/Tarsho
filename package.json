@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.1.0",
+    "husky": "^8.0.0"
+  },
+  "scripts": {
+    "lint": "cd web && npm run lint",
+    "lint:no-cache": "cd web && npm run lint:no-cache",
+    "prepare": "node prepare.js"
+  }
+}
