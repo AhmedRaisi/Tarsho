@@ -63,8 +63,24 @@ This method sets up the backend, frontend, and database together.
 - Clone the repository:
 ```git clone https://github.com/AhmedRaisi/tarsho.git```
 
+Build Docker containers:
+```npm run build```
+
 Start Docker containers without building:
 ```npm run up```
+
+Access the project at [http://localhost:4000](http://localhost:4000/).
+
+Some Useful commands:
+
+Restart Docker containers:
+```npm run restart```
+
+Stop Docker containers:
+```npm run down```
+
+Start Docker containers in detached mode (running in the background):
+```docker-compose up -d```
 
 Start Docker containers and build them if necessary:
 ```docker-compose up --build ```
@@ -72,17 +88,6 @@ Start Docker containers and build them if necessary:
 Build Docker containers without cache:
 ```docker-compose build --no-cache```
 
-Build Docker containers:
-```npm run build```
-
-Start Docker containers in detached mode (running in the background):
-```docker-compose up -d```
-
-Restart Docker containers:
-```npm run restart```
-
-Stop Docker containers:
-```npm run down```
 
 Access the project at [http://localhost:4000](http://localhost:4000/).
 
