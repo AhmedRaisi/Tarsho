@@ -63,15 +63,32 @@ This method sets up the backend, frontend, and database together.
 - Clone the repository:
 ```git clone https://github.com/AhmedRaisi/tarsho.git```
 
+Start Docker containers without building:
+```npm run up```
 
-- Start Docker containers:
-```docker-compose up --build```
+Start Docker containers and build them if necessary:
+```npm run upbuild ```
+
+Build Docker containers without cache:
+```npm run build nocache```
+
+Build Docker containers:
+```npm run build```
+
+Start Docker containers in detached mode (running in the background):
+```npm run up -d```
+
+Restart Docker containers:
+```npm run restart```
+
+Stop Docker containers:
+```npm run down```
 
 Access the project at [http://localhost:4000](http://localhost:4000/).
 
 #### Development without Docker 
 
-For frontend React development:
+For frontend React development (Recommended for WSL2 users):
 
 - Navigate to the web directory and install dependencies:
 ```cd web```
@@ -80,38 +97,6 @@ For frontend React development:
 - Run the React application:
 ```npm start```
 
-
-#### Backend and Database Setup
-
-- Navigate to the server directory and install dependencies:
-```cd server```
-```npm install```
-
-- Start the backend server:
-```npm start```
-
-
-#### Docker Commands
-
-- View logs:
-```docker logs [container\_name]```
-
-
-- Access container shell:
-```docker exec -it [container\_name] sh```
-
-
-- Stop containers:
- ```docker-compose down```
-
-- Start containers then return to cmd:
- ```docker-compose up -d```
-
-- Restart containers:   
- ```docker-compose restart```
-
-- Build without cacher containers:
- ```docker-compose build --no-cache```
 ## Contributing
 
 Contributions are welcome! Please read our[Contributing Guide](https://chat.openai.com/c/LINK_TO_CONTRIBUTING_GUIDE) for details on the code of conduct and the process for submitting pull requests.
