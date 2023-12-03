@@ -1,5 +1,9 @@
 /* Footer Styles */
 .footerrr {
+  position: fixed; /* Position the footer fixed at the bottom */
+  left: 0;
+  bottom: 0;
+  width: 100%; /* Full width of the viewport */
   background: rgba(48, 63, 159, 0.85); /* Professional deep blue */
   color: white; /* White text for readability */
   text-align: center; /* Center align text */
@@ -10,7 +14,7 @@
 
 .footer-content {
   max-width: 1200px; /* Maximum width for content */
-  margin: auto; /* Center content */
+  margin: 0 auto; /* Center content */
 }
 
 .footerrr p {
@@ -22,11 +26,11 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .footer {
+  .footerrr {
     padding: 15px 0; /* Adjust padding for smaller screens */
   }
 
-  .footer p {
+  .footerrr p {
     font-size: 0.875rem; /* Smaller font size for mobile devices */
   }
 }
