@@ -9,10 +9,11 @@
     "lint": "cd web && npm run lint",
     "lint:no-cache": "cd web && npm run lint:no-cache",
     "prepare": "node prepare.js",
-    "build nocache": "docker-compose build --no-cache",
+    "buildnocache": "docker-compose build --no-cache",
     "build": "docker-compose build",
+    "upbuild": "docker-compose up --build",
     "up": "docker-compose up",
-    "up -d": "docker-compose up -d",
+    "upd": "docker-compose up -d",
     "restart": "docker-compose restart",
     "down": "docker-compose down"
   }
