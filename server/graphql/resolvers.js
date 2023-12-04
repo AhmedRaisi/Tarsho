@@ -37,6 +37,13 @@ const resolvers = {
         throw new Error(error);
       }
     },
+    userProfile: async (_, { id }) => {
+      try {
+        return await User.findById(id).select('-password');
+      } catch (error) {
+        throw new Error('Server error');
+      }
+    },
   },
   Mutation: {
     // Resolver to add a new user
@@ -124,6 +131,7 @@ const resolvers = {
         // include any other fields you want to return
       };
     },
+    
 
   },
 };

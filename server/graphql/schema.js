@@ -44,6 +44,13 @@ const RootQuery = new GraphQLObjectType({
         return Service.find({});
       },
     },
+    userProfile: {
+      type: UserType,
+      args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(parent, args) {
+        return User.findById(args.id).select('-password');
+      },
+    },
   },
 });
 
@@ -114,7 +121,7 @@ const Mutation = new GraphQLObjectType({
         // Resolve function to create and save a new service using Mongoose
         const service = new Service({
           providerId: args.providerId,
-          providername: args.providername, // Updated field name
+          providername: args.providername, 
           description: args.description,
           price: args.price,
         });
@@ -160,12 +167,12 @@ const Mutation = new GraphQLObjectType({
           token,
           userId: user.id,
           role: user.role,
-          name: user.name // assuming name is a field on the user model
+          name: user.name 
         };
       }
     },
     register: {
-      type: RegisterResponseType, // Assuming UserType has the fields you want to return
+      type: RegisterResponseType, 
       args: {
         username: { type: new GraphQLNonNull(GraphQLString) },
         password: { type: new GraphQLNonNull(GraphQLString) },
@@ -206,6 +213,28 @@ const Mutation = new GraphQLObjectType({
         };
       }
     },
+    updateUser: {
+      type: UserType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        realname: { type: GraphQLString },
+        email: { type: GraphQLString },
+        contactNumber: { type: GraphQLString },
+        address: { type: GraphQLString },
+        profilePicture: { type: GraphQLString },
+      },
+      async resolve(parent, args) {
+        // Logic to update user details
+        // You'll need to adjust this logic based on how your User model is set up
+        return User.findByIdAndUpdate(args.id, { 
+          realname: args.realname,
+          email: args.email,
+          contactNumber: args.contactNumber,
+          address: args.address,
+          profilePicture: args.profilePicture
+        }, { new: true });
+      },
+    },
 
   },
 });
@@ -217,6 +246,8 @@ module.exports = new GraphQLSchema({
   query: RootQuery, // RootQuery for queries
   mutation: Mutation, // Mutation for mutations
 });
+
+
 
 
 

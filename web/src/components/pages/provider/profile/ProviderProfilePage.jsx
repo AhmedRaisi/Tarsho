@@ -1,4 +1,3 @@
-// ProviderProfile.jsx
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from '../hf/header/header'
@@ -9,7 +8,7 @@ import profilePicturePlaceholder from './../../../../assets/profilepictureplaceh
 
 const ProviderProfile = () => {
   const [user, setUser] = useState({
-    name: '',
+    realname: '',
     email: '',
     contactNumber: '',
     address: '',
@@ -28,8 +27,24 @@ const ProviderProfile = () => {
 
   const fetchUserData = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/users/profile/${userId}`)
-      setUser(response.data)
+      const graphqlQuery = {
+        query: `
+          query GetUserProfile($id: ID!) {
+            userProfile(id: $id) {
+              username
+              email
+              contactNumber
+              address
+              profilePicture
+            }
+          }
+        `,
+        variables: {
+          id: userId
+        }
+      }
+      const response = await axios.post('http://localhost:4000/graphql', graphqlQuery)
+      setUser(response.data.data.userProfile)
     } catch (err) {
       console.error('Error fetching user data:', err)
     }
@@ -39,13 +54,13 @@ const ProviderProfile = () => {
     <>
       <Header />
       <div className='provider-profile-page'>
-        <h2>{user.name}&aposs Profile</h2>
+        <h2>{user.username}s Profile</h2> {/* Corrected &aposs to 's */}
         <div className='profile-picture-container'>
           <img src={user.profilePicture || profilePicturePlaceholder} alt='Profile' className='profile-picture' />
         </div>
         <div className='profile-details'>
           <p>
-            <strong>Name:</strong> {user.name}
+            <strong>Name:</strong> {user.username}
           </p>
           <p>
             <strong>Email:</strong> {user.email}
