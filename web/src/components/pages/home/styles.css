@@ -76,7 +76,7 @@ html {
   text-align: center;
   margin-top: 50px;
   /* Added top margin */
-  margin-bottom: 50px;
+  margin-bottom: 50px; 
   /* Added bottom margin */
   border-radius: 10px;
   /* Crisp White for sections */
@@ -87,7 +87,7 @@ html {
 .about-section,
 .vision-section,
 .mission-section {
-  color: #ffffff; /* White color for strong contrast */
+  color: #000000; /* White color for strong contrast */
   /* Deep Navy Blue for text */
   background-color: transparent;
   /* Transparent background */
@@ -117,7 +117,7 @@ html {
 /* Services Section Title */
 .services-title {
   font-size: 24px;
-  color: #ffffff;
+  color: #000000;
   /* Deep Navy Blue */
   margin-bottom: 10px;
   /* Space below the title */
@@ -139,7 +139,7 @@ html {
   margin: 10px 0;
   /* Margin top and bottom */
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: #caca60;
   /* Slightly off-white */
 }
 
@@ -161,7 +161,7 @@ html {
 
 /* About Section */
 .contact-section {
-  color: #ffffff; /* White color for strong contrast */
+  color: #000000; /* White color for strong contrast */
   /* Deep Navy Blue for text */
   background-color: transparent;
   /* Transparent background */
@@ -249,6 +249,7 @@ html {
 
   .login-modal-content {
     width: 90%;
+    background: #caca60 ;
     /* Adjust for smaller screens */
     margin-right: 5%;
     /* Adjust margin for smaller screens */
@@ -261,7 +262,7 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.6);/* Semi-transparent background */
   /* Semi-transparent background */
   display: flex;
   align-items: center;
@@ -271,7 +272,7 @@ html {
 }
 
 .modal-content {
-  background: #ffffff;
+  background: #caca60 ;
   /* Clean white background for a minimalistic look */
   color: #333;
   /* Dark text color for readability */
@@ -370,7 +371,7 @@ html {
 }
 
 .register-modal-content {
-  background: #ffffff;
+  background: #caca60 ;
   /* Clean white background for a minimalistic look */
   color: #333;
   /* Dark text color for readability */
@@ -491,7 +492,7 @@ html {
   position: relative;
   z-index: 10;
     /* Animated Background */
-    background: linear-gradient(270deg, #1a2a6c, #b21f1f, #fcb41a, 0.8);
+    background: #cece9b ;
     background-size: 600% 600%;
     animation: AnimationName 16s ease infinite;
 }

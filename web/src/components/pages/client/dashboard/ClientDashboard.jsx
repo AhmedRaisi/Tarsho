@@ -39,7 +39,7 @@ const ClientHomePage = () => {
                 id
                 provider {
                   id
-                  name
+                  username
                 }
                 servicename
                 description
@@ -108,7 +108,7 @@ const ClientHomePage = () => {
                 <p>
                   Provided by:{' '}
                   {service.provider ? (
-                    <Link to={`/client/provider/${service.provider.id}`}>{service.provider.name}</Link>
+                    <Link to={`/client/provider/${service.provider.id}`}>{service.provider.username}</Link>
                   ) : (
                     'Unknown Provider'
                   )}

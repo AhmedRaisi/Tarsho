@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull } = require('graphql');
+const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLUnionType } = require('graphql');
 const User = require('../models/user'); // Import the User Mongoose model
 const Service = require('../models/service'); // Import the Service Mongoose model
 const UserType = require('./userType'); // Import UserType for user-related operations
@@ -78,6 +78,31 @@ const RootQuery = new GraphQLObjectType({
         return Service.find({}).limit(args.limit).skip(args.skip);
       },
     },
+    // New search query
+    search: {
+      type: new GraphQLList(new GraphQLUnionType({
+        name: 'SearchResult',
+        types: [UserType, ServiceType],
+        resolveType(value) {
+          if (value.username) {
+            return UserType;
+          }
+          if (value.servicename) {
+            return ServiceType;
+          }
+          return null;
+        },
+      })),
+      args: {
+        searchTerm: { type: GraphQLString }
+      },
+      async resolve(_, { searchTerm }) {
+        const userResults = await User.find({ username: { $regex: searchTerm, $options: 'i' } });
+        const serviceResults = await Service.find({ servicename: { $regex: searchTerm, $options: 'i' } });
+        return [...userResults, ...serviceResults];
+      },
+    },
+
   },
 });
 

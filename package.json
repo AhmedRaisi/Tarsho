@@ -18,5 +18,10 @@
     "restart": "docker-compose restart",
     "down": "docker-compose down",
     "clean": "rimraf ./node_modules ./server/node_modules ./web/node_modules ./dist ./build ./cache ./logs ./coverage ./docs-generated ./temp ./web/dist ./server/dist"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.20"
   }
 }
