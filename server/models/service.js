@@ -7,6 +7,10 @@ const ServiceSchema = new Schema({
     ref: 'User', 
     required: true 
   },
+  servicename: { 
+    type: String, 
+    required: true 
+  },
   description: { 
     type: String, 
     required: true 

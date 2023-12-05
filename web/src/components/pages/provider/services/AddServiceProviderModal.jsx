@@ -3,9 +3,10 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 
 const ADD_SERVICE_MUTATION = `
-  mutation AddService($provider: ID!, $description: String!, $price: Int!) {
-    addService(provider: $provider, description: $description, price: $price) {
+  mutation AddService($provider: ID!, $servicename: String!, $description: String!, $price: Int!) {
+    addService(provider: $provider, servicename: $servicename, description: $description, price: $price) {
       id
+      servicename
       description
       price
     }
@@ -13,7 +14,7 @@ const ADD_SERVICE_MUTATION = `
 `
 
 const AddServiceProviderModal = ({ isOpen, onClose, providerId, onAdd }) => {
-  const [newService, setNewService] = useState({ description: '', price: '' })
+  const [newService, setNewService] = useState({ servicename: '', description: '', price: '' })
 
   const handleNewServiceChange = (e) => {
     setNewService({ ...newService, [e.target.name]: e.target.value })
@@ -26,14 +27,15 @@ const AddServiceProviderModal = ({ isOpen, onClose, providerId, onAdd }) => {
         query: ADD_SERVICE_MUTATION,
         variables: {
           provider: providerId,
+          servicename: newService.servicename,
           description: newService.description,
-          price: parseInt(newService.price)
+          price: parseInt(newService.price, 10)
         }
       })
 
       if (response.data.data.addService) {
         onAdd(response.data.data.addService)
-        setNewService({ description: '', price: '' })
+        setNewService({ servicename: '', description: '', price: '' })
         onClose()
       }
     } catch (error) {
@@ -50,6 +52,10 @@ const AddServiceProviderModal = ({ isOpen, onClose, providerId, onAdd }) => {
           &times;
         </span>
         <form onSubmit={handleSubmit} className='service-form'>
+          <div className='form-group'>
+            <label htmlFor='servicename'>Service name:</label>
+            <textarea id='servicename' name='servicename' value={newService.servicename} onChange={handleNewServiceChange} />
+          </div>
           <div className='form-group'>
             <label htmlFor='description'>Description:</label>
             <textarea id='description' name='description' value={newService.description} onChange={handleNewServiceChange} />

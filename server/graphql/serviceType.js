@@ -11,19 +11,17 @@ const {
 // Import Mongoose model
 const User = require('../models/user');
 
-
 const ServiceType = new GraphQLObjectType({
   name: 'Service',
   fields: () => {
-    // Deferred import to avoid circular dependency
-    const UserType = require('./userType');
+    const UserType = require('./userType'); // Deferred import
     return {
       id: { type: GraphQLID },
       provider: {
         type: UserType,
         resolve(parent, args) {
-          console.log("Fetching provider for service:", parent.id);
-          return User.findById(parent.providerId)
+          // Correctly reference the 'provider' field
+          return User.findById(parent.provider)
             .then(user => {
               console.log("Found user:", user);
               return user;
@@ -34,7 +32,8 @@ const ServiceType = new GraphQLObjectType({
             });
         },
       },
-      description: { type: GraphQLString  },
+      servicename: { type: GraphQLString },
+      description: { type: GraphQLString },
       price: { type: new GraphQLNonNull(GraphQLInt) },
       availability: { type: GraphQLBoolean },
       requirements: { type: GraphQLString },
@@ -43,3 +42,4 @@ const ServiceType = new GraphQLObjectType({
 });
 
 module.exports = ServiceType;
+

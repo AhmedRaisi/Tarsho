@@ -56,8 +56,8 @@ const resolvers = {
       }
     },
     // Resolver to add a new service
-    addService: async (_, { provider, description, price }) => {
-      const service = new Service({ provider, description, price });
+    addService: async (_, { provider, servicename, description, price }) => {
+      const service = new Service({ provider, servicename, description, price });
       try {
         return await service.save();
       } catch (error) {

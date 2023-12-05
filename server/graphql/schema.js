@@ -58,6 +58,26 @@ const RootQuery = new GraphQLObjectType({
         return Service.find({ provider: args.provider });
       }
     },
+    randomUsers: {
+      type: new GraphQLList(UserType),
+      args: {
+        limit: { type: GraphQLInt },
+        skip: { type: GraphQLInt }
+      },
+      resolve(_, args) {
+        return User.find({}).limit(args.limit).skip(args.skip);
+      },
+    },
+    randomServices: {
+      type: new GraphQLList(ServiceType),
+      args: {
+        limit: { type: GraphQLInt },
+        skip: { type: GraphQLInt }
+      },
+      resolve(_, args) {
+        return Service.find({}).limit(args.limit).skip(args.skip);
+      },
+    },
   },
 });
 
@@ -120,6 +140,7 @@ const Mutation = new GraphQLObjectType({
       type: ServiceType, // Specify the return type (ServiceType)
       args: {
         provider: { type: new GraphQLNonNull(GraphQLID) }, // Define input arguments with validation
+        servicename: { type: new GraphQLNonNull(GraphQLString) }, 
         description: { type: new GraphQLNonNull(GraphQLString) },
         price: { type: new GraphQLNonNull(GraphQLInt) },
       },
@@ -127,6 +148,7 @@ const Mutation = new GraphQLObjectType({
         // Resolve function to create and save a new service using Mongoose
         const service = new Service({
           provider: args.provider,
+          servicename: args.servicename,
           description: args.description,
           price: args.price,
         });

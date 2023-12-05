@@ -41,6 +41,7 @@ const ClientHomePage = () => {
                   id
                   name
                 }
+                servicename
                 description
                 price
               }
@@ -112,6 +113,7 @@ const ClientHomePage = () => {
                     'Unknown Provider'
                   )}
                 </p>
+                <p>{service.servicename}</p>
                 <p>{service.description}</p>
                 <p>Price: ${service.price}</p>
               </div>

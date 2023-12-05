@@ -9,6 +9,7 @@ const FETCH_SERVICES_QUERY = `
   query FetchProviderServices($provider: ID!) {
     providerServices(provider: $provider) {
       id
+      servicename
       description
       price
     }
@@ -52,6 +53,7 @@ const ProviderServices = () => {
         <div className='services-list'>
           {services.map((service) => (
             <div key={service.id} className='service-item'>
+              <p>{service.servicename}</p>
               <p>{service.description}</p>
               <p>${service.price}</p>
               {/* Existing service actions */}

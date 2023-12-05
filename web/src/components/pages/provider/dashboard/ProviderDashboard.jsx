@@ -5,6 +5,27 @@ import Footer from '../hf/footer/footer'
 import '../dashboard/ProviderDashboardStyles.css'
 import axios from 'axios'
 
+const FETCH_USER_PROFILE_QUERY = `
+  query GetUserProfile($id: ID!) {
+    userProfile(id: $id) {
+      name
+      role
+      rating
+    }
+  }
+`
+
+const FETCH_PROVIDER_SERVICES_QUERY = `
+  query FetchProviderServices($provider: ID!) {
+    providerServices(provider: $provider) {
+      id
+      servicename
+      description
+      price
+    }
+  }
+`
+
 const ProviderHomePage = () => {
   const [user, setUser] = useState({ name: '', role: '', rating: null })
   const [services, setServices] = useState([])
@@ -13,24 +34,35 @@ const ProviderHomePage = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem('userId')
+
     const fetchUserData = async () => {
       setIsLoading(true)
+
       if (!userId) {
         console.error('User ID not found')
         setIsLoading(false)
+        return
       }
 
       try {
-        const userProfile = await axios.get(`http://localhost:4000/api/users/profile/${userId}`)
-        setUser({
-          name: userProfile.data.username,
-          role: userProfile.data.role,
-          rating: userProfile.data.rating
+        const userProfileResponse = await axios.post('http://localhost:4000/graphql', {
+          query: FETCH_USER_PROFILE_QUERY,
+          variables: { id: userId }
         })
 
-        // Fetch provider services
-        const servicesResponse = await axios.get(`http://localhost:4000/api/services/provider/${userId}`)
-        setServices(servicesResponse.data)
+        if (userProfileResponse.data.data.userProfile) {
+          setUser(userProfileResponse.data.data.userProfile)
+        }
+
+        const servicesResponse = await axios.post('http://localhost:4000/graphql', {
+          query: FETCH_PROVIDER_SERVICES_QUERY,
+          variables: { provider: userId }
+        })
+
+        if (servicesResponse.data.data.providerServices) {
+          setServices(servicesResponse.data.data.providerServices)
+        }
+
         setIsLoading(false)
       } catch (err) {
         console.error('Error:', err)
@@ -44,6 +76,7 @@ const ProviderHomePage = () => {
 
   if (isLoading) return <div>Loading...</div>
   if (error) return <div>Error: {error}</div>
+
   return (
     <>
       <Header />
@@ -59,10 +92,10 @@ const ProviderHomePage = () => {
           <h2>My Services</h2>
           <div className='services-list'>
             {services.map((service) => (
-              <div key={service._id} className='service-item'>
-                <h3>{service.name}</h3>
+              <div key={service.id} className='service-item'>
+                <h3>{service.servicename}</h3>
                 <p>{service.description}</p>
-                {/* Other service details */}
+                <p>{service.price}</p>
               </div>
             ))}
           </div>
@@ -105,7 +138,6 @@ const ProviderHomePage = () => {
           </Link>
         </section>
       </div>
-
       <Footer />
     </>
   )
