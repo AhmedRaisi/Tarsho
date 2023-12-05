@@ -19,18 +19,25 @@ const ServiceType = new GraphQLObjectType({
     const UserType = require('./userType');
     return {
       id: { type: GraphQLID },
-      providerId: { type: GraphQLID },
-      providername: { type: new GraphQLNonNull(GraphQLString) },
-      description: { type: new GraphQLNonNull(GraphQLString) },
-      price: { type: new GraphQLNonNull(GraphQLInt) },
-      availability: { type: GraphQLBoolean },
-      requirements: { type: GraphQLString },
       provider: {
         type: UserType,
         resolve(parent, args) {
-          return User.findById(parent.providerId);
+          console.log("Fetching provider for service:", parent.id);
+          return User.findById(parent.providerId)
+            .then(user => {
+              console.log("Found user:", user);
+              return user;
+            })
+            .catch(err => {
+              console.error("Error fetching user:", err);
+              throw err;
+            });
         },
       },
+      description: { type: GraphQLString  },
+      price: { type: new GraphQLNonNull(GraphQLInt) },
+      availability: { type: GraphQLBoolean },
+      requirements: { type: GraphQLString },
     };
   }
 });

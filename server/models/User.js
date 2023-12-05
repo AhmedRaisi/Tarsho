@@ -16,7 +16,7 @@ const UserSchema = new Schema({
     required: true,
     unique: true // Ensuring email is unique
   },
-  realname: {
+  name: {
     type: String,
     required: false // Name is not required
     // unique: false is default and hence not needed explicitly

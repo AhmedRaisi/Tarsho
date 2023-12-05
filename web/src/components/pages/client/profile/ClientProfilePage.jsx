@@ -9,7 +9,7 @@ import profilePicturePlaceholder from './../../../../assets/profilepictureplaceh
 
 const ClientProfile = () => {
   const [user, setUser] = useState({
-    username: '',
+    name: '',
     email: '',
     contactNumber: '',
     address: '',
@@ -36,7 +36,7 @@ const ClientProfile = () => {
         query: `
           query GetUserProfile($id: ID!) {
             userProfile(id: $id) {
-              username
+              name
               email
               contactNumber
               address
@@ -73,12 +73,12 @@ const ClientProfile = () => {
     <>
       <Header />
       <div className='user-profile-page'>
-        <h2>{user.username}s Profile</h2>
+        <h2>{user.name}s Profile</h2>
         <div className='profile-picture-container'>
           <img src={user.profilePicture || profilePicturePlaceholder} alt='Profile' className='profile-picture' />
         </div>
         <div className='profile-details'>
-          <p>Username: {user.username}</p>
+          <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
           <p>Contact Number: {user.contactNumber}</p>
           <p>Address: {user.address}</p>

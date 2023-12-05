@@ -21,10 +21,10 @@ const UserType = new GraphQLObjectType({
     const ServiceType = require('./serviceType'); // Corrected import
     return {
       id: { type: GraphQLID },
-      username: { type: new GraphQLNonNull(GraphQLString) },
+      username: { type: GraphQLString },
       password: { type: new GraphQLNonNull(GraphQLString) },
       email: { type: new GraphQLNonNull(GraphQLString) },
-      realname: { type: GraphQLString },
+      name: { type: GraphQLString },
       role: { type: new GraphQLNonNull(GraphQLString) },
       rating: { type: GraphQLFloat },
       contactNumber: { type: GraphQLString },
@@ -33,7 +33,7 @@ const UserType = new GraphQLObjectType({
       services: {
         type: new GraphQLList(ServiceType),
         resolve(parent, args) {
-          return Service.find({ providerId: parent.id });
+          return Service.find({ provider: parent.id });
         },
       },
       // reviews: {

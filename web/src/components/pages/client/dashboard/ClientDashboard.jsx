@@ -13,20 +13,62 @@ const ClientHomePage = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem('userId')
+
     const fetchUserData = async () => {
       setIsLoading(true)
 
       if (userId) {
         try {
-          const userProfile = await axios.get(`http://localhost:4000/api/users/profile/${userId}`)
-          setUser({
-            name: userProfile.data.username,
-            role: userProfile.data.role,
-            rating: userProfile.data.rating
-          })
+          const userProfileQuery = {
+            query: `
+              query GetUserProfile($id: ID!) {
+                userProfile(id: $id) {
+                  name
+                  role
+                  rating
+                }
+              }
+            `,
+            variables: { id: userId }
+          }
 
-          const servicesResponse = await axios.get('http://localhost:4000/api/services/random5')
-          setServices(servicesResponse.data)
+          const servicesQuery = {
+            query: `
+            {
+              services {
+                id
+                provider {
+                  id
+                  name
+                }
+                description
+                price
+              }
+            }
+            `
+          }
+
+          const userProfileResponse = await axios.post('http://localhost:4000/graphql', userProfileQuery)
+          const servicesResponse = await axios.post('http://localhost:4000/graphql', servicesQuery)
+
+          console.log(`UserProfile Response:`, userProfileResponse.data)
+          console.log(`Services Response:`, servicesResponse.data)
+
+          // Check for GraphQL errors
+          if (userProfileResponse.data.errors || servicesResponse.data.errors) {
+            console.error('GraphQL Error:', userProfileResponse.data.errors, servicesResponse.data.errors)
+            setError('GraphQL Error Occurred')
+          } else {
+            setUser({
+              name: userProfileResponse.data.data.userProfile.name,
+              role: userProfileResponse.data.data.userProfile.role,
+              rating: userProfileResponse.data.data.userProfile.rating
+            })
+
+            setServices(servicesResponse.data.data.services)
+          }
+
+          // setServices(servicesResponse.data.data.services)
         } catch (err) {
           console.error('Error:', err)
           setError(err.message)
@@ -60,12 +102,12 @@ const ClientHomePage = () => {
           <h2>Explore Services</h2>
           <div className='services-list'>
             {services.map((service) => (
-              <div key={service._id} className='service-item'>
+              <div key={service.id} className='service-item'>
                 <h3>{service.name}</h3>
                 <p>
                   Provided by:{' '}
-                  {service.providerId ? (
-                    <Link to={`/client/provider/${service.providerId._id}`}>{service.providerId.name}</Link>
+                  {service.provider ? (
+                    <Link to={`/client/provider/${service.provider.id}`}>{service.provider.name}</Link>
                   ) : (
                     'Unknown Provider'
                   )}

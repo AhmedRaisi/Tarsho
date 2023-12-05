@@ -2,50 +2,18 @@ import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import Header from '../hf/header/header'
 import Footer from '../hf/footer/footer'
+import AddServiceProviderModal from './AddServiceProviderModal' // Adjust path as needed
 import '../services/ProviderServicsPageStyles.css'
-import PropTypes from 'prop-types'
 
-const AddServiceModal = ({ isOpen, onClose, onAdd }) => {
-  const [newService, setNewService] = useState({ name: '', description: '', price: '' })
-
-  const handleNewServiceChange = (e) => {
-    setNewService({ ...newService, [e.target.name]: e.target.value })
+const FETCH_SERVICES_QUERY = `
+  query FetchProviderServices($provider: ID!) {
+    providerServices(provider: $provider) {
+      id
+      description
+      price
+    }
   }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    onAdd(newService)
-    setNewService({ name: '', description: '', price: '' }) // Reset form
-    onClose() // Close modal after submit
-  }
-
-  if (!isOpen) return null
-
-  return (
-    <div className='modal'>
-      <div className='modal-content'>
-        <span className='close-button' onClick={onClose}>
-          &times;
-        </span>
-        <form onSubmit={handleSubmit} className='service-form'>
-          <div className='form-group'>
-            <label htmlFor='name'>Name:</label>
-            <input type='text' aria-label='name' id='name' name='name' value={newService.name} onChange={handleNewServiceChange} />
-          </div>
-          <div className='form-group'>
-            <label htmlFor='description'>Description:</label>
-            <textarea id='description' name='description' value={newService.description} onChange={handleNewServiceChange} />
-          </div>
-          <div className='form-group'>
-            <label htmlFor='price'>Price:</label>
-            <input type='number' aria-label='price' id='price' name='price' value={newService.price} onChange={handleNewServiceChange} />
-          </div>
-          <button type='submit'>Save</button>
-        </form>
-      </div>
-    </div>
-  )
-}
+`
 
 const ProviderServices = () => {
   const [services, setServices] = useState([])
@@ -54,27 +22,25 @@ const ProviderServices = () => {
 
   const fetchServices = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/services/provider/${userId}`)
-      setServices(response.data)
+      const response = await axios.post('http://localhost:4000/graphql', {
+        query: FETCH_SERVICES_QUERY,
+        variables: { provider: userId }
+      })
+      if (response.data.data && response.data.data.providerServices) {
+        setServices(response.data.data.providerServices)
+      }
     } catch (error) {
       console.error('Error fetching services:', error)
     }
-  }, [userId]) // Include any dependencies here. In this case, it's `userId`.
+  }, [userId])
 
   useEffect(() => {
     fetchServices()
-  }, [fetchServices]) // `fetchServices` is now a dependency.
+  }, [fetchServices])
 
-  const handleAddService = async (newService) => {
-    try {
-      await axios.post('http://localhost:4000/api/services', {
-        ...newService,
-        providerId: userId
-      })
-      fetchServices()
-    } catch (error) {
-      console.error('Error adding service:', error)
-    }
+  const handleAddService = (newService) => {
+    setServices([...services, newService])
+    setIsModalOpen(false)
   }
 
   return (
@@ -85,24 +51,18 @@ const ProviderServices = () => {
         <button onClick={() => setIsModalOpen(true)}>Add Service</button>
         <div className='services-list'>
           {services.map((service) => (
-            <div key={service._id} className='service-item'>
-              <h3>{service.name}</h3>
+            <div key={service.id} className='service-item'>
               <p>{service.description}</p>
               <p>${service.price}</p>
               {/* Existing service actions */}
             </div>
           ))}
         </div>
-        <AddServiceModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddService} />
+        <AddServiceProviderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddService} providerId={userId} />
       </div>
       <Footer />
     </>
   )
 }
 
-AddServiceModal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onAdd: PropTypes.func.isRequired
-}
 export default ProviderServices

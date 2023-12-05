@@ -56,8 +56,8 @@ const resolvers = {
       }
     },
     // Resolver to add a new service
-    addService: async (_, { providerId, providername, description, price }) => {
-      const service = new Service({ providerId, providername, description, price });
+    addService: async (_, { provider, description, price }) => {
+      const service = new Service({ provider, description, price });
       try {
         return await service.save();
       } catch (error) {
@@ -131,7 +131,28 @@ const resolvers = {
         // include any other fields you want to return
       };
     },
-    
+    updateUser: async (_, { id, name, email, contactNumber, address, profilePicture }) => {
+      try {
+        // Find the user and update their details
+        const updatedUser = await User.findByIdAndUpdate(
+          id,
+          { name, email, contactNumber, address, profilePicture },
+          { new: true } // This option returns the updated document
+        );
+
+        if (!updatedUser) {
+          throw new Error('User not found');
+        }
+
+        // Return the updated user data, excluding sensitive fields like password
+        return {
+          ...updatedUser.toObject(),
+          password: null,
+        };
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
 
   },
 };

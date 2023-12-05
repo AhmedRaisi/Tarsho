@@ -40,8 +40,7 @@ const RootQuery = new GraphQLObjectType({
     services: {
       type: new GraphQLList(ServiceType), // Specify the return type (list of ServiceType)
       resolve(parent, args) {
-        // Resolve function to fetch all services using Mongoose
-        return Service.find({});
+        return Service.find({}).populate('provider');
       },
     },
     userProfile: {
@@ -50,6 +49,14 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return User.findById(args.id).select('-password');
       },
+    },
+    providerServices: {
+      type: new GraphQLList(ServiceType),
+      args: { provider: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(parent, args) {
+        // Logic to fetch services by providerId
+        return Service.find({ provider: args.provider });
+      }
     },
   },
 });
@@ -112,16 +119,14 @@ const Mutation = new GraphQLObjectType({
     addService: {
       type: ServiceType, // Specify the return type (ServiceType)
       args: {
-        providerId: { type: new GraphQLNonNull(GraphQLID) }, // Define input arguments with validation
-        providername: { type: new GraphQLNonNull(GraphQLString) }, // Updated field name
+        provider: { type: new GraphQLNonNull(GraphQLID) }, // Define input arguments with validation
         description: { type: new GraphQLNonNull(GraphQLString) },
         price: { type: new GraphQLNonNull(GraphQLInt) },
       },
       async resolve(parent, args) {
         // Resolve function to create and save a new service using Mongoose
         const service = new Service({
-          providerId: args.providerId,
-          providername: args.providername, 
+          provider: args.provider,
           description: args.description,
           price: args.price,
         });
@@ -217,7 +222,7 @@ const Mutation = new GraphQLObjectType({
       type: UserType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
-        realname: { type: GraphQLString },
+        name: { type: GraphQLString },
         email: { type: GraphQLString },
         contactNumber: { type: GraphQLString },
         address: { type: GraphQLString },
@@ -227,7 +232,7 @@ const Mutation = new GraphQLObjectType({
         // Logic to update user details
         // You'll need to adjust this logic based on how your User model is set up
         return User.findByIdAndUpdate(args.id, { 
-          realname: args.realname,
+          name: args.name,
           email: args.email,
           contactNumber: args.contactNumber,
           address: args.address,
