@@ -5,8 +5,15 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const userRoutes = require('./routes/users'); // Adjust path as necessary
 const serviceRoutes = require('./routes/services'); // Adjust path as necessary
-const reviewRoutes = require('./routes/reviews'); // Adjust path as necessary
+// const reviewRoutes = require('./routes/reviews'); // Adjust path as necessary
+const { GraphQLSchema, GraphQLObjectType } = require('graphql');
 const mongoose = require('mongoose');
+const { graphqlHTTP } = require('express-graphql');
+
+
+// Import your GraphQL schema and resolvers here
+const schema = require('./graphql/schema'); // Adjust path as necessary
+const resolvers = require('./graphql/resolvers'); // Adjust path as necessary
 
 const app = express();
 
@@ -27,12 +34,20 @@ app.use(express.json());
 // CORS middleware for development - allowing all origins
 app.use(cors());
 
+
+// GraphQL middleware setup
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  graphiql: true,
+}));
+
+
 // Swagger UI setup
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/api/users', userRoutes);
 app.use('/api/services', serviceRoutes);
-app.use('/api/reviews', reviewRoutes);
+// app.use('/api/reviews', reviewRoutes);
 
 // Connect to MongoDB
 const dbURI = 'mongodb://mongodb:27017/usersdb'

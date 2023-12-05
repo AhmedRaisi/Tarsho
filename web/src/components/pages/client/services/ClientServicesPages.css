@@ -1,58 +1,88 @@
 /* Client Services Page Styles */
 .client-services-page {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .client-services-page h2 {
-    color: #007bff;
-    margin-bottom: 30px;
-  }
-  
-  /* Service list styles */
+  padding: 20px;
+  padding-bottom: 120px; /* Add bottom padding to make space for the fixed footer */
+  text-align: center;
+}
+
+.client-services-page h2 {
+  color: #007bff;
+  margin-bottom: 30px;
+}
+
+/* Service list styles */
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Individual service item styles */
+.service-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.service-item h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.no__data {
+  font-size: 2rem;
+  opacity: .45;
+}
+
+/* Pagination controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.pagination-controls button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .services-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  /* Individual service item styles */
-  .service-item {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: left;
-    width: 300px;
-    margin-bottom: 20px;
-  }
-  
-  .service-item h3 {
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .service-item p {
-    color: #666;
-    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
   }
 
-  
-  .no__data {
-    font-size: 2rem;
-    opacity: .45;
+  .service-item {
+    width: auto;
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .services-list {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .service-item {
-      width: auto;
-    }
+
+  .client-services-page {
+    padding-bottom: 120px; /* Increase bottom padding for mobile, if the footer is larger */
   }
-  
+}

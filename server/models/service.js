@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ServiceSchema = new Schema({
-  providerId: { 
+  provider: { 
     type: Schema.Types.ObjectId, 
     ref: 'User', 
     required: true 
   },
-  name: { 
+  servicename: { 
     type: String, 
     required: true 
   },
@@ -23,7 +23,10 @@ const ServiceSchema = new Schema({
     type: Boolean, 
     default: true 
   },
-  requirements: String, // Optional field for any special requirements
+  requirements: { 
+    type: String,
+    required: false 
+  }, // Optional field for any special requirements
 });
 
 module.exports = mongoose.model('Service', ServiceSchema);

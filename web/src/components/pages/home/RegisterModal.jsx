@@ -13,18 +13,32 @@ const RegisterModal = ({ onClose }) => {
 
   const handleRegister = async (event) => {
     event.preventDefault()
+
+    const graphqlQuery = {
+      query: `
+        mutation RegisterUser($username: String!, $password: String!, $email: String!, $role: String!) {
+          register(username: $username, password: $password, email: $email, role: $role) {
+            token
+            userId
+            role
+          }
+        }
+      `,
+      variables: {
+        username: username,
+        password: password,
+        email: email,
+        role: role
+      }
+    }
+
     try {
-      const response = await axios.post('http://localhost:4000/api/users/register', {
-        username,
-        password,
-        email,
-        role
-      })
+      const response = await axios.post('http://localhost:4000/graphql', graphqlQuery)
       console.log('Registration successful:', response.data)
       onClose() // Close the modal
     } catch (error) {
-      console.error('Registration failed:', error.response?.data?.msg || error.message)
-      setError(error.response?.data?.msg || 'Registration failed')
+      console.error('Registration failed:', error.response?.data?.errors[0]?.message || error.message)
+      setError(error.response?.data?.errors[0]?.message || 'Registration failed')
     }
   }
 

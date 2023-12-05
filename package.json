@@ -2,18 +2,26 @@
   "devDependencies": {
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
     "prettier": "^3.1.0",
-    "husky": "^8.0.0"
+    "rimraf": "^5.0.5"
   },
   "scripts": {
     "lint": "cd web && npm run lint",
     "lint:no-cache": "cd web && npm run lint:no-cache",
     "prepare": "node prepare.js",
-    "build nocache": "docker-compose build --no-cache",
+    "buildnocache": "docker-compose build --no-cache",
     "build": "docker-compose build",
+    "upbuild": "docker-compose up --build",
     "up": "docker-compose up",
-    "up -d": "docker-compose up -d",
+    "upd": "docker-compose up -d",
     "restart": "docker-compose restart",
-    "down": "docker-compose down"
+    "down": "docker-compose down",
+    "clean": "rimraf ./node_modules ./server/node_modules ./web/node_modules ./dist ./build ./cache ./logs ./coverage ./docs-generated ./temp ./web/dist ./server/dist"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.20"
   }
 }

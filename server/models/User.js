@@ -45,8 +45,6 @@ const UserSchema = new Schema({
     required: false, // Making it optional
     default: '' // Default value if no picture is provided
   },
-
-
   services: [{
     type: Schema.Types.ObjectId,
     ref: 'Service'
@@ -55,8 +53,6 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Review'
   }],
-
-
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -32,8 +32,24 @@ const ClientProfile = () => {
 
   const fetchUserData = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/users/profile/${userId}`)
-      setUser(response.data)
+      const graphqlQuery = {
+        query: `
+          query GetUserProfile($id: ID!) {
+            userProfile(id: $id) {
+              name
+              email
+              contactNumber
+              address
+              profilePicture
+            }
+          }
+        `,
+        variables: {
+          id: userId
+        }
+      }
+      const response = await axios.post('http://localhost:4000/graphql', graphqlQuery)
+      setUser(response.data.data.userProfile)
       setIsLoading(false)
     } catch (err) {
       console.error('Error fetching user data:', err)
@@ -57,7 +73,7 @@ const ClientProfile = () => {
     <>
       <Header />
       <div className='user-profile-page'>
-        <h2>{user.name}&aposs Profile</h2>
+        <h2>{user.name}s Profile</h2>
         <div className='profile-picture-container'>
           <img src={user.profilePicture || profilePicturePlaceholder} alt='Profile' className='profile-picture' />
         </div>

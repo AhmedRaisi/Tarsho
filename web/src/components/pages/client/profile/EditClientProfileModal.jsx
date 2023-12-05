@@ -11,9 +11,32 @@ const EditClientProfileModal = ({ isOpen, onClose, user, onUserUpdate }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const userId = localStorage.getItem('userId')
+
+    const graphqlQuery = {
+      query: `
+        mutation UpdateUser($id: ID!, $name: String, $email: String, $contactNumber: String, $address: String, $profilePicture: String) {
+          updateUser(id: $id, name: $name, email: $email, contactNumber: $contactNumber, address: $address, profilePicture: $profilePicture) {
+            name
+            email
+            contactNumber
+            address
+            profilePicture
+          }
+        }
+      `,
+      variables: {
+        id: userId,
+        name: editableUser.name, // Assuming 'name' field maps to 'realname' in the User model
+        email: editableUser.email,
+        contactNumber: editableUser.contactNumber,
+        address: editableUser.address,
+        profilePicture: editableUser.profilePicture
+      }
+    }
+
     try {
-      const userId = localStorage.getItem('userId')
-      await axios.put(`http://localhost:4000/api/users/profile/${userId}`, editableUser)
+      await axios.post('http://localhost:4000/graphql', graphqlQuery)
       onUserUpdate(userId) // Update the parent component's user data
       onClose()
     } catch (err) {
@@ -30,6 +53,7 @@ const EditClientProfileModal = ({ isOpen, onClose, user, onUserUpdate }) => {
           &times;
         </span>
         <form onSubmit={handleSubmit}>
+          {/* Form fields */}
           <div className='form-group'>
             <label htmlFor='name'>Name:</label>
             <input type='text' id='name' name='name' value={editableUser.name} onChange={handleChange} required />
