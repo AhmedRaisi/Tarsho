@@ -7,10 +7,10 @@ body, html {
 }
 
 .headers {
-  background: rgba(26, 42, 108, 0.85);
+  background: #1a6c67; /* Dark blue for a professional look */
   color: white;
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -18,16 +18,15 @@ body, html {
 
 .header-content {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.headers h1 {
-  font-size: 1.75rem;
-  margin: 0;
-  font-weight: 600;
+.header-logo {
+  width: 100px;
+  height: auto;
 }
 
 .headers nav {
@@ -38,45 +37,73 @@ body, html {
 .headers nav a, .headers nav button {
   color: white;
   text-decoration: none;
-  padding: 0.75rem 1rem;
+  padding: 10px 15px;
   font-weight: 500;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 4px;
+  margin-left: 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  position: relative;
 }
 
-.headers nav a:hover, .headers nav button:hover {
-  background-color: #f8f9fa;
-  color: #102a43;
+.headers nav a::after, .headers nav button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #fcb41a; /* A bright color for hover effect */
+  bottom: -6px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.headers nav a:hover::after, .headers nav button:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .login-button {
-  background-color: #4CAF50; /* Slightly different green color */
+  background-color: #4CAF50;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Responsive design for smaller screens */
+.login-button:hover {
+  background-color: #367c39; /* Darker shade on hover */
+}
+
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: -150px;
+}
+
+.header-logo {
+  width: 100px; /* Adjusted size */
+  height: auto;
+}
+
+.logo-text {
+  color: white; /* Adjust color as needed */
+  font-size: 1.5rem; /* Adjust font size as needed */
+  margin-left: -15px; /* Space between logo and text */
+}
+
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
-  }
-
-  .headers h1 {
-    margin-bottom: 0.5rem;
+    text-align: center;
   }
 
   .headers nav a, .headers nav button {
-    padding: 0.5rem 0; /* Adjust padding for vertical layout */
-    width: 100%; /* Full width for a cleaner look */
+    padding: 0.5rem 0;
+    width: 100%;
     text-align: center;
   }
-}
-/* Reduce top and bottom margins for the image */
-.llogo {
-  width: 150px; /* Adjust the size as needed */
-  height: auto;
-  margin-top: 5px; /* Reduce top margin */
-  margin-bottom: 5px; /* Reduce bottom margin */
-  margin-right: 20px; /* Add margin to separate logo from navigation */
 
+  .header-logo {
+    margin-bottom: 10px;
+  }
 }
