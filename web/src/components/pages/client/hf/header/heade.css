@@ -7,7 +7,7 @@ body, html {
 }
 
 .headerrr {
-  background: rgba(48, 63, 159, 0.85); /* Professional deep blue */
+  background: #1a6c67; /* Dark blue for a professional look */
   color: white;
   padding: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

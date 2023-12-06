@@ -4,7 +4,7 @@
   left: 0;
   bottom: 0;
   width: 100%; /* Full width of the viewport */
-  background: rgba(48, 63, 159, 0.85); /* Professional deep blue */
+  background: #1a6c67; /* Dark blue for a professional look */
   color: white; /* White text for readability */
   text-align: center; /* Center align text */
   padding: 20px 0; /* Padding for top and bottom */

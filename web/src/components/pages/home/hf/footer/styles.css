@@ -1,6 +1,6 @@
 /* Footer Styles */
 .footers {
-  background: rgba(26, 42, 108, 0.85);
+  background: #1a6c67; /* Dark blue for a professional look */
   color: white; /* White text for readability */
   text-align: center; /* Center align text */
   padding: 20px 0; /* Padding for top and bottom */
