@@ -9,18 +9,34 @@ const RegisterModal = ({ onClose }) => {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [role, setRole] = useState('')
+  const [selectedTags, setSelectedTags] = useState([])
+
   const [error, setError] = useState('')
+
+  const placeholderTags = ['Design', 'Development', 'Marketing', 'Photography', 'Writing']
+
+  const handleTagSelect = (event) => {
+    const tag = event.target.value
+    if (tag && !selectedTags.includes(tag)) {
+      setSelectedTags([...selectedTags, tag])
+    }
+  }
+
+  const handleTagDelete = (tagToDelete) => {
+    setSelectedTags(selectedTags.filter((tag) => tag !== tagToDelete))
+  }
 
   const handleRegister = async (event) => {
     event.preventDefault()
 
     const graphqlQuery = {
       query: `
-        mutation RegisterUser($username: String!, $password: String!, $email: String!, $role: String!) {
-          register(username: $username, password: $password, email: $email, role: $role) {
+        mutation RegisterUser($username: String!, $password: String!, $email: String!, $role: String!, $usertags: String!) {
+          register(username: $username, password: $password, email: $email, role: $role, usertags: $usertags) {
             token
             userId
             role
+            usertags
           }
         }
       `,
@@ -28,7 +44,8 @@ const RegisterModal = ({ onClose }) => {
         username: username,
         password: password,
         email: email,
-        role: role
+        role: role,
+        usertags: selectedTags
       }
     }
 
@@ -112,6 +129,31 @@ const RegisterModal = ({ onClose }) => {
             </div>
           </div>
 
+          <div className='input-group'>
+            <label htmlFor='tags'>Tags</label>
+            <select id='tags' onChange={handleTagSelect} defaultValue=''>
+              <option value='' disabled>
+                Select a tag
+              </option>
+              {placeholderTags.map((tag) => (
+                <option key={tag} value={tag}>
+                  {tag}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className='tag-list'>
+            {selectedTags.map((tag) => (
+              <div key={tag} className='tag-card'>
+                {tag}
+                <span className='delete-tag' onClick={() => handleTagDelete(tag)}>
+                  &times;
+                </span>
+              </div>
+            ))}
+          </div>
+
           {error && <div className='error-message'>{error}</div>}
           <div className='button-res'>
             <button type='submit' className='signup-button'>
@@ -119,7 +161,7 @@ const RegisterModal = ({ onClose }) => {
             </button>
           </div>
           <div className='linktopage'>
-            Allready user ? &nbsp;
+            Already a user? &nbsp;
             <Link to='/' className='linktopage'>
               Login account
             </Link>

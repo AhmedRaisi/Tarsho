@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom' // Import useParams here
 import axios from 'axios'
 import Header from '../hf/header/header'
 import Footer from '../hf/footer/footer'
@@ -12,16 +13,23 @@ const ProviderProfile = () => {
     email: '',
     contactNumber: '',
     address: '',
-    profilePicture: ''
+    profilePicture: '',
+    description: '',
+    usertags: [],
+    location: { coordinates: [0, 0] }
   })
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const userId = localStorage.getItem('userId')
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const { userId } = useParams()
 
   useEffect(() => {
     if (userId) {
+      setIsLoading(true)
       fetchUserData(userId)
     } else {
       console.error('User ID not found')
+      setIsLoading(false)
     }
   }, [userId])
 
@@ -36,6 +44,11 @@ const ProviderProfile = () => {
               contactNumber
               address
               profilePicture
+              description
+              usertags
+              location {
+                coordinates
+              }
             }
           }
         `,
@@ -44,35 +57,51 @@ const ProviderProfile = () => {
         }
       }
       const response = await axios.post('http://localhost:4000/graphql', graphqlQuery)
-      setUser(response.data.data.userProfile)
+
+      const fetchedUser = response.data.data.userProfile
+      if (!fetchedUser.location || !fetchedUser.location.coordinates) {
+        fetchedUser.location = { coordinates: [0, 0] }
+      }
+
+      setUser(fetchedUser)
+      setIsLoading(false)
     } catch (err) {
       console.error('Error fetching user data:', err)
+      setError(err.message)
+      setIsLoading(false)
     }
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>
   }
 
   return (
     <>
       <Header />
       <div className='provider-profile-page'>
-        <h2>{user.name}s Profile</h2> {/* Corrected &aposs to 's */}
-        <div className='profile-picture-container'>
-          <img src={user.profilePicture || profilePicturePlaceholder} alt='Profile' className='profile-picture' />
+        <div className='profile-card'>
+          <h2>{user.name}s Profile</h2>
+          <div className='profile-picture-container'>
+            <img src={user.profilePicture || profilePicturePlaceholder} alt='Profile' className='profile-picture' />
+          </div>
+          <div className='profile-details'>
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
+            <p>Contact Number: {user.contactNumber}</p>
+            <p>Address: {user.address}</p>
+            <p>Description: {user.description}</p>
+            <p>Tags: {user.usertags.join(', ')}</p>
+            <p>
+              Location: Latitude {user.location.coordinates?.[0] ?? 'N/A'}, Longitude {user.location.coordinates?.[1] ?? 'N/A'}
+            </p>
+          </div>
+          <button onClick={() => setIsModalOpen(true)}>Edit Profile</button>
         </div>
-        <div className='profile-details'>
-          <p>
-            <strong>Name:</strong> {user.name}
-          </p>
-          <p>
-            <strong>Email:</strong> {user.email}
-          </p>
-          <p>
-            <strong>Contact Number:</strong> {user.contactNumber}
-          </p>
-          <p>
-            <strong>Address:</strong> {user.address}
-          </p>
-        </div>
-        <button onClick={() => setIsModalOpen(true)}>Edit Profile</button>
       </div>
       <Footer />
 

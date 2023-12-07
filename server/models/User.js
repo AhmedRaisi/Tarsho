@@ -5,7 +5,8 @@ const UserSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true // Ensuring username is unique
+    unique: true, // Ensuring username is unique
+    index: true
   },
   password: {
     type: String,
@@ -45,6 +46,25 @@ const UserSchema = new Schema({
     required: false, // Making it optional
     default: '' // Default value if no picture is provided
   },
+  description: {
+    type: String,
+    required: false // Optional, but useful for full-text search
+  },
+  usertags: [{
+    type: String, // Array of keywords or tags
+    required: false
+  }],
+  location: {
+    type: {
+      type: String,
+      enum: ['Point'], // 'location.type' must be 'Point'
+      default: 'Point'
+    },
+    coordinates: {
+      type: [Number], // Array of numbers for longitude and latitude
+      index: '2dsphere' // Important for geospatial queries
+    }
+  },
   services: [{
     type: Schema.Types.ObjectId,
     ref: 'Service'
@@ -53,6 +73,17 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Review'
   }],
+});
+
+// Geospatial index for location field
+UserSchema.index({ location: '2dsphere' });
+
+// Full-text search index
+UserSchema.index({ 
+  username: 'text', 
+  name: 'text', 
+  description: 'text',
+  usertags: 'text'
 });
 
 module.exports = mongoose.model('User', UserSchema);
