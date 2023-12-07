@@ -1,70 +1,124 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from '../hf/header/header'
 import Footer from '../hf/footer/footer'
-import AddServiceProviderModal from './AddServiceProviderModal' // Adjust path as needed
 import '../services/ProviderServicsPageStyles.css'
+import { Link } from 'react-router-dom'
+import CircularProgress from '@mui/material/CircularProgress'
 
-const FETCH_SERVICES_QUERY = `
-  query FetchProviderServices($provider: ID!) {
-    providerServices(provider: $provider) {
-      id
-      servicename
-      description
-      price
+const ProviderServicesPage = () => {
+  const [mixedData, setMixedData] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [searchTerm, setSearchTerm] = useState('')
+  const itemsPerPage = 10
+  const [isLoading, setIsLoading] = useState(true)
+
+  const fetchData = async (page, searchTerm = '') => {
+    setIsLoading(true)
+    const skip = (page - 1) * itemsPerPage
+    try {
+      const query = searchTerm
+        ? `
+        query SearchData($searchTerm: String!) {
+          search(searchTerm: $searchTerm) {
+            ...on User {
+              id
+              username
+              role
+            }
+            ...on Service {
+              id
+              servicename
+              price
+            }
+          }
+        }
+      `
+        : `
+        query FetchData($limit: Int!, $skip: Int!) {
+          randomUsers(limit: $limit, skip: $skip) {
+            id
+            username
+            role
+          }
+          randomServices(limit: $limit, skip: $skip) {
+            id
+            servicename
+            price
+          }
+        }
+      `
+      const response = await axios.post('http://localhost:4000/graphql', {
+        query,
+        variables: searchTerm ? { searchTerm } : { limit: itemsPerPage, skip: skip }
+      })
+
+      const data = searchTerm ? response.data.data.search : [...response.data.data.randomUsers, ...response.data.data.randomServices]
+      console.log(data)
+      setMixedData(data)
+      setIsLoading(false)
+    } catch (err) {
+      setIsLoading(false)
     }
   }
-`
-
-const ProviderServices = () => {
-  const [services, setServices] = useState([])
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const userId = localStorage.getItem('userId')
-
-  const fetchServices = useCallback(async () => {
-    try {
-      const response = await axios.post('http://localhost:4000/graphql', {
-        query: FETCH_SERVICES_QUERY,
-        variables: { provider: userId }
-      })
-      if (response.data.data && response.data.data.providerServices) {
-        setServices(response.data.data.providerServices)
-      }
-    } catch (error) {
-      console.error('Error fetching services:', error)
-    }
-  }, [userId])
 
   useEffect(() => {
-    fetchServices()
-  }, [fetchServices])
+    fetchData(currentPage, searchTerm)
+  }, [currentPage, searchTerm])
 
-  const handleAddService = (newService) => {
-    setServices([...services, newService])
-    setIsModalOpen(false)
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage)
+  }
+
+  const renderCard = (item) => {
+    const isUser = item.username !== undefined // If 'username' exists, it's a User
+
+    if (isUser) {
+      return (
+        <div key={item.id} className='service-item'>
+          User: <Link to={`/provider/provider/${item.id}`}>{item.username}</Link>
+          <p>Role: {item.role}</p>
+        </div>
+      )
+    } else {
+      // Otherwise, treat it as a Service
+      return (
+        <div key={item.id} className='service-item'>
+          <h3>Service: {item.servicename}</h3>
+          <p>Price: ${item.price}</p>
+        </div>
+      )
+    }
   }
 
   return (
     <>
       <Header />
       <div className='provider-services-page'>
-        <h2>My Services</h2>
-        <button onClick={() => setIsModalOpen(true)}>Add Service</button>
-        <div className='services-list'>
-          {services.map((service) => (
-            <div key={service.id} className='service-item'>
-              <p>{service.servicename}</p>
-              <p>{service.description}</p>
-              <p>${service.price}</p>
-              {/* Existing service actions */}
+        <input type='text' placeholder='Search...' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          <>
+            <h2>Random Services and Users</h2>
+            <div className='services-list'>
+              {mixedData.length > 0 ? mixedData.map(renderCard) : <div className='no__data'>No data available</div>}
             </div>
-          ))}
-        </div>
-        <AddServiceProviderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddService} providerId={userId} />
+            {!searchTerm && (
+              <div className='pagination-controls'>
+                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage <= 1}>
+                  Previous
+                </button>
+                <button onClick={() => handlePageChange(currentPage + 1)}>Next</button>
+              </div>
+            )}
+          </>
+        )}
       </div>
       <Footer />
     </>
   )
 }
 
-export default ProviderServices
+export default ProviderServicesPage

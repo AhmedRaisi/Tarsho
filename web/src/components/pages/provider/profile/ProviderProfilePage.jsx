@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom' // Import useParams here
 import axios from 'axios'
 import Header from '../hf/header/header'
 import Footer from '../hf/footer/footer'
 import EditProviderProfileModal from './EditProviderProfileModal'
+import AddServiceProviderModal from './AddServiceProviderModal' // Import AddServiceProviderModal
 import '../profile/ProviderProfilePageStyles.css'
 import profilePicturePlaceholder from './../../../../assets/profilepictureplaceholder.png'
+
+const FETCH_SERVICES_QUERY = `
+  query FetchProviderServices($provider: ID!) {
+    providerServices(provider: $provider) {
+      id
+      servicename
+      description
+      price
+    }
+  }
+`
 
 const ProviderProfile = () => {
   const [user, setUser] = useState({
@@ -18,7 +30,9 @@ const ProviderProfile = () => {
     usertags: [],
     location: { coordinates: [0, 0] }
   })
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [services, setServices] = useState([]) // State for services
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+  const [isAddServiceModalOpen, setIsAddServiceModalOpen] = useState(false) // State for add service modal
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const { userId } = useParams()
@@ -27,6 +41,7 @@ const ProviderProfile = () => {
     if (userId) {
       setIsLoading(true)
       fetchUserData(userId)
+      fetchServices(userId)
     } else {
       console.error('User ID not found')
       setIsLoading(false)
@@ -71,6 +86,24 @@ const ProviderProfile = () => {
       setIsLoading(false)
     }
   }
+  const fetchServices = useCallback(async (providerId) => {
+    try {
+      const response = await axios.post('http://localhost:4000/graphql', {
+        query: FETCH_SERVICES_QUERY,
+        variables: { provider: providerId }
+      })
+      if (response.data.data && response.data.data.providerServices) {
+        setServices(response.data.data.providerServices)
+      }
+    } catch (error) {
+      console.error('Error fetching services:', error)
+    }
+  }, [])
+
+  const handleAddService = (newService) => {
+    setServices([...services, newService])
+    setIsAddServiceModalOpen(false)
+  }
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -100,13 +133,39 @@ const ProviderProfile = () => {
               Location: Latitude {user.location.coordinates?.[0] ?? 'N/A'}, Longitude {user.location.coordinates?.[1] ?? 'N/A'}
             </p>
           </div>
-          <button onClick={() => setIsModalOpen(true)}>Edit Profile</button>
+        </div>
+        <div className='services-section'>
+          <h3>Services Offered</h3>
+          <button onClick={() => setIsAddServiceModalOpen(true)}>Add Service</button>
+          <div className='services-list'>
+            {services.map((service) => (
+              <div key={service.id} className='service-item'>
+                <p>{service.servicename}</p>
+                <p>{service.description}</p>
+                <p>${service.price}</p>
+              </div>
+            ))}
+          </div>
+          <button onClick={() => setIsEditModalOpen(true)}>Edit Profile</button>
         </div>
       </div>
       <Footer />
 
-      {isModalOpen && (
-        <EditProviderProfileModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} user={user} onUserUpdate={fetchUserData} />
+      {isEditModalOpen && (
+        <EditProviderProfileModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          user={user}
+          onUserUpdate={fetchUserData}
+        />
+      )}
+      {isAddServiceModalOpen && (
+        <AddServiceProviderModal
+          isOpen={isAddServiceModalOpen}
+          onClose={() => setIsAddServiceModalOpen(false)}
+          onAdd={handleAddService}
+          providerId={userId}
+        />
       )}
     </>
   )
