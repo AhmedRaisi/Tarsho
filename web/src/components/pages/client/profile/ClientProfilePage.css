@@ -1,63 +1,48 @@
 /* Client Profile Page Styles */
-.client-settings-page {
-    text-align: center;
-    padding: 50px;
-    margin: 50px auto;
-    max-width: 600px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .client-settings-page h2 {
-    color: #007bff;
-  }
-  
-  .client-settings-page form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .client-settings-page label {
-    margin-bottom: 5px;
-  }
-  
-  .client-settings-page input {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .client-settings-page button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .client-settings-page button:hover {
-    background-color: #218838;
-  }
-  
-  .client-settings-page span {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: #fff;
-  }
-  
-  .profile-picture-container {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-picture {
-    width: 100px; /* Adjust as needed */
-    height: 100px; /* Adjust as needed */
-    border-radius: 50%; /* Circular image */
-    object-fit: cover;
-  }
-  
+.client-profile-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-card {
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent to see the animated background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile-card h2 {
+  color: #007bff;
+}
+
+.profile-details p {
+  margin: 10px 0;
+}
+
+.profile-picture-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  border-radius: 50%; /* Circular image */
+  object-fit: cover;
+}
+
+.profile-card button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.profile-card button:hover {
+  background-color: #218838;
+}

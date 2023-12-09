@@ -1,63 +1,76 @@
 /* Provider Profile Page Styles */
-.provider-settings-page {
-    text-align: center;
-    padding: 50px;
-    margin: 50px auto;
-    max-width: 600px;
-    background-color: #fff; /* White background */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
-  }
-  
-  .provider-settings-page h2 {
-    color: #007bff; /* Primary color for headings */
-  }
-  
-  .provider-settings-page form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .provider-settings-page label {
-    margin-bottom: 5px;
-  }
-  
-  .provider-settings-page input {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .provider-settings-page button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .provider-settings-page button:hover {
-    background-color: #218838;
-  }
-  
-  .provider-settings-page span {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: #666;
-  }
-  
-  .profile-picture-container {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-picture {
-    width: 100px; /* Adjust as needed */
-    height: 100px; /* Adjust as needed */
-    border-radius: 50%; /* Circular image */
-    object-fit: cover;
-  }
-  
+.provider-profile-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-card, .services-card {
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+}
+
+.profile-card h2, .services-card h3 {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.profile-details p, .service-item p {
+  margin: 10px 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.profile-picture-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+}
+
+.profile-card button, .services-card button {
+  padding: 12px 25px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.profile-card button:hover, .services-card button:hover {
+  background-color: #218838;
+}
+
+/* Services Section Styles */
+.services-section {
+  margin-top: 30px;
+}
+
+.services-card {
+  background-color: #f8f9fa;
+}
+
+.services-list {
+  margin-top: 15px;
+}
+
+.service-item {
+  background-color: #6ea1d3;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}

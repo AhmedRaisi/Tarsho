@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLUnionType } = require('graphql');
+const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLUnionType,GraphQLInputObjectType, GraphQLFloat} = require('graphql');
 const User = require('../models/user'); // Import the User Mongoose model
 const Service = require('../models/service'); // Import the Service Mongoose model
 const UserType = require('./userType'); // Import UserType for user-related operations
@@ -229,7 +229,9 @@ const Mutation = new GraphQLObjectType({
         username: { type: new GraphQLNonNull(GraphQLString) },
         password: { type: new GraphQLNonNull(GraphQLString) },
         email: { type: new GraphQLNonNull(GraphQLString) },
-        role: { type: new GraphQLNonNull(GraphQLString) }
+        role: { type: new GraphQLNonNull(GraphQLString) },
+        usertags: { type: new GraphQLList(GraphQLString) }, // Accept tags as an argument
+
       },
       async resolve(_, args) {
         let user = await User.findOne({ username: args.username });
@@ -241,7 +243,8 @@ const Mutation = new GraphQLObjectType({
           username: args.username,
           password: args.password,
           email: args.email,
-          role: args.role
+          role: args.role,
+          usertags: args.usertags, // Save tags
         });
 
         const salt = await bcrypt.genSalt(10);
@@ -274,18 +277,52 @@ const Mutation = new GraphQLObjectType({
         contactNumber: { type: GraphQLString },
         address: { type: GraphQLString },
         profilePicture: { type: GraphQLString },
+        description: { type: GraphQLString },
+        usertags: { type: new GraphQLList(GraphQLString) },
+        location: {
+          type: new GraphQLInputObjectType({
+            name: 'LocationInput',
+            fields: {
+              coordinates: { type: new GraphQLList(GraphQLFloat) } // Array of floats (longitude and latitude)
+            }
+          })
+       }
+       
       },
       async resolve(parent, args) {
         // Logic to update user details
         // You'll need to adjust this logic based on how your User model is set up
-        return User.findByIdAndUpdate(args.id, { 
+        const updateData = {
           name: args.name,
           email: args.email,
           contactNumber: args.contactNumber,
           address: args.address,
-          profilePicture: args.profilePicture
-        }, { new: true });
+          profilePicture: args.profilePicture,
+          description: args.description,
+          usertags: args.usertags,
+          location: args.location
+        };
+            // Check if coordinates are valid
+    if (args.location && Array.isArray(args.location.coordinates) && args.location.coordinates.length === 2) {
+      updateData.location = {
+        type: 'Point',
+        coordinates: args.location.coordinates
+      };
+    } else {
+      console.log('Invalid or no coordinates provided');
+      // Decide how to handle invalid coordinates
+      // For example, not updating them or setting to null
+    }
+    try {
+      const updatedUser = await User.findByIdAndUpdate(args.id, updateData, { new: true });
+      return updatedUser;
+    } catch (error) {
+      throw new Error(error);
+    }
+
       },
+
+      
     },
 
   },

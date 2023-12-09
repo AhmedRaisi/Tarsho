@@ -13,7 +13,10 @@ const ClientProfile = () => {
     email: '',
     contactNumber: '',
     address: '',
-    profilePicture: ''
+    profilePicture: '',
+    description: '',
+    usertags: [],
+    location: { coordinates: [0, 0] } // Default to [0, 0] if no data is available
   })
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -34,21 +37,32 @@ const ClientProfile = () => {
     try {
       const graphqlQuery = {
         query: `
-          query GetUserProfile($id: ID!) {
-            userProfile(id: $id) {
-              name
-              email
-              contactNumber
-              address
-              profilePicture
+        query GetUserProfile($id: ID!) {
+          userProfile(id: $id) {
+            name
+            email
+            contactNumber
+            address
+            profilePicture
+            description
+            usertags 
+            location {
+              coordinates
             }
           }
-        `,
+        }
+      `,
         variables: {
           id: userId
         }
       }
       const response = await axios.post('http://localhost:4000/graphql', graphqlQuery)
+
+      // Ensure coordinates are always an array
+      const fetchedUser = response.data.data.userProfile
+      if (!fetchedUser.location || !fetchedUser.location.coordinates) {
+        fetchedUser.location = { coordinates: [0, 0] } // Default to [0, 0]
+      }
       setUser(response.data.data.userProfile)
       setIsLoading(false)
     } catch (err) {
@@ -72,18 +86,26 @@ const ClientProfile = () => {
   return (
     <>
       <Header />
-      <div className='user-profile-page'>
-        <h2>{user.name}s Profile</h2>
-        <div className='profile-picture-container'>
-          <img src={user.profilePicture || profilePicturePlaceholder} alt='Profile' className='profile-picture' />
+      <div className='client-profile-page'>
+        <div className='profile-card'>
+          <h2>{user.name}s Profile</h2>
+          <div className='profile-picture-container'>
+            <img src={user.profilePicture || profilePicturePlaceholder} alt='Profile' className='profile-picture' />
+          </div>
+          <div className='profile-details'>
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
+            <p>Contact Number: {user.contactNumber}</p>
+            <p>Address: {user.address}</p>
+            <p>Description: {user.description}</p>
+            <p>Tags: {user.usertags.join(', ')}</p>
+            <p>
+              Location: Latitude {user.location.coordinates.length > 0 ? user.location.coordinates[0] : 'N/A'}, Longitude{' '}
+              {user.location.coordinates.length > 0 ? user.location.coordinates[1] : 'N/A'}
+            </p>
+          </div>
+          {isEditable && <button onClick={() => setIsModalOpen(true)}>Edit Profile</button>}
         </div>
-        <div className='profile-details'>
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
-          <p>Contact Number: {user.contactNumber}</p>
-          <p>Address: {user.address}</p>
-        </div>
-        {isEditable && <button onClick={() => setIsModalOpen(true)}>Edit Profile</button>}
       </div>
       <Footer />
 

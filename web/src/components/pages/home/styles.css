@@ -528,3 +528,20 @@ footer {
 a:hover, button:hover {
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+
+.tag-card {
+  display: inline-block;
+  background: #e1ecf4;
+  color: #0366d6;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.delete-tag {  
+    margin-left: 10px;
+    cursor: pointer;
+    color: #ff6b6b;
+ }

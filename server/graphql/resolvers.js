@@ -131,12 +131,23 @@ const resolvers = {
         // include any other fields you want to return
       };
     },
-    updateUser: async (_, { id, name, email, contactNumber, address, profilePicture }) => {
+    updateUser: async (_, { id, name, email, contactNumber, address, profilePicture, description, usertags, location }) => {
       try {
         // Find the user and update their details
         const updatedUser = await User.findByIdAndUpdate(
           id,
-          { name, email, contactNumber, address, profilePicture },
+          {             name, 
+            email, 
+            contactNumber, 
+            address, 
+            profilePicture, 
+            description,  // Include description
+            usertags,     // Include usertags
+            location: {
+              type: 'Point',
+              coordinates: args.location.coordinates // Accessing coordinates from args
+            }
+           },
           { new: true } // This option returns the updated document
         );
 

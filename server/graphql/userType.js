@@ -30,6 +30,21 @@ const UserType = new GraphQLObjectType({
       contactNumber: { type: GraphQLString },
       address: { type: GraphQLString },
       profilePicture: { type: GraphQLString },
+      description: { type: GraphQLString },
+      usertags: {
+        type: new GraphQLList(GraphQLString),
+        resolve(parent) {
+          return parent.usertags;
+        }
+      },
+      location: { 
+        type: new GraphQLObjectType({
+          name: 'Location',
+          fields: {
+            coordinates: { type: new GraphQLList(GraphQLFloat) } // Assuming coordinates as array of float
+          }
+        })
+      },
       services: {
         type: new GraphQLList(ServiceType),
         resolve(parent, args) {
