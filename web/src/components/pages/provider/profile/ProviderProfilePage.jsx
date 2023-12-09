@@ -133,6 +133,7 @@ const ProviderProfile = () => {
               Location: Latitude {user.location.coordinates?.[0] ?? 'N/A'}, Longitude {user.location.coordinates?.[1] ?? 'N/A'}
             </p>
           </div>
+          <button onClick={() => setIsEditModalOpen(true)}>Edit Profile</button>
         </div>
         <div className='services-section'>
           <h3>Services Offered</h3>
@@ -146,7 +147,6 @@ const ProviderProfile = () => {
               </div>
             ))}
           </div>
-          <button onClick={() => setIsEditModalOpen(true)}>Edit Profile</button>
         </div>
       </div>
       <Footer />

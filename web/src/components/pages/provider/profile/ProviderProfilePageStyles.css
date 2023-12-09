@@ -59,7 +59,7 @@
 }
 
 .services-card {
-  /* Additional styling if needed */
+  background-color: #f8f9fa;
 }
 
 .services-list {
@@ -67,7 +67,7 @@
 }
 
 .service-item {
-  background-color: #f8f9fa;
+  background-color: #6ea1d3;
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 5px;
