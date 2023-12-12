@@ -123,11 +123,15 @@ const ProviderProfile = () => {
             <p>Description: {user.description}</p>
             <p>Tags: {user.usertags.join(', ')}</p>
           </div>
-          <button onClick={() => setIsEditModalOpen(true)}>Edit Profile</button>
+          <button className='edit-profile-btn' onClick={() => setIsEditModalOpen(true)}>
+            Edit Profile
+          </button>
         </div>
-        <div className='services-section'>
+        <div className='services-card'>
           <h3>Services Offered</h3>
-          <button onClick={() => setIsAddServiceModalOpen(true)}>Add Service</button>
+          <button className='add-service-btn' onClick={() => setIsAddServiceModalOpen(true)}>
+            Add Service
+          </button>
           <div className='services-list'>
             {services.map((service) => (
               <div key={service.id} className='service-item'>

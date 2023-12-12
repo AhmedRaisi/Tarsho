@@ -1,4 +1,3 @@
-/* Provider Profile Page Styles */
 .provider-profile-page {
   text-align: center;
   padding: 20px;
@@ -37,9 +36,8 @@
   border: 3px solid #007bff;
 }
 
-.profile-card button, .services-card button {
+.edit-profile-btn, .add-service-btn {
   padding: 12px 25px;
-  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 5px;
@@ -49,13 +47,20 @@
   transition: background-color 0.3s ease;
 }
 
-.profile-card button:hover, .services-card button:hover {
+.edit-profile-btn {
+  background-color: #28a745;
+}
+
+.edit-profile-btn:hover {
   background-color: #218838;
 }
 
-/* Services Section Styles */
-.services-section {
-  margin-top: 30px;
+.add-service-btn {
+  background-color: #6ea1d3;
+}
+
+.add-service-btn:hover {
+  background-color: #5d8fb1;
 }
 
 .services-card {
@@ -67,7 +72,7 @@
 }
 
 .service-item {
-  background-color: #6ea1d3;
+  background-color: #e2e2e2; /* Slightly different color */
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 5px;
