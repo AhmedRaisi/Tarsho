@@ -15,8 +15,7 @@ const ClientProfile = () => {
     address: '',
     profilePicture: '',
     description: '',
-    usertags: [],
-    location: { coordinates: [0, 0] } // Default to [0, 0] if no data is available
+    usertags: []
   })
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -46,9 +45,6 @@ const ClientProfile = () => {
             profilePicture
             description
             usertags 
-            location {
-              coordinates
-            }
           }
         }
       `,
@@ -58,11 +54,6 @@ const ClientProfile = () => {
       }
       const response = await axios.post('http://localhost:4000/graphql', graphqlQuery)
 
-      // Ensure coordinates are always an array
-      const fetchedUser = response.data.data.userProfile
-      if (!fetchedUser.location || !fetchedUser.location.coordinates) {
-        fetchedUser.location = { coordinates: [0, 0] } // Default to [0, 0]
-      }
       setUser(response.data.data.userProfile)
       setIsLoading(false)
     } catch (err) {
@@ -99,10 +90,6 @@ const ClientProfile = () => {
             <p>Address: {user.address}</p>
             <p>Description: {user.description}</p>
             <p>Tags: {user.usertags.join(', ')}</p>
-            <p>
-              Location: Latitude {user.location.coordinates.length > 0 ? user.location.coordinates[0] : 'N/A'}, Longitude{' '}
-              {user.location.coordinates.length > 0 ? user.location.coordinates[1] : 'N/A'}
-            </p>
           </div>
           {isEditable && <button onClick={() => setIsModalOpen(true)}>Edit Profile</button>}
         </div>

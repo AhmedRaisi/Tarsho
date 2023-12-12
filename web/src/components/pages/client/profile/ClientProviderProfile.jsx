@@ -15,8 +15,7 @@ const ClientProviderProfile = () => {
     address: '',
     profilePicture: '',
     description: '',
-    usertags: [],
-    location: { coordinates: [0, 0] }
+    usertags: []
   })
 
   // const [isModalOpen, setIsModalOpen] = useState(false)
@@ -48,9 +47,6 @@ const ClientProviderProfile = () => {
             profilePicture
             description
             usertags 
-            location {
-              coordinates
-            }
           }
         }
       `,
@@ -62,9 +58,6 @@ const ClientProviderProfile = () => {
 
       // Ensure coordinates are always an array
       const fetchedUser = response.data.data.userProfile
-      if (!fetchedUser.location || !fetchedUser.location.coordinates) {
-        fetchedUser.location = { coordinates: [0, 0] } // Default to [0, 0]
-      }
 
       setUser(fetchedUser)
       setIsLoading(false)
@@ -99,9 +92,6 @@ const ClientProviderProfile = () => {
             <p>Address: {user.address}</p>
             <p>Description: {user.description}</p>
             <p>Tags: {user.usertags.join(', ')}</p>
-            <p>
-              Location: Latitude {user.location.coordinates?.[0] ?? 'N/A'}, Longitude {user.location.coordinates?.[1] ?? 'N/A'}
-            </p>
           </div>
         </div>
       </div>

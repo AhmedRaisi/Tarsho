@@ -27,8 +27,7 @@ const ProviderProfile = () => {
     address: '',
     profilePicture: '',
     description: '',
-    usertags: [],
-    location: { coordinates: [0, 0] }
+    usertags: []
   })
   const [services, setServices] = useState([]) // State for services
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
@@ -61,9 +60,6 @@ const ProviderProfile = () => {
               profilePicture
               description
               usertags
-              location {
-                coordinates
-              }
             }
           }
         `,
@@ -74,9 +70,6 @@ const ProviderProfile = () => {
       const response = await axios.post('http://localhost:4000/graphql', graphqlQuery)
 
       const fetchedUser = response.data.data.userProfile
-      if (!fetchedUser.location || !fetchedUser.location.coordinates) {
-        fetchedUser.location = { coordinates: [0, 0] }
-      }
 
       setUser(fetchedUser)
       setIsLoading(false)
@@ -129,9 +122,6 @@ const ProviderProfile = () => {
             <p>Address: {user.address}</p>
             <p>Description: {user.description}</p>
             <p>Tags: {user.usertags.join(', ')}</p>
-            <p>
-              Location: Latitude {user.location.coordinates?.[0] ?? 'N/A'}, Longitude {user.location.coordinates?.[1] ?? 'N/A'}
-            </p>
           </div>
           <button onClick={() => setIsEditModalOpen(true)}>Edit Profile</button>
         </div>
