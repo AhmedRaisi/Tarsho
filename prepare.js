@@ -1,9 +1,6 @@
 const fs = require('fs');
 const { exec } = require('child_process');
 
-const fs = require('fs');
-const { exec } = require('child_process');
-
 if (fs.existsSync('.git')) {
   exec('npx husky install', (error, stdout, stderr) => {
     if (error) {
