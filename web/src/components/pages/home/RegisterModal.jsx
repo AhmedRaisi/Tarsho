@@ -31,7 +31,7 @@ const RegisterModal = ({ onClose }) => {
 
     const graphqlQuery = {
       query: `
-        mutation RegisterUser($username: String!, $password: String!, $email: String!, $role: String!, $usertags: String!) {
+        mutation RegisterUser($username: String!, $password: String!, $email: String!, $role: String!, $usertags: [String]!) {
           register(username: $username, password: $password, email: $email, role: $role, usertags: $usertags) {
             token
             userId

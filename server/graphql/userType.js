@@ -37,14 +37,6 @@ const UserType = new GraphQLObjectType({
           return parent.usertags;
         }
       },
-      location: { 
-        type: new GraphQLObjectType({
-          name: 'Location',
-          fields: {
-            coordinates: { type: new GraphQLList(GraphQLFloat) } // Assuming coordinates as array of float
-          }
-        })
-      },
       services: {
         type: new GraphQLList(ServiceType),
         resolve(parent, args) {

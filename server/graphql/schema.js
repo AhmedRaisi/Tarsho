@@ -126,7 +126,9 @@ const RegisterResponseType = new GraphQLObjectType({
     token: { type: GraphQLString },
     userId: { type: GraphQLString },
     role: { type: GraphQLString },
-    name: { type: GraphQLString }
+    name: { type: GraphQLString },
+    usertags: { type: new GraphQLList(GraphQLString) } // Add this line
+
   })
 });
 
@@ -279,15 +281,6 @@ const Mutation = new GraphQLObjectType({
         profilePicture: { type: GraphQLString },
         description: { type: GraphQLString },
         usertags: { type: new GraphQLList(GraphQLString) },
-        location: {
-          type: new GraphQLInputObjectType({
-            name: 'LocationInput',
-            fields: {
-              coordinates: { type: new GraphQLList(GraphQLFloat) } // Array of floats (longitude and latitude)
-            }
-          })
-       }
-       
       },
       async resolve(parent, args) {
         // Logic to update user details
@@ -300,19 +293,7 @@ const Mutation = new GraphQLObjectType({
           profilePicture: args.profilePicture,
           description: args.description,
           usertags: args.usertags,
-          location: args.location
         };
-            // Check if coordinates are valid
-    if (args.location && Array.isArray(args.location.coordinates) && args.location.coordinates.length === 2) {
-      updateData.location = {
-        type: 'Point',
-        coordinates: args.location.coordinates
-      };
-    } else {
-      console.log('Invalid or no coordinates provided');
-      // Decide how to handle invalid coordinates
-      // For example, not updating them or setting to null
-    }
     try {
       const updatedUser = await User.findByIdAndUpdate(args.id, updateData, { new: true });
       return updatedUser;

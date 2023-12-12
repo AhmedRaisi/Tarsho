@@ -47,13 +47,40 @@ const resolvers = {
   },
   Mutation: {
     // Resolver to add a new user
-    addUser: async (_, { username, password, email, role }) => {
-      const user = new User({ username, password, email, role });
-      try {
-        return await user.save();
-      } catch (error) {
-        throw new Error(error);
+    addUser: async (_, { username, password, email, role, usertags }) => {
+      let user = await User.findOne({ username });
+      if (user) {
+        throw new Error('User already exists');
       }
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+
+      user = new User({
+        username,
+        password: hashedPassword,
+        email,
+        role,
+        usertags,
+      });
+
+      await user.save();
+
+      const payload = {
+        user: {
+          id: user.id,
+          role: user.role
+        }
+      };
+
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 });
+
+      return {
+        token,
+        userId: user.id,
+        role: user.role,
+        name: user.username
+      };
     },
     // Resolver to add a new service
     addService: async (_, { provider, servicename, description, price }) => {
@@ -95,21 +122,23 @@ const resolvers = {
         name: user.name // Adjust according to your User model
       };
     },
-    register: async (_, { username, password, email, role }) => {
+    register: async (_, { username, password, email, role, usertags }) => {
       let user = await User.findOne({ username });
       if (user) {
         throw new Error('User already exists');
       }
 
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+  
+
       user = new User({
         username,
-        password, // Will be hashed before saving
+        password: hashedPassword,
         email,
-        role
+        role,
+        usertags,
       });
-
-      const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
 
       await user.save();
 
@@ -119,50 +148,35 @@ const resolvers = {
         }
       };
 
-      const token = jwt.sign(
-        payload,
-        process.env.JWT_SECRET,
-        { expiresIn: 3600 }
-      );
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 });
 
       return {
         token,
         userId: user.id,
-        // include any other fields you want to return
+        role: user.role,
+        name: user.username
       };
     },
-    updateUser: async (_, { id, name, email, contactNumber, address, profilePicture, description, usertags, location }) => {
-      try {
-        // Find the user and update their details
-        const updatedUser = await User.findByIdAndUpdate(
-          id,
-          {             name, 
-            email, 
-            contactNumber, 
-            address, 
-            profilePicture, 
-            description,  // Include description
-            usertags,     // Include usertags
-            location: {
-              type: 'Point',
-              coordinates: args.location.coordinates // Accessing coordinates from args
-            }
-           },
-          { new: true } // This option returns the updated document
-        );
+    updateUser: async (_, { id, name, email, contactNumber, address, profilePicture, description, usertags }) => {
+      const updateData = {
+        name,
+        email,
+        contactNumber,
+        address,
+        profilePicture,
+        description,
+        usertags,
+      };
 
-        if (!updatedUser) {
-          throw new Error('User not found');
-        }
-
-        // Return the updated user data, excluding sensitive fields like password
-        return {
-          ...updatedUser.toObject(),
-          password: null,
-        };
-      } catch (error) {
-        throw new Error(error.message);
+      const updatedUser = await User.findByIdAndUpdate(id, updateData, { new: true });
+      if (!updatedUser) {
+        throw new Error('User not found');
       }
+
+      return {
+        ...updatedUser.toObject(),
+        password: null,
+      };
     },
 
   },
