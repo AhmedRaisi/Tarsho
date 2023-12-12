@@ -54,17 +54,6 @@ const UserSchema = new Schema({
     type: String, // Array of keywords or tags
     required: false
   }],
-  location: {
-    type: {
-      type: String,
-      enum: ['Point'], // 'location.type' must be 'Point'
-      default: 'Point'
-    },
-    coordinates: {
-      type: [Number], // Array of numbers for longitude and latitude
-      index: '2dsphere' // Important for geospatial queries
-    }
-  },
   services: [{
     type: Schema.Types.ObjectId,
     ref: 'Service'
