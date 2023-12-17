@@ -25,7 +25,7 @@ const Header = () => {
           <RouterLink to='/provider'>Dashboard</RouterLink>
           <RouterLink to='/providerservices'>Services</RouterLink>
           {/* <Link smooth to="/#ToDo">N/A</Link> */}
-          {userId && <RouterLink to={`/provider/provider/${userId}`}>Profile</RouterLink>} {/* Use userId in the link */}
+          {userId && <RouterLink to={`/provider/${userId}`}>Profile</RouterLink>} {/* Use userId in the link */}
           <button onClick={handleLogout} className='logout-button'>
             Logout
           </button>

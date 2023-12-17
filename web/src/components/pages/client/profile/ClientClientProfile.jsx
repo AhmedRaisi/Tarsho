@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../hf/header/header'
 import Footer from '../hf/footer/footer'
-import '../profile/ClientProfilePage.css'
+import './ClientProfilePage.css'
 import profilePicturePlaceholder from './../../../../assets/profilepictureplaceholder.png'
 
 const ClientClientProfile = () => {

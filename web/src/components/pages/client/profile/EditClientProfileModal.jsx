@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 const EditClientProfileModal = ({ isOpen, onClose, user, onUserUpdate }) => {
   const [editableUser, setEditableUser] = useState({ ...user })
-  const [governorate, setGovernorate] = useState('')
   const [selectedTags, setSelectedTags] = useState(user.usertags || [])
   const placeholderTags = ['Design', 'Development', 'Marketing', 'Photography', 'Writing']
 
@@ -23,20 +22,14 @@ const EditClientProfileModal = ({ isOpen, onClose, user, onUserUpdate }) => {
     setSelectedTags(selectedTags.filter((tag) => tag !== tagToDelete))
   }
 
-  const handleGovernorateChange = (e) => {
-    setGovernorate(e.target.value)
-    // Update the location in editableUser based on governorate selection
-    const coordinates = convertGovernorateToCoordinates(e.target.value)
-    setEditableUser({ ...editableUser, location: { coordinates } })
-  }
   const handleSubmit = async (e) => {
     e.preventDefault()
     const userId = localStorage.getItem('userId')
 
     const graphqlQuery = {
       query: `
-        mutation UpdateUser($id: ID!, $name: String, $email: String, $contactNumber: String, $address: String, $profilePicture: String, $location: LocationInput, $usertags: [String!], $description: String) {
-          updateUser(id: $id, name: $name, email: $email, contactNumber: $contactNumber, address: $address, profilePicture: $profilePicture, location: $location, usertags: $usertags, description: $description) {
+        mutation UpdateUser($id: ID!, $name: String, $email: String, $contactNumber: String, $address: String, $profilePicture: String, $usertags: [String!], $description: String) {
+          updateUser(id: $id, name: $name, email: $email, contactNumber: $contactNumber, address: $address, profilePicture: $profilePicture, usertags: $usertags, description: $description) {
             name
             email
             contactNumber
@@ -44,9 +37,6 @@ const EditClientProfileModal = ({ isOpen, onClose, user, onUserUpdate }) => {
             profilePicture
             usertags
             description
-            location {
-              coordinates
-            }
           }
         }
       `,
@@ -65,14 +55,6 @@ const EditClientProfileModal = ({ isOpen, onClose, user, onUserUpdate }) => {
     } catch (err) {
       console.error('Error updating profile:', err)
     }
-  }
-  const convertGovernorateToCoordinates = (governorate) => {
-    // Define the mapping from governorate to coordinates here
-    const governorateCoordinates = {
-      // Define coordinates for each governorate
-    }
-
-    return governorateCoordinates[governorate] || [0, 0]
   }
 
   if (!isOpen) return null
@@ -114,13 +96,7 @@ const EditClientProfileModal = ({ isOpen, onClose, user, onUserUpdate }) => {
             <label htmlFor='address'>Address:</label>
             <input type='text' id='address' name='address' value={editableUser.address} onChange={handleChange} />
           </div>
-          <div className='form-group'>
-            <label htmlFor='governorate'>Governorate:</label>
-            <select id='governorate' name='governorate' value={governorate} onChange={handleGovernorateChange}>
-              <option value=''>Select Governorate</option>
-              {/* List of governorates */}
-            </select>
-          </div>
+
           {/* Tag selection field */}
           <div className='form-group'>
             <label htmlFor='tags'>Tags:</label>
