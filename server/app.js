@@ -3,17 +3,17 @@ const cors = require('cors');
 const morgan = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
-const userRoutes = require('./routes/users'); // Adjust path as necessary
-const serviceRoutes = require('./routes/services'); // Adjust path as necessary
-// const reviewRoutes = require('./routes/reviews'); // Adjust path as necessary
+const userRoutes = require('./routes/users'); 
+const serviceRoutes = require('./routes/services'); 
+// const reviewRoutes = require('./routes/reviews'); 
 const { GraphQLSchema, GraphQLObjectType } = require('graphql');
 const mongoose = require('mongoose');
 const { graphqlHTTP } = require('express-graphql');
 
 
 // Import your GraphQL schema and resolvers here
-const schema = require('./graphql/schema'); // Adjust path as necessary
-const resolvers = require('./graphql/resolvers'); // Adjust path as necessary
+const schema = require('./graphql/schema'); 
+const resolvers = require('./graphql/resolvers'); 
 
 const app = express();
 
@@ -50,9 +50,10 @@ app.use('/api/services', serviceRoutes);
 // app.use('/api/reviews', reviewRoutes);
 
 // Connect to MongoDB
-const dbURI = 'mongodb://mongodb:27017/usersdb'
-mongoose.connect(dbURI)
-  .catch(err => console.error(err));
+const dbURI = 'mongodb://mongodb:27017/usersdb';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 
 module.exports = app;

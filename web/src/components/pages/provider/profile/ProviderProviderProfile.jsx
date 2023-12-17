@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../hf/header/header'
 import Footer from '../hf/footer/footer'
-import './ClientProfilePage.css'
+import './ProviderProfilePageStyles.css'
 import profilePicturePlaceholder from './../../../../assets/profilepictureplaceholder.png'
 
 const FETCH_SERVICES_QUERY = `
@@ -17,7 +17,7 @@ const FETCH_SERVICES_QUERY = `
   }
 `
 
-const ClientProviderProfile = () => {
+const ProviderProviderProfile = () => {
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -132,4 +132,4 @@ const ClientProviderProfile = () => {
   )
 }
 
-export default ClientProviderProfile
+export default ProviderProviderProfile
