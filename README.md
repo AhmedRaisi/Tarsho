@@ -25,8 +25,6 @@ Tarsho is a dynamic web and mobile application that fosters a thriving marketpla
 
 - Diverse Service Listings: From professional services like HVAC and electrical work to unique local offerings, Tarsho accommodates a wide range of entrepreneurial ventures.
 
-- Projects and Packages: Service providers can create and offer custom packages or projects, grouping various services for enhanced client convenience.
-
 - Local Business Support: A powerful tool for clients to discover and support small, local businesses, contributing to community growth.
 
 - Proximity-Based Discovery: Advanced search functionality allows clients to easily find and connect with nearby service providers.

@@ -52,9 +52,6 @@ const ClientHomePage = () => {
           const userProfileResponse = await axios.post('http://localhost:4000/graphql', userProfileQuery)
           const servicesResponse = await axios.post('http://localhost:4000/graphql', servicesQuery)
 
-          console.log(`UserProfile Response:`, userProfileResponse.data)
-          console.log(`Services Response:`, servicesResponse.data)
-
           // Check for GraphQL errors
           if (userProfileResponse.data.errors || servicesResponse.data.errors) {
             console.error('GraphQL Error:', userProfileResponse.data.errors, servicesResponse.data.errors)

@@ -10,8 +10,8 @@ const {
 } = graphql;
 
 // Import Mongoose model
-const User = require('../models/user');
-const Service = require('../models/service'); // Make sure this is correctly imported
+const User = require('../../models/user');
+const Service = require('../../models/service'); // Make sure this is correctly imported
 
 
 const UserType = new GraphQLObjectType({
