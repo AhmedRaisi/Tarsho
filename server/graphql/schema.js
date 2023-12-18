@@ -1,48 +1,59 @@
-const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLID, GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLUnionType,GraphQLInputObjectType, GraphQLFloat} = require('graphql');
-const User = require('../models/user'); // Import the User Mongoose model
-const Service = require('../models/service'); // Import the Service Mongoose model
-const UserType = require('./userType'); // Import UserType for user-related operations
-const ServiceType = require('./serviceType'); // Import ServiceType for service-related operations
+const {
+  GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLID,
+  GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLUnionType,
+  GraphQLInputObjectType, GraphQLFloat
+} = require('graphql');
+
+// Import Mongoose models
+const User = require('../models/user');
+const Service = require('../models/service');
+
+// Import GraphQL custom types
+const UserType = require('./types/userType');
+const ServiceType = require('./types/serviceType');
+
+// Utility modules for authentication
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Define the RootQuery, which handles GraphQL queries (retrieving data)
+/**
+ * Define the RootQuery for GraphQL.
+ * This handles all the queries related to retrieving data.
+ */
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     // Define a query to get a user by ID
     user: {
-      type: UserType, // Specify the return type (UserType)
-      args: { id: { type: GraphQLID } }, // Define an argument 'id' of type GraphQLID
+      type: UserType, 
+      args: { id: { type: GraphQLID } }, 
       resolve(parent, args) {
-        // Resolve function to fetch a user by ID using Mongoose
         return User.findById(args.id);
       },
     },
     // Define a query to get a list of all users
     users: {
-      type: new GraphQLList(UserType), // Specify the return type (list of UserType)
+      type: new GraphQLList(UserType), 
       resolve(parent, args) {
-        // Resolve function to fetch all users using Mongoose
         return User.find({});
       },
     },
     // Define a query to get a service by ID
     service: {
-      type: ServiceType, // Specify the return type (ServiceType)
-      args: { id: { type: GraphQLID } }, // Define an argument 'id' of type GraphQLID
+      type: ServiceType, 
+      args: { id: { type: GraphQLID } }, 
       resolve(parent, args) {
-        // Resolve function to fetch a service by ID using Mongoose
         return Service.findById(args.id);
       },
     },
     // Define a query to get a list of all services
     services: {
-      type: new GraphQLList(ServiceType), // Specify the return type (list of ServiceType)
+      type: new GraphQLList(ServiceType), 
       resolve(parent, args) {
         return Service.find({}).populate('provider');
       },
     },
+    // Define a query to get the users profile
     userProfile: {
       type: UserType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
@@ -50,14 +61,15 @@ const RootQuery = new GraphQLObjectType({
         return User.findById(args.id).select('-password');
       },
     },
+    // Define a query to get a list all the providers services
     providerServices: {
       type: new GraphQLList(ServiceType),
       args: { provider: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parent, args) {
-        // Logic to fetch services by providerId
         return Service.find({ provider: args.provider });
       }
     },
+    // Define a query to get a number of random users for services page
     randomUsers: {
       type: new GraphQLList(UserType),
       args: {
@@ -68,6 +80,7 @@ const RootQuery = new GraphQLObjectType({
         return User.find({}).limit(args.limit).skip(args.skip);
       },
     },
+    // Define a query to get random services for client home page
     randomServices: {
       type: new GraphQLList(ServiceType),
       args: {
@@ -78,7 +91,7 @@ const RootQuery = new GraphQLObjectType({
         return Service.find({}).limit(args.limit).skip(args.skip);
       },
     },
-    // New search query
+    // Define a query to search for services or users 
     search: {
       type: new GraphQLList(new GraphQLUnionType({
         name: 'SearchResult',
@@ -107,7 +120,9 @@ const RootQuery = new GraphQLObjectType({
 });
 
 
-// Define a new type for the login response
+/**
+ * Define the LoginResponseType for the login mutation.
+ */
 const LoginResponseType = new GraphQLObjectType({
   name: 'LoginResponse',
   fields: () => ({
@@ -119,7 +134,9 @@ const LoginResponseType = new GraphQLObjectType({
 });
 
 
-// Define a new type for the registration response
+/**
+ * Define the RegisterResponseType for the register mutation.
+ */
 const RegisterResponseType = new GraphQLObjectType({
   name: 'RegisterResponse',
   fields: () => ({
@@ -133,21 +150,23 @@ const RegisterResponseType = new GraphQLObjectType({
 });
 
 
-// Define the Mutation, which handles GraphQL mutations (creating, updating, or deleting data)
+/**
+ * Define the Mutation for GraphQL.
+ * This handles all the mutations related to creating, updating, or deleting data.
+ */
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     // Define a mutation to add a new user
     addUser: {
-      type: UserType, // Specify the return type (UserType)
+      type: UserType, 
       args: {
-        username: { type: new GraphQLNonNull(GraphQLString) }, // Define input arguments with validation
+        username: { type: new GraphQLNonNull(GraphQLString) }, 
         password: { type: new GraphQLNonNull(GraphQLString) },
         email: { type: new GraphQLNonNull(GraphQLString) },
         role: { type: new GraphQLNonNull(GraphQLString) },
       },
       async resolve(parent, args) {
-        // Resolve function to create and save a new user using Mongoose
         const user = new User({
           username: args.username,
           password: args.password,
@@ -164,15 +183,14 @@ const Mutation = new GraphQLObjectType({
     },
     // Define a mutation to add a new service
     addService: {
-      type: ServiceType, // Specify the return type (ServiceType)
+      type: ServiceType, 
       args: {
-        provider: { type: new GraphQLNonNull(GraphQLID) }, // Define input arguments with validation
+        provider: { type: new GraphQLNonNull(GraphQLID) }, 
         servicename: { type: new GraphQLNonNull(GraphQLString) }, 
         description: { type: new GraphQLNonNull(GraphQLString) },
         price: { type: new GraphQLNonNull(GraphQLInt) },
       },
       async resolve(parent, args) {
-        // Resolve function to create and save a new service using Mongoose
         const service = new Service({
           provider: args.provider,
           servicename: args.servicename,
@@ -187,6 +205,7 @@ const Mutation = new GraphQLObjectType({
         }
       },
     },
+    // Define a mutation to login
     login: {
       type: LoginResponseType,
       args: {
@@ -225,6 +244,7 @@ const Mutation = new GraphQLObjectType({
         };
       }
     },
+    // Define a mutation to register
     register: {
       type: RegisterResponseType, 
       args: {
@@ -232,7 +252,7 @@ const Mutation = new GraphQLObjectType({
         password: { type: new GraphQLNonNull(GraphQLString) },
         email: { type: new GraphQLNonNull(GraphQLString) },
         role: { type: new GraphQLNonNull(GraphQLString) },
-        usertags: { type: new GraphQLList(GraphQLString) }, // Accept tags as an argument
+        usertags: { type: new GraphQLList(GraphQLString) }, 
 
       },
       async resolve(_, args) {
@@ -246,7 +266,7 @@ const Mutation = new GraphQLObjectType({
           password: args.password,
           email: args.email,
           role: args.role,
-          usertags: args.usertags, // Save tags
+          usertags: args.usertags, 
         });
 
         const salt = await bcrypt.genSalt(10);
@@ -266,10 +286,11 @@ const Mutation = new GraphQLObjectType({
           token,
           userId: user.id,
           role: user.role,
-          name: user.username // Adjust based on your User model
+          name: user.username 
         };
       }
     },
+    // Define a mutation to update user profile information
     updateUser: {
       type: UserType,
       args: {
@@ -283,8 +304,6 @@ const Mutation = new GraphQLObjectType({
         usertags: { type: new GraphQLList(GraphQLString) },
       },
       async resolve(parent, args) {
-        // Logic to update user details
-        // You'll need to adjust this logic based on how your User model is set up
         const updateData = {
           name: args.name,
           email: args.email,
@@ -308,7 +327,6 @@ const Mutation = new GraphQLObjectType({
 
   },
 });
-
 
 
 // Export the GraphQL schema, including RootQuery and Mutation
